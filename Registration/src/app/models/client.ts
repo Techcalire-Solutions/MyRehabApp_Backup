@@ -1,0 +1,32 @@
+
+
+export interface Client{
+  _id:string,
+  client_ID : string,
+  firstName : string,
+  emergencyNumber: string,
+  email : string,
+  dateOfBirth : string,
+  gender: string,
+  nationality : string,
+  homeLanguage : string,
+  familyType : string,
+  familyMembers: string[],
+  referrerDetails : string,
+  reason : string,
+  fatherName :string,
+  fatherMobile :string,
+  fatherOccupation :string,
+  motherName : string,
+  motherMobile : string,
+  motherOccupation : string,
+  annualIncome : string,
+  siblingsDetails : string,
+  address1 : string,
+  address2 : string,
+  pincode : string,
+  status : string,
+  preferredTiming : string,
+  loginStatus : boolean,
+
+}

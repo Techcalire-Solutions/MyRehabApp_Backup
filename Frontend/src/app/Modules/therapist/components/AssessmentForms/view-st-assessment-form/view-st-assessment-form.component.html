@@ -1,0 +1,290 @@
+<mat-card *ngIf="stData">
+  <mat-card class="container">
+    <div class="row">
+      <div class="col">
+        <h4>Date of assessment : {{stData.date | date: 'dd/MM/yyyy'}}</h4>
+      </div>
+      <div class="col">
+        <h4>Updated Date : {{stData.updatedDate | date: 'dd/MM/yyyy'}}</h4>
+      </div>
+    </div>
+    <ul class="responsive-table">
+      <li class="table-header">
+        <h3><b>SPEECH LANGUAGE ASSESSMENT REPORT</b></h3>
+        <li class="table-row">
+          <div><b>Child Strength reported by Parent : </b> {{stData.childStrength}}</div>
+        </li>
+        <li class="table-row">
+          <div><b>Parental Concerns :</b> {{stData.parentConcern}}</div>
+        </li>
+    </ul>
+  </mat-card>
+
+  <mat-card>
+    <section class="dl-blurbs">
+      <div class="row">
+        <div class="col">
+          <dl>
+            <dt>SPEECH MILESTONE</dt><br>
+            <dd>Babbling&nbsp; : &nbsp;&nbsp;{{ stData.babbling }}</dd>
+            <ng-container *ngIf="stData.babbling === 'Inadequate' || stData.babbling === 'Attaining'">
+              <dd>Remarks&nbsp; : &nbsp;&nbsp;{{ stData.babblingRemarks }}</dd>
+            </ng-container><br>
+            <dd>First Word&nbsp; : &nbsp;&nbsp;{{stData.firstWord}}</dd>
+            <ng-container *ngIf="stData.firstWord === 'Inadequate' || stData.firstWord === 'Attaining'">
+            <dd>Remarks&nbsp; : &nbsp;&nbsp;{{stData.firstWordRemarks}}</dd>
+          </ng-container><br>
+            <dd>Two Word Combinations&nbsp; : &nbsp;&nbsp;{{stData.twoWord}}</dd>
+            <ng-container *ngIf="stData.twoWord === 'Inadequate' || stData.twoWord === 'Attaining'">
+            <dd>Remarks&nbsp; : &nbsp;&nbsp;{{stData.twoWordRemarks}}</dd> </ng-container><br>
+            <dd>Regression&nbsp; : &nbsp;&nbsp;{{stData.regression}}</dd>
+            <ng-container *ngIf="stData.regression === 'No'">
+            <dd>Remarks&nbsp; : &nbsp;&nbsp;{{stData.regressionRemarks}}</dd></ng-container> <br>
+            <dd>Impression&nbsp; : &nbsp;&nbsp;{{stData.impressionSpeech}}</dd>
+          </dl>
+        </div>
+
+        <div class="col">
+          <dl>
+            <dt>MOTOR MILESTONE</dt><br>
+            <dd>Neck Control&nbsp; : &nbsp;&nbsp;{{stData.neckControl}}</dd>
+            <ng-container *ngIf="stData.neckControl === 'Inadequate' || stData.neckControl === 'Attaining'">
+              <dd>Remarks&nbsp; : &nbsp;&nbsp;{{ stData.neckControlRemarks }}</dd>
+            </ng-container> <br>
+            <dd>Sitting&nbsp; : &nbsp;&nbsp;{{stData.sitting}}</dd>
+            <ng-container *ngIf="stData.sitting === 'Inadequate' || stData.sitting === 'Attaining'">
+              <dd>Sitting Remarks&nbsp; : &nbsp;&nbsp;{{ stData.sittingRemarks }}</dd>
+            </ng-container><br>
+            <dd>Walking&nbsp; : &nbsp;&nbsp;{{stData.walking}}</dd>
+            <ng-container *ngIf="stData.walking === 'Inadequate' || stData.walking === 'Attaining'">
+              <dd>Walking Remarks&nbsp; : &nbsp;&nbsp;{{ stData.walkingRemarks }}</dd>
+            </ng-container><br>
+            <dd>Impression&nbsp; : &nbsp;&nbsp;{{stData.impressionMotor}}</dd>
+          </dl>
+        </div>
+      </div>
+
+      <br><dt>ORAL PERIPHERAL MECHANISM EXAMINATION</dt><br>
+          <dl>
+            <table>
+              <tr>
+                <th></th>
+                <th>STRUCTURE</th>
+                <th>FUNCTION</th>
+              </tr>
+
+              <ng-container>
+                <tr>
+                  <td>Lips</td>
+                  <td>{{stData.structureLip}}</td>
+                  <td>{{stData.FunctionLip}}</td>
+                </tr>
+              </ng-container>
+
+              <ng-container>
+                <tr>
+                  <td>Tounge</td>
+                  <td>{{stData.structureTounge}}</td>
+                  <td>{{stData.functionTounge}}</td>
+                </tr>
+              </ng-container>
+
+              <ng-container>
+                <tr>
+                  <td>Teeth</td>
+                  <td>{{stData.structureTeeth}}</td>
+                  <td>{{stData.functionTeeth}}</td>
+                </tr>
+              </ng-container>
+
+              <ng-container>
+                <tr>
+                  <td>Alveolus</td>
+                  <td>{{stData.structureAlveolus}}</td>
+                  <td>{{stData.functionAlveolus}}</td>
+                </tr>
+              </ng-container>
+
+              <ng-container>
+                <tr>
+                  <td>Hard Palate</td>
+                  <td>{{stData.structurePalate}}</td>
+                  <td>{{stData.functionPalate}}</td>
+                </tr>
+              </ng-container>
+
+              <ng-container>
+                <tr>
+                  <td>Uvula</td>
+                  <td>{{stData.structureUvula}}</td>
+                  <td>{{stData.functionUvula}}</td>
+                </tr>
+              </ng-container>
+
+              <ng-container>
+                <tr>
+                  <td>Mandible</td>
+                  <td>{{stData.structureMandible}}</td>
+                  <td>{{stData.functionMandible}}</td>
+                </tr>
+              </ng-container>
+
+            </table>
+          </dl>
+
+          <br><dl>
+            <dt>VEGETATIVE SKILLS</dt><br>
+            <dd>Sucking&nbsp; : &nbsp;&nbsp;{{stData.sucking}}</dd>
+            <dd>Swallowing&nbsp; : &nbsp;&nbsp;{{stData.swallowing}}</dd>
+            <dd>Biting&nbsp; : &nbsp;&nbsp;{{stData.biting}}</dd>
+            <dd>Chewing&nbsp; : &nbsp;&nbsp;{{stData.chewing}}</dd>
+            <dd>Blowing&nbsp; : &nbsp;&nbsp;{{stData.blowing}}</dd>
+            <dd>Drooling&nbsp; : &nbsp;&nbsp;{{stData.drooling}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>OTHER CONSULTATION</dt><br>
+            <dd>{{stData.otherConsultation}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>PRELINGISTIC SKILLS</dt><br>
+            <dd>Eye Contact&nbsp; : &nbsp;&nbsp;{{stData.eyeContact}}</dd>
+            <dd>Attention and Concentration&nbsp; : &nbsp;&nbsp;{{stData.attentionConcentration}}</dd>
+            <dd>Sitting Tolerance&nbsp; : &nbsp;&nbsp;{{stData.sittingTolerance}}</dd>
+            <dd>Speech Imitation Skills&nbsp; : &nbsp;&nbsp;{{stData.speechSkills}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>DETAILED SPEECH AND LANGUAGE EVALUATION</dt><br>
+            <dd>Fluency Profile&nbsp; : &nbsp;&nbsp;{{stData.fluencyProfile}}</dd>
+            <dd>Rate of Speech&nbsp; : &nbsp;&nbsp;{{stData.speechRate}}</dd>
+            <dd>Effort&nbsp; : &nbsp;&nbsp;{{stData.effort}}</dd>
+            <dd>Prosody&nbsp; : &nbsp;&nbsp;{{stData.prosody}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>ARTICULATION PROFILE</dt><br>
+            <dd>Speech Intelligibility Rating&nbsp; : &nbsp;&nbsp;{{stData.speechRating}}</dd>
+            <dd>Stimulability&nbsp; : &nbsp;&nbsp;{{stData.stimulability}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>PHONOLOGY PROFILE</dt><br>
+            <dd>{{stData.phonologyProfile}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>DETAILED SPEECH AND LANGUAGE EVALUATION</dt><br>
+            <dd>Pitch&nbsp; : &nbsp;&nbsp;{{stData.pitch}}</dd>
+            <dd>Loudness&nbsp; : &nbsp;&nbsp;{{stData.loudness}}</dd>
+            <dd>Quality&nbsp; : &nbsp;&nbsp;{{stData.quality}}</dd>
+            <dd>Resonance&nbsp; : &nbsp;&nbsp;{{stData.resonance}}</dd>
+            <dt>LANGUAGE PROFILE</dt><br>
+            <!-- <dd>Language Profile&nbsp; : &nbsp;&nbsp;{{stData.languageProfile}}</dd> -->
+            <dd>Comprehension&nbsp; : &nbsp;&nbsp;{{stData.comprehension}}</dd>
+            <dd>Mode of Reception&nbsp; : &nbsp;&nbsp;{{stData.receptionMode}}</dd>
+            <dd>Expression&nbsp; : &nbsp;&nbsp;{{stData.expression}}</dd>
+            <dd>Mode of Expression&nbsp; : &nbsp;&nbsp;{{stData.expressionMode}}</dd>
+            <dd>Parent Child Interactions&nbsp; : &nbsp;&nbsp;{{stData.parentChildIntraction}}</dd>
+
+            <dt>SEMANTIC RELATIONS </dt><br>
+            <dd>Semantic Relations&nbsp; : &nbsp;&nbsp;{{stData.semanticRelation}}</dd>
+            <dd>Attributions&nbsp; : &nbsp;&nbsp;{{stData.attribution}}</dd>
+            <dd>Action&nbsp; : &nbsp;&nbsp;{{stData.action}}</dd>
+            <dd>Locative Action&nbsp; : &nbsp;&nbsp;{{stData.locativeAction}}</dd>
+            <dd>Existence&nbsp; : &nbsp;&nbsp;{{stData.existence}}</dd>
+            <dd>Non-Existence&nbsp; : &nbsp;&nbsp;{{stData.nonExistence}}</dd>
+            <dd>Denial&nbsp; : &nbsp;&nbsp;{{stData.denial}}</dd>
+            <dd>Rejection&nbsp; : &nbsp;&nbsp;{{stData.rejection}}</dd>
+            <dd>Recurrence&nbsp; : &nbsp;&nbsp;{{stData.recurrence}}</dd>
+            <dd>Possession&nbsp; : &nbsp;&nbsp;{{stData.possession}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>PLAY SKILLS AND CHILD'S FAVOURITES/REINFORCES</dt><br>
+            <dd>{{stData.playSkills}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>PRAGMATIC SKILLS</dt><br>
+            <dd>Greeting Skills&nbsp; : &nbsp;&nbsp;{{stData.greetingSkill}}</dd>
+            <dd>Requesting&nbsp; : &nbsp;&nbsp;{{stData.requesting}}</dd>
+            <dd>Turn Taking Skills&nbsp; : &nbsp;&nbsp;{{stData.turnSkill}}</dd>
+            <dd>Topic Initiation&nbsp; : &nbsp;&nbsp;{{stData.topicInitiation}}</dd>
+            <dd>Topic Maintenance&nbsp; : &nbsp;&nbsp;{{stData.topicMaintenance}}</dd>
+            <dd>Topic Termination&nbsp; : &nbsp;&nbsp;{{stData.topicTermination}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>SOCIAL AND BEHAVIOURAL SKILLS</dt><br>
+            <dd>Social Smile&nbsp; : &nbsp;&nbsp;{{stData.socialSmile}}</dd>
+            <dd>Reciprocal Smile&nbsp; : &nbsp;&nbsp;{{stData.reciprocalSmile}}</dd>
+            <dd>Joint Attention&nbsp; : &nbsp;&nbsp;{{stData.jointAttention}}</dd>
+            <dd>Mingling with Peers&nbsp; : &nbsp;&nbsp;{{stData.minglingPeers}}</dd>
+            <dd>Tamper Tantrums&nbsp; : &nbsp;&nbsp;{{stData.temperTantrums}}</dd>
+            <dd>Self-Injurious Behaviour&nbsp; : &nbsp;&nbsp;{{stData.selfBehaviour}}</dd>
+            <dd>Hyper Activity&nbsp; : &nbsp;&nbsp;{{stData.hyperActivity}}</dd>
+            <dd>Self-Help Skills&nbsp; : &nbsp;&nbsp;{{stData.selfHelp}}</dd>
+            <dd>Toilet Indications&nbsp; : &nbsp;&nbsp;{{stData.toiletIndication}}</dd>
+            <dd>Hunger Indications&nbsp; : &nbsp;&nbsp;{{stData.hungerIndication}}</dd>
+            <dd>Bowel/Bladder Control&nbsp; : &nbsp;&nbsp;{{stData.bladderControl}}</dd>
+            <dd>Parent Child Interactions&nbsp; : &nbsp;&nbsp;{{stData.parentChildIntractionBehaviour}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>COGNITIVE SKILLS</dt><br>
+            <dd>Matching&nbsp; : &nbsp;&nbsp;{{stData.matching}}</dd>
+            <dd>Association&nbsp; : &nbsp;&nbsp;{{stData.association}}</dd>
+            <dd>Sequencing&nbsp; : &nbsp;&nbsp;{{stData.sequencing}}</dd>
+            <dd>Categorization &nbsp; : &nbsp;&nbsp;{{stData.categorization}}</dd>
+            <dd>Logical Reasoning&nbsp; : &nbsp;&nbsp;{{stData.logicalReasoning}}</dd>
+            <dd>Problem Solving&nbsp; : &nbsp;&nbsp;{{stData.problemSolving}}</dd>
+            <dd>Memory&nbsp; : &nbsp;&nbsp;{{stData.memory}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>SENSORY ABILITIES</dt><br>
+            <dd>Hearing&nbsp; : &nbsp;&nbsp;{{stData.hearing}}</dd>
+            <dd>Vision&nbsp; : &nbsp;&nbsp;{{stData.vision}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>TEST ADMINISTERED</dt><br>
+            <dd>{{stData.testAdminstered}}</dd>
+            <dd>Impression&nbsp; : &nbsp;&nbsp;{{stData.impression}}</dd>
+          </dl>
+
+          <br><dl>
+            <dt>EDUCATIONAL HISTORY</dt><br>
+            <dd>Age of Admission&nbsp; : &nbsp;&nbsp;{{stData.admissionAge}}</dd>
+            <dd>Academic Breakdown&nbsp; : &nbsp;&nbsp;{{stData.academicBreakdown}}</dd>
+            <dd>Communicative Participation&nbsp; : &nbsp;&nbsp;{{stData.communicateParticipation}}</dd>
+          </dl>
+
+          <br><ul class="responsive-table">
+              <li class="table-row">
+                <div>Provisional Diagnosis : {{stData.provisionalDiagnosis}}</div>
+              </li>
+              <li class="table-row">
+                <div>Family and Environmental Strength : {{stData.familyStrength}}</div>
+              </li>
+              <li class="table-row">
+                <div>Family and Environmental Barriers : {{stData.familyBarriers}}</div>
+              </li>
+              <li class="table-row">
+                <div>Counselling : {{stData.counselling}}</div>
+              </li>
+              <li class="table-row">
+                <div>Goals Explained : {{stData.goalsExplained}}</div>
+              </li>
+              <li class="table-row">
+                <div>Recommendations : {{stData.recommendation}}</div>
+              </li>
+              <li class="table-row">
+                <div>Overall Observations : {{stData.overall}}</div>
+              </li>
+          </ul>
+    </section>
+  </mat-card>
+</mat-card>

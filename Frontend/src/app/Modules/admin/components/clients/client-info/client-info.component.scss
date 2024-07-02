@@ -1,0 +1,79 @@
+.example-card {
+  max-width:auto;
+
+  margin:10px;
+
+}
+.mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+/* Styles for mat-card-header */
+// mat-card-header {
+//   background-color: #f0f0f0; /* Set background color */
+//   padding: 16px; /* Set padding */
+//   text-align: center; /* Align content to center */
+// }
+
+/* Styles for mat-card-title */
+mat-card-title {
+  color: #333; /* Set title color */
+  font-size: 20px; /* Set title font size */
+  font-weight: bold; /* Set title font weight */
+  text-align: center; /* Align content to center */
+}
+
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+.mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+
+.mr-0 {
+  margin-right: 0;
+}
+.ml-auto {
+  margin-left:auto;
+}
+.d-block {
+  display:block;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+@media print {
+  body {
+    font-size: 2pt;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+
+  #print-content {
+    background-color: white;
+    padding: 20px;
+  }
+}
+

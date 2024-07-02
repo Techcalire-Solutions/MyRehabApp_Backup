@@ -1,0 +1,58 @@
+<div class="row ">
+  <div class="col">
+    <div *ngIf="clients">
+      <mat-form-field style="margin-left: 20px;">
+        <mat-label>Client Name</mat-label>
+        <mat-select placeholder="Client Name" #id (selectionChange)="getGoalByClient(id.value)">
+          <mat-form-field class="search-field">
+            <div class="row">
+            <input matInput (input)="filterOptions($event)" placeholder="Search">
+            </div>
+          </mat-form-field>
+          <mat-option *ngFor="let option of filteredOptions" [value]="option._id">
+            {{ option.firstName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div *ngIf="goals.length === 0" class="col" style="display: flex; justify-content: flex-end; margin-right: 25px;">
+    <button mat-raised-button color="primary" type="button" style=" color: white; padding: 10px 20px; border-radius: 5px;  height: 30px; line-height: 15px; margin-top: 15px;"
+     (click)="addGoal()">ADD GOAL</button>
+  </div>
+
+</div>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>GOAL</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="table-wrapper">
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>Client</th>
+              <th>Add</th>
+              <th>Update</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let goal of goals">
+            <td>{{goal.clientId.firstName}}</td>
+            <td>
+              <span style="cursor: pointer;" class="material-icons" (click)="addNewGoal(goal._id)">drive_file_move</span>
+            </td>
+            <td>
+              <span style="cursor: pointer;" class="material-icons" (click)="viewGoal(goal._id)">drive_file_move</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+

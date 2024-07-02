@@ -1,0 +1,64 @@
+<form [formGroup]="assessmentForm" novalidate class="center-div">
+  <mat-card>
+    <mat-card-header><mat-card-title>EDIT LEAVE SESSION</mat-card-title></mat-card-header>
+
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <div *ngIf="slot">
+            <textarea [disabled]="true" class="full-width" [value]="slot.slotName"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div *ngIf="clients">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Client Name" formControlName="clientName">
+              <mat-option *ngFor="let client of  clients" [value]="client._id">
+                {{client.firstName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div *ngIf="therapist">
+            <textarea [disabled]="true" class="full-width" [value]="therapist.name"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Session Type" formControlName="sessionType">
+            <mat-option *ngFor="let sessionType of  sessionTypes" [value]="sessionType.name">
+              {{sessionType.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+       </div>
+       </div>
+
+      <mat-form-field *ngIf="weekDay" class="example-full-width" appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" formControlName="assessmentDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button mat-dialog-close (click)="onCancelClick()" type="button">CANCEL</button>
+      <button mat-raised-button color="primary" type="button" (click)="editFunction()">UPDATE</button>
+      <!-- <button *ngIf ="isEdit" mat-raised-button (click)="editFunction()" enable mat-raised-button color="primary" type="button">UPDATE</button> -->
+    </mat-card-actions>
+  </mat-card>
+</form>

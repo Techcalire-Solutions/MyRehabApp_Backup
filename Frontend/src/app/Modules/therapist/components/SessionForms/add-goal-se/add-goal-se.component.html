@@ -1,0 +1,63 @@
+
+      <form [formGroup]="seGoalForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+        <mat-card class="shipping-card">
+          <mat-card-header *ngIf="sessions">
+            <mat-card-title>ADD GOAL for {{sessions.clientName.firstName | uppercase}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row" appearance="fill">
+              <div class="col">
+                <mat-form-field class="full-width" >
+                  <input matInput placeholder="Goal" formControlName="goal">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row" appearance="fill">
+              <div class="col">
+                <mat-form-field class="full-width" >
+                  <input matInput placeholder="Expected Periods" formControlName="expectPeriod">
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button *ngIf ="!isEdit"  mat-raised-button color="primary" type="submit" [disabled]="seGoalForm.pristine ||!seGoalForm.valid">ADD</button>
+            <button *ngIf ="isEdit" mat-raised-button (click)="editFunction()" enable mat-raised-button color="primary" type="button">UPDATE</button>
+          </mat-card-actions>
+        </mat-card>
+        </form>
+<!-- ----------------------------Table--------------------------------- -->
+<div *ngIf="!addStat">
+  <table mat-table *ngIf="seGoals" [dataSource]="seGoals" class="text-xs text-gray-700 uppercase">
+    <ng-container matColumnDef="goal">
+       <th mat-header-cell *matHeaderCellDef>Goal</th>
+       <td mat-cell [style.background-color]="element.status == false ? 'lightgreen' : null" *matCellDef="let element"> {{element.goal}} </td>
+     </ng-container>
+
+     <ng-container matColumnDef="expectPeriod">
+      <th mat-header-cell *matHeaderCellDef>Expected Sessions</th>
+      <td mat-cell [style.background-color]="element.status == false ? 'lightgreen' : null" *matCellDef="let element"> {{element.expectPeriod}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status" >
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell [style.background-color]="element.status == false ? 'lightgreen' : null" *matCellDef="let element"> {{(element.status === false) ? "Pending" : "Completed"}} </td>
+    </ng-container>
+
+
+     <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Manage </th>
+      <td mat-cell [style.background-color]="element.status == false ? 'lightgreen' : null" *matCellDef="let element">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <i  (click)="editSeGoal(element._id)"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+        &nbsp;&nbsp;
+        <i  (click)="deleteSeGoal(element._id)" class="fa fa-trash" style="font-size: 20px; color:red"></i>
+      </td>
+    </ng-container>
+
+     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   </table>
+</div>
+

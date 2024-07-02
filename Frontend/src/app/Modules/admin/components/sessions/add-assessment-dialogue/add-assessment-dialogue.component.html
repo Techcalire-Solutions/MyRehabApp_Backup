@@ -1,0 +1,94 @@
+<form [formGroup]="assessmentForm" novalidate class="center-div">
+  <mat-card>
+    <mat-card-header><mat-card-title>ADD ASSESSMENT</mat-card-title></mat-card-header>
+
+    <mat-card-content>
+
+      <div class="row">
+        <div class="col">
+          <div *ngIf="slots">
+            <mat-form-field class="full-width">
+              <mat-label>Slot Name</mat-label>
+              <mat-select #catId (selectionChange)="getTherapistsByCat(catId.value)" placeholder="Slot Name" formControlName="slotName">
+                <mat-form-field class="search-field">
+                  <div class="row">
+                  <input matInput (input)="filterOptionsSlot($event)" placeholder="Search">
+                  </div>
+                </mat-form-field>
+                <mat-option *ngFor="let slot of filteredOptionsSlot" [value]="slot._id">
+                  {{ slot.slotName }}
+                </mat-option>
+                <mat-option  *ngIf="filteredOptionsSlot.length === 0">
+                  <span class="material-icons" style="font-size: 25px; color: rgb(0, 128, 55);" (click)="addSlot()">playlist_add</span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div *ngIf="clients">
+          <mat-form-field class="full-width">
+            <mat-label>Client Name</mat-label>
+            <mat-select placeholder="Client Name" formControlName="clientName">
+              <mat-form-field class="search-field">
+                <div class="row">
+                <input matInput (input)="filterOptions($event)" placeholder="Search">
+                </div>
+              </mat-form-field>
+              <mat-option *ngFor="let option of filteredOptions" [value]="option._id">
+                {{ option.firstName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- <div class="col">
+          <div *ngIf="users && viewTherapyCategory">
+
+          <mat-form-field class="full-width">
+            <mat-label>Therapist Name</mat-label>
+            <mat-select placeholder="Therapist Name" formControlName="therapistName">
+              <mat-form-field class="search-field">
+                <div class="row">
+                <input matInput (input)="filterOptionsTherapist($event)" placeholder="Search">
+                </div>
+              </mat-form-field>
+              <mat-option *ngFor="let user of filteredOptionsTherapist" [value]="user._id">
+                {{user.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </div> -->
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>TherapistName</mat-label>
+            <input matInput type="text" placeholder="" readonly="" value="{{therapistName}}">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-form-field *ngIf="weekDay" class="full-width">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" formControlName="assessmentDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button mat-dialog-close (click)="onCancelClick()" type="button">CANCEL</button>
+      <button mat-raised-button color="primary" type="button" (click)="onSubmit()">ADD</button>
+      <!-- <button *ngIf ="isEdit" mat-raised-button (click)="editFunction()" enable mat-raised-button color="primary" type="button">UPDATE</button> -->
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+

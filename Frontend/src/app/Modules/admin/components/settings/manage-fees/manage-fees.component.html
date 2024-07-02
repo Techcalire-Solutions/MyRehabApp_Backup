@@ -1,0 +1,93 @@
+
+<mat-toolbar style="background-color:bisque;">FEES</mat-toolbar><br>
+<table mat-table *ngIf="fees" [dataSource]= "fees" matSort class="mat-elevation-z8">
+  <ng-container matColumnDef="sessionFee" >
+      <th mat-header-cell *matHeaderCellDef >Session Fees</th>
+      <td mat-cell *matCellDef="let element"> {{element.sessionFee}}</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="assessmentFee" >
+    <th mat-header-cell *matHeaderCellDef> Assessment Fees</th>
+    <td mat-cell *matCellDef="let element"> {{element.assessmentFee}}</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="lmc">
+    <th mat-header-cell *matHeaderCellDef>LMC</th>
+    <td mat-cell *matCellDef="let element"> {{element.lmc}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="groupSessionFee">
+    <th mat-header-cell *matHeaderCellDef>Group Session Fees</th>
+    <td mat-cell *matCellDef="let element"> {{element.groupSessionFee}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="manage">
+    <th mat-header-cell *matHeaderCellDef>Manage</th>
+    <td mat-cell *matCellDef="let element">
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+      <i  (click)="editFees()"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table><br><br>
+
+<div *ngIf="isEdit">
+  <form [formGroup]="feeForm">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>UPDATE FEES</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input  type="number" matInput  placeholder="Session Fee" formControlName="sessionFee">
+              <mat-error *ngIf="feeForm.controls['sessionFee'].hasError('required')">
+                is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input  type="number" matInput  placeholder="Assessment Fee" formControlName="assessmentFee">
+              <mat-error *ngIf="feeForm.controls['assessmentFee'].hasError('required')">
+                  is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input  type="number" matInput  placeholder="LMC" formControlName="lmc">
+              <mat-error *ngIf="feeForm.controls['lmc'].hasError('required')">
+                is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input  type="number" matInput  placeholder="Group Session Fees" formControlName="groupSessionFee">
+              <mat-error *ngIf="feeForm.controls['groupSessionFee'].hasError('required')">
+                is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button (click)="editFunction()" enable mat-raised-button color="primary" type="button">UPDATE</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
+
+<br><button  mat-raised-button color="primary" mat-dialog-close type="button">CANCEL</button>
+
+

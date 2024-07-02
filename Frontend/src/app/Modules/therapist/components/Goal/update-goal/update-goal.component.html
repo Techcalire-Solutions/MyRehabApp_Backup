@@ -1,0 +1,53 @@
+<div class="container">
+  <mat-card>
+
+    <h2>GOAL FORM</h2>
+
+    <mat-card-content *ngIf="goal">
+      <!-- <div class="row">
+        <div class="col">
+          <h4>Submitted on : {{goal.date | date: 'dd/MM/yyyy'}}</h4>
+        </div>
+        <div class="col">
+          <h4>Last updates on : </h4>
+        </div>
+      </div> -->
+      <ul class="responsive-table"  *ngFor='let item of goal.goals'>
+        <mat-card style="margin-top: 15px;">
+          <li class="table-header">
+            <div>Goal : {{item.goal}}</div>
+            <div>Date : {{item.startDate | date: 'dd/MM/yyyy'}}</div>
+          </li>
+          <li class="table-header">
+            <div>Remarks : {{item.goalRemarks}}</div>
+            <div>Term : {{item.term}}</div>
+          </li>
+
+          <li class="table-row" *ngIf="item.progressNote">
+            <div>Progress : {{item.progressNote}}</div>
+            <div>Status : {{(item.goalStatus === false) ? "Pending" : "Completed"}}</div>
+          </li>
+
+          <form [formGroup]="goalForm" novalidate class="center-div">
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <textarea matInput placeholder="Progress Note" formControlName="progressNote"></textarea>
+                </mat-form-field>
+              </div>
+
+              <div class="col" style="display: flex; justify-content: flex-end; margin-right: 25px;">
+                <mat-slide-toggle formControlName="goalStatus">Status</mat-slide-toggle>
+              </div>
+            </div>
+
+            <button mat-raised-button color="primary" type="button" (click)="onSubmit(goal._id, item._id)">Submit</button>
+            <mat-divider></mat-divider>
+          </form><br>
+        </mat-card>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

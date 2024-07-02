@@ -1,0 +1,35 @@
+.full-width{
+    width: 100%;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .col {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .col:last-child {
+    margin-right: 0;
+  }
+  
+  @media (max-width:700px)
+  {
+      .box{
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+      mat-form-field {
+        width: 100%;
+      }
+  }
+  
+  table{
+    width : 100%;
+  }

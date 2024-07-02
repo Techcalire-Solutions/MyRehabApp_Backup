@@ -1,0 +1,64 @@
+<form [formGroup]="slotForm" (ngSubmit)="statusUpdate()">
+  <!-- <mat-card class="background"> -->
+    <mat-toolbar style="background-color:bisque;"> SLOT STATUS</mat-toolbar><br>
+
+    <mat-card>
+
+      <div class="col">
+        <section class="example-section" >
+          <mat-radio-group class="example-radio-group" aria-label="Slot Status" formControlName="status"><h4>Type :</h4>
+            <mat-radio-button class="example-radio-button" value="free">Ocuupied to Available</mat-radio-button><br>
+            <mat-radio-button class="example-radio-button" value="assigned">Available to Occupied</mat-radio-button>
+          </mat-radio-group>
+        </section>
+      </div>
+
+      <mat-card-content *ngIf="slotForm.controls['status'].value">
+        <div class="row" *ngIf="slotForm.controls['status'].value == 'free'">
+          <div class="col">
+            <div *ngIf="slots">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Slot Name" formControlName="slotId">
+                <mat-form-field class="search-field">
+                  <!-- <div class="row"> -->
+                    <input matInput (input)="filterOptionsSlotA($event)" placeholder="Search">
+                  <!-- </div> -->
+                </mat-form-field>
+                <mat-option *ngFor="let slot of filteredOptionsSlotA" [value]="slot._id">
+                  {{slot.slotName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="slotForm.controls['status'].value == 'assigned'">
+          <div class="col">
+            <div *ngIf="slots">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Slot Name" formControlName="slotId">
+                <mat-form-field class="search-field">
+                  <div class="row">
+                  <input matInput (input)="filterOptionsSlot($event)" placeholder="Search">
+                  </div>
+                </mat-form-field>
+                <mat-option *ngFor="let slot of filteredOptionsSlot" [value]="slot._id">
+                  {{slot.slotName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button *ngIf="slotForm.controls['status'].value" mat-raised-button color="primary"  type="submit" [disabled]="!slotForm.valid">
+          UPDATE
+        </button>
+        <button  mat-raised-button color="primary" mat-dialog-close (click)="onCancelClick()" type="button">CANCEL</button>
+      </mat-card-actions>
+    </mat-card>
+
+</form>

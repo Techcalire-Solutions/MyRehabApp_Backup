@@ -1,0 +1,27 @@
+
+.full-width{
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+}
+
+.container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+#fileInput {
+  margin-top: 10px; /* Adjust as needed for spacing between image and input */
+}

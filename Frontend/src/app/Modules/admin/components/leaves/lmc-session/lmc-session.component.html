@@ -1,0 +1,76 @@
+<form [formGroup]="assessmentForm" novalidate class="center-div">
+  <mat-card>
+    <mat-card-header><mat-card-title>LEAVE SESSION</mat-card-title></mat-card-header>
+
+    <mat-card-content>
+
+      <div class="row">
+        <div class="col">
+          <div *ngIf="slots">
+            <mat-form-field class="full-width">
+              <mat-select #catId (selectionChange)="getTherapistsByCat(catId.value)" placeholder="Slot Name" formControlName="slotName">
+                <mat-option *ngFor="let slot of slots" [value]="slot._id">
+                  {{slot.slotName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput disabled value="{{date | date: 'dd/MM/yyyy'}}" placeholder="Date" style="color: black">
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div *ngIf="users && viewTherapyCategory">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Therapist Name" formControlName="therapistName">
+                <mat-option *ngFor="let user of  selectedTherapists" [value]="user._id">
+                  {{user.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div *ngIf="clients">
+          <mat-form-field style="width: 100%;">
+            <mat-select #clientId (selectionChange)="findType(clientId.value)" placeholder="Client Name" formControlName="clientName">
+              <mat-form-field class="search-field">
+                <div class="row">
+                <input matInput (input)="filterOptions($event)" placeholder="Search">
+                </div>
+              </mat-form-field>
+              <mat-option *ngFor="let client of filteredOptions" [value]="client._id">
+                {{client.firstName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col">
+          <mat-form-field style="width: 100%;">
+            <mat-select placeholder="Session Type" formControlName="sessionType">
+              <mat-option *ngFor="let sessionType of  sessionTypes" [value]="sessionType.name">
+                {{sessionType.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+         </div>
+      </div>
+    </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button mat-dialog-close (click)="onCancelClick()" type="button">CANCEL</button>
+      <button mat-raised-button color="primary" type="button" (click)="onSubmit()">ADD</button>
+      <!-- <button *ngIf ="isEdit" mat-raised-button (click)="editFunction()" enable mat-raised-button color="primary" type="button">UPDATE</button> -->
+    </mat-card-actions>
+  </mat-card>
+</form>

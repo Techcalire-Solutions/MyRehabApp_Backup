@@ -1,0 +1,48 @@
+<!-- <h1 mat-dialog-title>Session Details</h1>
+<div mat-dialog-content>
+  <b *ngIf="data.status != 'group'">Date: {{this.data.date | date: 'dd/MM/yyyy'}}</b>
+  <b *ngIf="data.status === 'group'">Date: {{this.data.sessionMaster.date | date: 'dd/MM/yyyy'}}</b>
+  <ul *ngIf="data.status != 'group'">
+    <li *ngIf="this.data.sessionStatus == 'Session'">Session Conducted By : {{this.data.session_id.therapistName.name}}</li>
+    <li *ngIf="this.data.sessionStatus == 'LeaveSession'">Session Conducted By : {{this.data.leave_session_id.therapistName.name}}</li>
+    <li *ngIf="this.data.sessionStatus == 'LMC'">Session Conducted By : {{this.data.session_id.therapistName.name}}</li>
+    <br>
+    <li>Session Fee: {{this.data.sessionFee}}</li><br>
+    <li>Concession: {{this.data.concession}}</li><br>
+    <li>Session Type: {{this.data.sessionStatus}}</li><br>
+    <li>Session Master Id: {{this.data._id}}</li><br>
+  </ul>
+
+  <ul *ngIf="data.status === 'group'">
+    <li>Session Conducted By :
+      <a *ngFor="let user of data.sessionMaster.therapistName">{{user.therapistId.name}},</a>
+    </li><br>
+    <li>Session Master Id: {{this.data.sessionMaster._id}}</li><br>
+  </ul>
+  <button mat-raised-button color="primary" type="button" (click)="printDiv()">PRINT</button>
+</div> -->
+
+<mat-toolbar style="background-color:bisque;">SESSION PAYMENT DETAILS</mat-toolbar><br>
+<div class="toolbar" mat-dialog-content>
+  <b *ngIf="data.status !== 'group'">Date: {{ data.date | date: 'dd/MM/yyyy' }}</b>
+  <b *ngIf="data.status === 'group'">Date: {{ data.sessionMaster.date | date: 'dd/MM/yyyy' }}</b>
+  <ul *ngIf="data.status !== 'group'">
+    <BR>
+    <li *ngIf="data.sessionStatus === 'Session'">Session Conducted By: {{ data.session_id.therapistName.name }}</li>
+    <li *ngIf="data.sessionStatus === 'LeaveSession'">Session Conducted By: {{ data.leave_session_id.therapistName.name }}</li>
+    <li *ngIf="data.sessionStatus === 'LMC'">Session Conducted By: {{ data.session_id.therapistName.name }}</li>
+    <li>Session Fee: {{ data.sessionFee }}</li>
+    <li>Concession: {{ data.concession }}</li>
+    <li>Session Type: {{ data.sessionStatus }}</li>
+    <li>Session Master Id: {{ data._id }}</li>
+  </ul>
+
+  <ul *ngIf="data.status === 'group'">
+    <li>Session Conducted By:
+      <a *ngFor="let user of data.sessionMaster.therapistName">{{ user.therapistId.name }},</a>
+    </li>
+    <li>Session Master Id: {{ data.sessionMaster._id }}</li>
+  </ul>
+  <button mat-raised-button color="primary" type="button" (click)="printDiv()">PRINT</button>
+</div>
+

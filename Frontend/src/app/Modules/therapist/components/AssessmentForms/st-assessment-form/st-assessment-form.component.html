@@ -1,0 +1,660 @@
+
+<form [formGroup]="stAssessmentForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>SPEECH LANGUAGE ASSESSMENT REPORT</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-card>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Child strength reported by parent:" formControlName="childStrength">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Parental concerns:" formControlName="parentConcern">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card><br>
+
+      <div class="row">
+        <div class="col">
+          <mat-card>
+            <mat-card-header><mat-card-subtitle><b>SPEECH MILESTONE</b></mat-card-subtitle></mat-card-header>
+
+            <mat-card-content>
+              <mat-radio-group formControlName="babbling"><h4>Babbling:</h4>
+                <mat-radio-button value="Adequate">Adequate</mat-radio-button> &nbsp;
+                <mat-radio-button value="Inadequate">Inadequate</mat-radio-button> &nbsp;
+                <mat-radio-button value="Attaining">Attaining</mat-radio-button> &nbsp;
+              </mat-radio-group><br><br>
+
+              <mat-form-field class="full-width" *ngIf="stAssessmentForm.get('babbling').value === 'Inadequate' || stAssessmentForm.get('babbling').value === 'Attaining'">
+                <input matInput placeholder="Remarks" formControlName="babblingRemarks">
+              </mat-form-field>
+
+              <!-- <mat-form-field class="full-width">
+                <input matInput placeholder="First word:" formControlName="firstWord">
+              </mat-form-field> -->
+
+              <mat-radio-group formControlName="firstWord"><h4>First word:</h4>
+                <mat-radio-button value="Adequate">Adequate</mat-radio-button> &nbsp;
+                <mat-radio-button value="Inadequate">Inadequate</mat-radio-button> &nbsp;
+                <mat-radio-button value="Attaining">Attaining</mat-radio-button> &nbsp;
+              </mat-radio-group><br><br>
+
+              <mat-form-field class="full-width" *ngIf="stAssessmentForm.get('firstWord').value === 'Inadequate' || stAssessmentForm.get('firstWord').value === 'Attaining'">
+                <input matInput placeholder="Remarks" formControlName="firstWordRemarks">
+              </mat-form-field>
+
+              <!-- <mat-form-field class="full-width">
+                <input matInput placeholder="Two word combinations:" formControlName="twoWord">
+              </mat-form-field> -->
+
+              <mat-radio-group formControlName="twoWord"><h4>Two word combinations:</h4>
+                <mat-radio-button value="Adequate">Adequate</mat-radio-button> &nbsp;
+                <mat-radio-button value="Inadequate">Inadequate</mat-radio-button> &nbsp;
+                <mat-radio-button value="Attaining">Attaining</mat-radio-button>&nbsp;
+              </mat-radio-group><br><br>
+
+              <mat-form-field class="full-width" *ngIf="stAssessmentForm.get('twoWord').value === 'Inadequate' || stAssessmentForm.get('twoWord').value === 'Attaining'">
+                <input matInput placeholder="Remarks" formControlName="twoWordRemarks">
+              </mat-form-field>
+
+              <mat-radio-group formControlName="regression"><h4>Regression:</h4>
+                <mat-radio-button value="Yes">Yes</mat-radio-button> &nbsp;
+                <mat-radio-button value="No">No</mat-radio-button> &nbsp;
+              </mat-radio-group><br><br>
+
+              <mat-form-field class="full-width" *ngIf="stAssessmentForm.get('regression').value === 'No'">
+                <input matInput placeholder="Remarks" formControlName="regressionRemarks">
+              </mat-form-field>
+
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Impression:" formControlName="impressionSpeech">
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card><br>
+        </div>
+
+        <!-- <div class="col">
+          <mat-card>
+            <mat-card-header><mat-card-subtitle><b>MOTOR MILESTONE</b></mat-card-subtitle></mat-card-header>
+
+            <mat-card-content>
+
+            </mat-card-content>
+          </mat-card><br>
+        </div> -->
+
+        <div class="col">
+          <mat-card>
+            <mat-card-header><mat-card-subtitle><b>MOTOR MILESTONE</b></mat-card-subtitle></mat-card-header>
+
+            <mat-card-content>
+                        <!-- <mat-form-field class="full-width">
+                <input matInput placeholder="Neck control:" formControlName="neckControl">
+              </mat-form-field> -->
+
+              <mat-radio-group formControlName="neckControl"><h4>Neck control:</h4>
+                <mat-radio-button value="Adequate">Adequate</mat-radio-button> &nbsp;
+                <mat-radio-button value="Inadequate">Inadequate</mat-radio-button> &nbsp;
+                <mat-radio-button value="Attaining">Attaining</mat-radio-button> &nbsp;
+              </mat-radio-group><br><br>
+
+              <mat-form-field class="full-width" *ngIf="stAssessmentForm.get('neckControl').value === 'Inadequate' || stAssessmentForm.get('neckControl').value === 'Attaining'">
+                <input matInput placeholder="NeckControl Remarks" formControlName="neckControlRemarks">
+              </mat-form-field>
+
+              <!-- <mat-form-field class="full-width">
+                <input matInput placeholder="Sitting:" formControlName="sitting">
+              </mat-form-field> -->
+
+              <mat-radio-group formControlName="sitting"><h4>Sitting:</h4>
+                <mat-radio-button value="Adequate">Adequate</mat-radio-button> &nbsp;
+                <mat-radio-button value="Inadequate">Inadequate</mat-radio-button> &nbsp;
+                <mat-radio-button value="Attaining">Attaining</mat-radio-button> &nbsp;
+              </mat-radio-group><br><br>
+
+              <mat-form-field class="full-width" *ngIf="stAssessmentForm.get('sitting').value === 'Inadequate' || stAssessmentForm.get('sitting').value === 'Attaining'">
+                <input matInput placeholder="Sitting Remarks" formControlName="sittingRemarks">
+              </mat-form-field>
+
+              <!-- <mat-form-field class="full-width">
+                <input matInput placeholder="Walking:" formControlName="Walking">
+              </mat-form-field> -->
+              <mat-radio-group formControlName="walking"><h4>Walking:</h4>
+                <mat-radio-button value="Adequate">Adequate</mat-radio-button> &nbsp;
+                <mat-radio-button value="Inadequate">Inadequate</mat-radio-button> &nbsp;
+                <mat-radio-button value="Attaining">Attaining</mat-radio-button> &nbsp;
+              </mat-radio-group><br><br>
+
+              <mat-form-field class="full-width" *ngIf="stAssessmentForm.get('walking').value === 'Inadequate' || stAssessmentForm.get('walking').value === 'Attaining'">
+                <input matInput placeholder="Walking Remarks" formControlName="walkingRemarks">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Impression:" formControlName="impressionMotor">
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+      <mat-card>
+        <table>
+          <tr>
+            <th></th>
+            <th>Structure</th>
+            <th>Function</th>
+          </tr>
+
+          <tr>
+            <td>LIPS</td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="structureLip">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="FunctionLip">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>TOUNGE</td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="structureTounge">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="functionTounge">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>TEETH</td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="structureTeeth">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="functionTeeth">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>ALVEOLUS</td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="structureAlveolus">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="functionAlveolus">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>HARD PALATE</td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="structurePalate">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="functionPalate">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>UVULA</td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="structureUvula">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="functionUvula">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>MANDIBLE</td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="structureMandible">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="functionMandible">
+              </mat-form-field>
+            </td>
+          </tr>
+
+        </table>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>VEGETATIVE SKILLS</b></mat-card-subtitle></mat-card-header>
+
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Sucking:" formControlName="sucking">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Swallowing:" formControlName="swallowing">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Biting:" formControlName="biting">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Chewing:" formControlName="chewing">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Blowing:" formControlName="blowing">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Drooling:" formControlName="drooling">
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>OTHER CONSULTATION: </b></mat-card-subtitle></mat-card-header>
+        <mat-form-field class="full-width">
+          <input matInput formControlName="otherConsultation">
+        </mat-form-field>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>PRE LINGUISTIC SKILLS</b></mat-card-subtitle></mat-card-header>
+
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Eye contact:" formControlName="eyeContact">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Attention and concentration:" formControlName="attentionConcentration">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Sitting tolerance:" formControlName="sittingTolerance">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Speech imitation skills:" formControlName="speechSkills">
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>DETAILED SPEECH AND LANGUAGE EVALUATION</b></mat-card-subtitle></mat-card-header>
+
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Fluency profile:" formControlName="fluencyProfile">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Rate of speech:" formControlName="speechRate">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Effort:" formControlName="effort">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Prosody:" formControlName="prosody">
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>ARTICULATION PROFILE</b></mat-card-subtitle></mat-card-header>
+
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Speech intelligibility rating:" formControlName="speechRating">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Stimulability:" formControlName="stimulability">
+          </mat-form-field>
+
+        </mat-card-content>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>PHONOLOGY PROFILE</b></mat-card-subtitle></mat-card-header>
+        <mat-form-field class="full-width">
+          <input matInput formControlName="phonologyProfile">
+        </mat-form-field>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>VOICE PROFILE</b></mat-card-subtitle></mat-card-header>
+
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Pitch:" formControlName="pitch">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Loudness:" formControlName="loudness">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Quality" formControlName="quality">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <mat-label>Resonance:</mat-label>
+            <mat-select formControlName="resonance" placeholder="Resonance">
+              <mat-option value="Hypo">Hypo</mat-option>
+              <mat-option value="Hyper">Hyper</mat-option>
+              <mat-option value="Other">Other</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <!-- <mat-form-field class="full-width">
+            <input matInput placeholder="Language profile:" formControlName="languageProfile">
+          </mat-form-field> -->
+          <mat-card-header><mat-card-subtitle><b>LANGUAGE PROFILE:</b></mat-card-subtitle></mat-card-header>
+
+
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Comprehension:" formControlName="comprehension">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Mode of reception:" formControlName="receptionMode">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Expression:" formControlName="expression">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Mode of expression:" formControlName="expressionMode">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Parent child interaction:" formControlName="parentChildIntraction">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Semantic relations:" formControlName="semanticRelation">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Attribution:" formControlName="attribution">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Action" formControlName="action">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Locative action:" formControlName="locativeAction">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Existence:" formControlName="existence">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Non-existence:" formControlName="nonExistence">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Denial:" formControlName="denial">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Rejection:" formControlName="rejection">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Recurrence:" formControlName="recurrence">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Possession:" formControlName="possession">
+          </mat-form-field>
+
+        </mat-card-content>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>PLAY SKILLS AND CHILD'S FAVOURITES/REINFORCES</b></mat-card-subtitle></mat-card-header>
+        <mat-form-field class="full-width">
+          <input matInput formControlName="playSkills">
+        </mat-form-field>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>PRAGMATIC SKILLS</b></mat-card-subtitle></mat-card-header>
+
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Greeting skills:" formControlName="greetingSkill">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Requesting:" formControlName="requesting">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Turn taking skills:" formControlName="turnSkill">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Topic intiation:" formControlName="topicInitiation">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Topic Maintenance:" formControlName="topicMaintenance">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Topic termination:" formControlName="topicTermination">
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>SOCIAL AND BEHAVIOURAL SKILLS</b></mat-card-subtitle></mat-card-header>
+
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Social smile:" formControlName="socialSmile">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Reciprocal smile:" formControlName="reciprocalSmile">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Joint attention:" formControlName="jointAttention">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Mingling with peers:" formControlName="minglingPeers">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Temper tantrums:" formControlName="temperTantrums">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Self-injurious behaviour:" formControlName="selfBehaviour">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Hyper activity:" formControlName="hyperActivity">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Self-help skills:" formControlName="selfHelp">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Toilet indication:" formControlName="toiletIndication">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Hunger indication:" formControlName="hungerIndication">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Bowel/bladder control:" formControlName="bladderControl">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Parent-child interactions:" formControlName="parentChildIntractionBehaviour">
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>COGNITIVE SKILLS</b></mat-card-subtitle></mat-card-header>
+        <mat-form-field class="full-width">
+          <input matInput  placeholder="Matching:" formControlName="matching">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput  placeholder="Association:" formControlName="association">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput  placeholder="Sequencing:" formControlName="sequencing">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput  placeholder="Categorization:" formControlName="categorization">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput  placeholder="Logical reasoning:" formControlName="logicalReasoning">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput  placeholder="Problem solving:" formControlName="problemSolving">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput  placeholder="Memory:" formControlName="memory">
+        </mat-form-field>
+
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>SENSORY ABILITIES</b></mat-card-subtitle></mat-card-header>
+
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Hearing:" formControlName="hearing">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Vision:" formControlName="vision">
+          </mat-form-field>
+
+        </mat-card-content>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>TEST ADMINISTERED</b></mat-card-subtitle></mat-card-header>
+        <mat-form-field class="full-width">
+          <input matInput formControlName="testAdminstered">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Impression:" formControlName="impression">
+        </mat-form-field>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><b>EDUCATIONAL HISTORY</b></mat-card-subtitle></mat-card-header>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Age of admission:" formControlName="admissionAge">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Academic breakdown:" formControlName="academicBreakdown">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Communicative participation:" formControlName="communicateParticipation">
+        </mat-form-field>
+      </mat-card><br>
+
+      <mat-card>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Provisional diagnosis:" formControlName="provisionalDiagnosis">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Family and environmetal strength:" formControlName="familyStrength">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Family and environmetal barriers:" formControlName="familyBarriers">
+        </mat-form-field>
+
+        <mat-radio-group formControlName="counselling"><h4>Counselling:</h4>
+          <mat-radio-button value="Yes">Yes</mat-radio-button>
+          <mat-radio-button value="No">No</mat-radio-button>
+        </mat-radio-group><br><br>
+
+        <mat-radio-group formControlName="goalsExplained"><h4>Goals explained:</h4>
+          <mat-radio-button value="Yes">Yes</mat-radio-button>
+          <mat-radio-button value="No">No</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Recommendation:" formControlName="recommendation">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Overall Observations:" formControlName="overall">
+        </mat-form-field>
+
+      </mat-card><br>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!stAssessmentForm.valid">ADD</button>
+    </mat-card-actions>
+  </mat-card>
+  </form>

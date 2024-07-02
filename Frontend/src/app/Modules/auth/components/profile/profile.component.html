@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<mat-card *ngIf="users">
+  <mat-card-header>
+    <mat-card-title>PROFILE</mat-card-title>
+  </mat-card-header>
+
+  <div class="row box">
+    <div class="card">
+      <ng-container *ngIf="users.file_url; else alternativeImage">
+        <div class="image-container">
+          <img class="profile-photo" src="{{ users.file_url }}" />
+          <label *ngIf="!uploadStatus" for="fileInput" class="custom-file-upload">
+            <i class="fa fa-cloud-upload" style="font-size: 40px; cursor: pointer;"></i>
+          </label>
+          <input type="file" id="fileInput" style="display: none;" (change)="onFileSelected($event)" />
+          <i *ngIf="uploadStatus" (click)="onUpload()" class="edit-icon fa fa-pencil" style="font-size: 40px; cursor: pointer;"></i>
+        </div>
+      </ng-container>
+
+      <ng-template #alternativeImage>
+        <div class="image-container">
+          <img src="../../../../../../assets/no_image_part.png" alt="Alternative Image" style="width: 250px; height: 250px;" />
+          <label *ngIf="!uploadStatus" for="fileInput" class="custom-file-upload">
+            <i class="fa fa-cloud-upload" style="font-size: 40px; cursor: pointer;"></i>
+          </label>
+          <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none;" />
+          <i *ngIf="uploadStatus" (click)="onUpload()" class="edit-icon fa fa-pencil" style="font-size: 40px; cursor: pointer;"></i>
+        </div>
+      </ng-template>
+      <h1>{{users.name | uppercase}} <a *ngIf="users.md">MD</a></h1>
+      <!-- <p class="title">{{users.}}</p> -->
+      <p>{{users.role | uppercase}}</p>
+      <p *ngIf="users.role == 'therapist'">{{users.therapyCategory.therapyName}}</p>
+      <p>{{users.email}}</p>
+      <div style="margin: 24px 0;">
+        <a (click)="editProfile()"><i class="fa fa-edit"></i></a>
+      </div>
+      <p>
+        <button *ngIf="users.role == 'admin'" routerLink="adminleave">Request Leave</button>
+        <button *ngIf="users.role == 'therapist'" routerLink="addleave">Request Leave</button></p>
+    </div>
+
+    <div class="card" *ngIf="users.role === 'admin'">
+      <h1>Report</h1>
+      <p class="title">TODAY ({{date}})</p>
+      <p>Assessment Fee : {{assessmentFee}}</p>
+      <p>Session Fee : {{sessionFee}}</p>
+      <p>Group Fee : {{groupFee}}</p>
+      <p>Lmc Fee to Clinic : {{lmcFeeClinic}}</p>
+      <p>Lmc Fee to Therapist: {{lmcFeeTher}}</p>
+      <p>Expenses : {{expense}}</p>
+      <br>
+      <p>Pending Assessment Fee : {{pendAssessFee}}</p>
+      <p>Pending Session Fee : {{pendSessionFee}}</p>
+      <p>Pending Group Fee : {{pendGroupFee}}</p>
+      <p>Pending Lmc Fee : {{pendLmcFee}}</p>
+      <br>
+      <p class="title">MONTH ({{currentMonth}})</p>
+      <p>Assessment Fee : {{assessmentFeeMonth}}</p>
+      <p>Session Fee : {{sessionFeeMonth}}</p>
+      <p>Group Fee : {{groupFeeMonth}}</p>
+      <p>Lmc Fee to Clinic {{lmcFeeClinicMonth}}</p>
+      <p>Lmc Fee to Therapist: {{lmcFeeTherMonth}}</p>
+      <p>Expenses : {{expenseMonth}}</p>
+      <br>
+      <p>Pending Assessment Fee : {{pendAssessFeeMonth}}</p>
+      <p>Pending Session Fee : {{pendSessionFeeMonth}}</p>
+      <p>Pending Group Fee : {{pendGroupFeeMonth}}</p>
+      <p>Pending Lmc Fee : {{pendLmcFeeMonth}}</p>
+      <p><button routerLink="report">View Reports</button></p>
+    </div>
+
+    <div class="card" *ngIf="users.role === 'therapist'">
+      <h1>Report</h1>
+      <p class="title">TODAY ({{date}})</p>
+      <p>Assessments : {{assessmentCountDay}}</p>
+      <p>Leave Assessments : {{leaveAssessmentCountDay}}</p>
+      <p>Compensation Assessments : {{compAssessmentCountDay}}</p>
+      <p>Completed Assessments : {{assessmentMasterDay}}</p><br>
+
+      <p>Sessions : {{sessionCountDay}}</p>
+      <p>Leave Sessions : {{leaveSessionCountDay}}</p>
+      <p>Compensation Sessions : {{compSessionCountDay}}</p>
+      <p>Completed Sessions : {{sessionMasterDay}}</p><br>
+
+      <p>Groups : {{groupSessionCountDay}}</p>
+      <p>Completed Groups : {{groupMasterCountDay}}</p>
+      <br>
+      <p class="title">MONTH ({{currentMonth}})</p>
+      <p>Leaves : {{leaveCountForCurrentMonth}}</p>
+      <p>Assessments : {{assessmentCountMonth}}</p>
+      <p>Sessions : {{sessionCountMonth}}</p>
+      <p>Groups : {{groupMasterCountMonth}}</p>
+      <!-- <p><button routerLink="viewreport">View Detailed</button></p> -->
+    </div>
+  </div>
+</mat-card>
+

@@ -1,0 +1,91 @@
+
+<mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>THERAPIST LEAVE</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div>
+        <full-calendar #fullcalendar [options]="calendarOptions"></full-calendar>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+  <br><div>
+    <tr>
+
+   <button mat-raised-button color="primary" (click)="addEmergency()">Emergency Leave</button><br>
+
+</tr>
+  </div>
+  <br>
+
+  <!-- ------------------------------------------------------------------------------------------------- -->
+
+  <div style="overflow-x:scroll;">
+    <table mat-table *ngIf="leaves" [dataSource]="leaves" class="mat-elevation-z8">
+      <ng-container matColumnDef="userId">
+        <th mat-header-cell *matHeaderCellDef>Therapist Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{element.therapistId?.name}}
+        </td>
+     </ng-container>
+      <ng-container matColumnDef="leaveType">
+         <th mat-header-cell *matHeaderCellDef>leaveType</th>
+         <td mat-cell *matCellDef="let element"> {{element.leaveType}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="reason">
+        <th mat-header-cell *matHeaderCellDef>reason</th>
+        <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+     </ng-container>
+
+     <ng-container matColumnDef="fromDate">
+      <th mat-header-cell *matHeaderCellDef>fromDate</th>
+      <td mat-cell *matCellDef="let element"> {{element.fromDate | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="toDate">
+      <th mat-header-cell *matHeaderCellDef>toDate</th>
+      <td mat-cell *matCellDef="let element"> {{element.toDate | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>status</th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="remarks">
+      <th mat-header-cell *matHeaderCellDef>remarks</th>
+      <td mat-cell *matCellDef="let element"> {{element.remarks}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Manage </th>
+      <td mat-cell *matCellDef="let element">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <mat-icon *ngIf="element.status.toLowerCase() != 'emergency' && element.status.toLowerCase() != 'approved'" (click)="approveLeave(element._id)"  class="fa fa-check" style="font-size: 20px; color:green"></mat-icon>
+        <a *ngIf="element.status.toLowerCase() != 'emergency'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        <mat-icon *ngIf="element.status.toLowerCase() != 'emergency'  && element.status.toLowerCase() != 'rejected'" (click)="rejectLeave(element._id)" class="fa fa-close" style="font-size: 20px; color:red"></mat-icon>
+
+        <mat-icon *ngIf="element.status.toLowerCase() == 'emergency'" style="color: green;" (click)="editRow(element._id)">edit_note</mat-icon>
+        &nbsp;&nbsp;&nbsp;
+        <mat-icon *ngIf="element.status.toLowerCase() == 'emergency'"  style="color: red;" (click)="deleteRow(element._id)">delete_sweep</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="manage">
+      <th mat-header-cell *matHeaderCellDef>Session</th>
+      <td mat-cell *matCellDef="let element">
+        <button>
+          <mat-icon *ngIf="element.status.toLowerCase() === 'emergency' || element.status.toLowerCase() === 'approved'" (click)="addCompensationSession(element._id)" class="material-icons" style=" color: rgb(0, 0, 255);">post_add</mat-icon>
+        </button>
+      </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>

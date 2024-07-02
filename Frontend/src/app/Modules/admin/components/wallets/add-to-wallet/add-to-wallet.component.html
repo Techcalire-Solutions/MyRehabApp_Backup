@@ -1,0 +1,92 @@
+<form [formGroup]="walletForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>{{clientName | uppercase}}'S WALLET</mat-card-title>
+
+      <span class="material-icons" style="font-size: 30px; margin-left: auto;">account_balance_wallet </span>
+      <h1><b style="margin-left: 3px;">INR {{walletAmount}}/-</b></h1>
+
+    </mat-card-header>
+    <mat-card-content>
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input type="number" matInput placeholder="Amount" formControlName="amount">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <div class="date-filter-container">
+            <div class="date-filter">
+              <label for="startDate">Date:</label>
+              <input type="date" id="startDate" formControlName="date">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label id="example-radio-group-label">Payment Mode: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="paymentMode">
+            <mat-radio-button value="Cash">Cash</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-radio-button value="GooglePay">Google Pay</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-radio-button value="BankTransfer">Bank Transfer</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button *ngIf="!editStatus" mat-raised-button color="primary" type="submit" [disabled]="walletForm.pristine ||!walletForm.valid">ADD</button>
+      <button *ngIf="editStatus" mat-raised-button color="primary" type="button" [disabled]="walletForm.pristine ||!walletForm.valid"
+      (click)="update()">UPDATE</button>
+    </mat-card-actions>
+  </mat-card>
+</form><br>
+
+<h2>CREDIT TABLE</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Payment Mode</th>
+      <th>Manage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cashIn of cashInWallet">
+      <td>{{ cashIn.date | date: 'dd/MM/yyyy'}}</td>
+      <td>{{ cashIn.amount }}</td>
+      <td>{{ cashIn.paymentMode }}</td>
+      <td>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <i  (click)="editCash(cashIn._id)"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+        &nbsp;&nbsp;
+        <i  (click)="deleteCash(cashIn._id)" class="fa fa-trash" style="font-size: 20px; color:red"></i>
+      </td>
+    </tr>
+  </tbody>
+  <!-- <tfoot>
+  </tfoot> -->
+</table><br><br>
+
+<h2>DEBIT TABLE</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Manage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cashOut of cashOutWallet">
+      <td>{{ cashOut.date | date: 'dd/MM/yyyy'}}</td>
+      <td>{{ cashOut.amount }}</td>
+      <td><button mat-raised-button color="primary" (click)="getSessionMaster(cashOut.sessionMasterId)" type="button">Select</button></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,86 @@
+
+<form [formGroup]="goalForm" novalidate class="center-div">
+  <mat-card class="shipping-card">
+
+    <div class="container">
+      <h2>GOAL FORM </h2>
+
+      <div class="container">
+        <form [formGroup]="goalForm">
+          <mat-card *ngIf="client">
+            <div class="tab">
+              <div class="row">
+                <div class="col">
+                  <h4>Client Name : {{client.firstName}}</h4>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+          <br>
+
+
+          <div class="container">
+            <form [formGroup]="goalForm">
+
+              <table class="table table-bordered" formArrayName="goals">
+                <table *ngFor="let seData of goalData().controls; let i=index" [formGroupName]="i" class="full-width">
+                  <tr>
+                    <td colspan="2">
+                      Goal :
+                        <input type="text" formControlName="goal" class="form-control">
+                    </td>
+
+                    <td colspan="2">
+                      Remarks :
+                      <textarea type="text" formControlName="goalRemarks" class="form-control"></textarea>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="2">
+
+                      <mat-form-field appearance="fill" class="full-width">
+                        <mat-label >Term</mat-label>
+                        <mat-select formControlName="term">
+                          <mat-option value="long">LongTerm</mat-option>
+                          <mat-option value="short">ShortTerm</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+
+                    <td>
+                      <div *ngIf="categories">
+                        <mat-form-field appearance="fill" class="full-width">
+                          <mat-select placeholder="Therapy Category" formControlName="category">
+                            <mat-option *ngFor="let category of  categories" [value]="category._id">
+                              {{category.abbreviation}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        </div>
+                    </td>
+
+                    <td>
+                      <button (click)="removeGoal(i)" class="btn btn-danger">
+                        <span class="material-icons">close</span>
+                      </button>
+                    </td>
+                  </tr>
+                </table>
+                <tr>
+                  <th>Add Goal:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button  type="button" (click)="addGoal()" color="primary">Add Goal</button></th>
+                </tr>
+              </table>
+            </form>
+
+            <br/>
+          </div>
+          <button mat-raised-button color="primary" type="button" (click)="onSubmit()">Submit</button>
+
+        </form>
+      </div>
+    </div>
+  </mat-card>
+</form>
+

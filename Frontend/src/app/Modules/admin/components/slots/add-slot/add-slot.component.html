@@ -1,0 +1,183 @@
+<div>
+      <form [formGroup]="slotForm" novalidate (ngSubmit)="onSubmit()">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>ADD SLOT</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+
+             <div *ngIf="therapists && !isEdit">
+              <mat-form-field class="full-width">
+                <mat-select #id (selectionChange)="findName(id.value)" placeholder="Therapist Name" formControlName="roomName">
+                  <mat-option *ngFor="let item of  therapists" [value]="item._id">
+                    {{item.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+             </div>
+
+             <div class="row" *ngIf="isEdit">
+              <div class="col">
+                <div *ngIf="roName">
+                  <input matInput [disabled]="true" class="full-width" [value]="roName.roomName" style="color: black">
+                </div>
+              </div>
+            </div>
+
+             <div class="row" *ngIf="!isEdit">
+              <div class="col">
+              <mat-form-field class="full-width">
+                <mat-select  #weekday (selectionChange)="getWeekDay(weekday.value)" placeholder="Day" formControlName="weekDay">
+                  <mat-option *ngFor="let week of  weekDays" [value]="week.name">
+                    {{week.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+             </div>
+             </div>
+
+             <div class="row" *ngIf="isEdit">
+              <div class="col">
+                <br><div *ngIf="day">
+                  <input matInput [disabled]="true" class="full-width" [value]="day" style="color: black">
+                </div><br>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input  type="time" matInput  placeholder="Start Time" formControlName="startTime">
+                  <mat-error *ngIf="slotForm.controls['startTime'].hasError('required')">
+                    Start Time  is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input type="time"  matInput placeholder="End Time" formControlName="endTime">
+                  <mat-error *ngIf="slotForm.controls['endTime'].hasError('required')">
+                    End Time is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- <div class="col">
+                <div *ngIf="categories && !isEdit">
+                <mat-form-field class="full-width">
+                  <mat-select #therapycat (selectionChange)="getTherapyCat(therapycat.value)" placeholder="Therapy Category" formControlName="therapyCategory">
+                    <mat-option *ngFor="let category of  categories" [value]="category._id">
+                      {{category.abbreviation}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                </div>
+              </div> -->
+
+
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>TherapyCategory</mat-label>
+                  <input matInput type="text" placeholder="" readonly="" value="{{category}}">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row" *ngIf="isEdit">
+              <div class="col">
+                <div *ngIf="cat">
+                  <input matInput [disabled]="true" class="full-width" [value]="cat" style="color: black">
+                </div><br>
+              </div>
+            </div>
+
+            <div>
+              <mat-slide-toggle formControlName="onCall">On Call Sessions</mat-slide-toggle>
+            </div>
+
+          </mat-card-content>
+          <mat-card-actions>
+
+            <button *ngIf ="addStatus" mat-button mat-dialog-close (click)="onCancelClick()" type="button">CANCEL</button>
+            <button *ngIf ="!isEdit"  mat-raised-button color="primary" type="submit" [disabled]="slotForm.pristine && !slotForm.valid ">ADD</button>
+            <button *ngIf ="isEdit" mat-raised-button (click)="editFunction()" enable mat-raised-button color="primary" type="button" [disabled]="slotForm.pristine || !slotForm.valid">UPDATE</button>
+          </mat-card-actions>
+        </mat-card>
+        </form>
+</div>
+<!----------------------------------- Table Starts----------------------------------------------->
+<mat-form-field *ngIf="!addStatus">
+  <mat-label>Search</mat-label>
+  <input (keyup)="applyFilter($event)" matInput placeholder="Ex. ium" #input>
+</mat-form-field>
+
+<div style="overflow-x: auto;" *ngIf="!addStatus">
+  <table mat-table *ngIf="filtered" [dataSource]= "filtered" matSort class="mat-elevation-z8">
+   <ng-container matColumnDef="roomName" >
+      <th mat-header-cell *matHeaderCellDef >Therapist Name </th>
+      <td mat-cell  *matCellDef="let element"> {{element.roomName.name}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="slotName" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Slot Name </th>
+      <td mat-cell  *matCellDef="let element"> {{element.slotName}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="startTime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Time </th>
+      <td mat-cell  *matCellDef="let element"> {{element.startTime}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="endTime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> End Time </th>
+      <td mat-cell  *matCellDef="let element"> {{element.endTime}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="weekDay">
+      <th mat-header-cell *matHeaderCellDef> Week Day </th>
+      <td mat-cell  *matCellDef="let element"> {{element.weekDay}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="therapyCategory">
+      <th mat-header-cell *matHeaderCellDef> Therapy Category</th>
+      <td mat-cell  *matCellDef="let element"> {{element.therapyCategory.abbreviation}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="manage">
+      <th mat-header-cell *matHeaderCellDef>Manage</th>
+      <td mat-cell  *matCellDef="let element">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+      <i  (click)="editSlot(element._id)"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+      &nbsp;&nbsp;
+      <i  (click)="deleteSlot(element._id)" class="fa fa-trash" style="font-size: 20px; color:red"></i>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="currentPage -1"
+    (page)="onPageChange($event)" [pageSizeOptions]="[10,20,30,40,50,100]">
+  </mat-paginator>
+</div>
+
+
+
+
+
+<!--------------------------------Table Ends----------------------------------------------->
+

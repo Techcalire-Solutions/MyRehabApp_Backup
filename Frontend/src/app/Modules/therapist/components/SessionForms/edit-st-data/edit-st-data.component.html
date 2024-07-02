@@ -1,0 +1,778 @@
+
+<mat-horizontal-stepper #stepper linear >
+  <mat-step label="ST Session Form" >
+<form [formGroup]="stSessionForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+  <mat-card>
+
+    <h2>UPDATE ST SESSION FORM</h2>
+
+    <mat-card-content>
+      <mat-card class="card">
+        <ng-container formGroupName="preLinguistic">
+          <mat-card-header>
+            <mat-card-title>Pre Linguistic</mat-card-title>
+          </mat-card-header>
+          <ng-container>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Joint Attention</mat-label>
+                  <mat-select placeholder="Join Attention" formControlName="joinAttention">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Imitation</mat-label>
+                  <mat-select placeholder="Imitation" formControlName="imitation">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <mat-label>Remarks</mat-label>
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="linguistic">
+          <mat-card-header>
+            <mat-card-title>Linguistic</mat-card-title>
+          </mat-card-header>
+          <ng-container>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Comprehension and Expression of Basic Lexical Items</mat-label>
+                  <mat-select placeholder="Comprehension and Expression of Basic Lexical Items" formControlName="lexicalItems">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Comprehension and Expression of Advanced Concepts</mat-label>
+                  <mat-select placeholder="Comprehension and Expression of Advanced Concepts" formControlName="advancedConcepts">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Syntactic Structures</mat-label>
+                  <mat-select placeholder="Syntactic Structures" formControlName="syntacticStructures">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Pragmatic Skills</mat-label>
+                  <mat-select placeholder="Pragmatic Skills" formControlName="pragmaticSkills">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <mat-label>Remarks</mat-label>
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="communication">
+          <mat-card-header>
+            <mat-card-title>Communication</mat-card-title>
+          </mat-card-header>
+          <ng-container>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Functional Communication</mat-label>
+                  <mat-select placeholder="Functional Communication" formControlName="functional">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Gestrual Communication</mat-label>
+                  <mat-select placeholder="Gestrual Communication" formControlName="gestrual">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>AAC</mat-label>
+                  <mat-select placeholder="AAC" formControlName="aac">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Assistive</mat-label>
+                  <mat-select placeholder="Assistive" formControlName="assistive">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <mat-label>Remarks</mat-label>
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="cognition">
+          <mat-card-header>
+            <mat-card-title>Cognition</mat-card-title>
+          </mat-card-header>
+          <ng-container>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Basic Skills</mat-label>
+                  <mat-select placeholder="Basic Skills" formControlName="basicSkills">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Advanced Skills</mat-label>
+                  <mat-select placeholder="Advanced Skills" formControlName="advancedSkills">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <mat-label>Remarks</mat-label>
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="play">
+          <mat-card-header>
+            <mat-card-title>Play</mat-card-title>
+          </mat-card-header>
+          <ng-container>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Parallel Play</mat-label>
+                  <mat-select placeholder="Parallel Play" formControlName="parallel">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Symbolic Play</mat-label>
+                  <mat-select placeholder="Symbolic Play" formControlName="symbolic">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Constructive Play</mat-label>
+                  <mat-select placeholder="Constructive Play" formControlName="constructive">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Pretend Play</mat-label>
+                  <mat-select placeholder="Pretend Play" formControlName="pretend">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Physical Play</mat-label>
+                  <mat-select placeholder="Physical Play" formControlName="physical">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Exploratory Play</mat-label>
+                  <mat-select placeholder="Exploratory Play" formControlName="exploratory">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Sensory Stimulating Play</mat-label>
+                  <mat-select placeholder="Sensory Stimulating Play" formControlName="sensoryStimulating">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Associative Play</mat-label>
+                  <mat-select placeholder="Associative Play" formControlName="associative">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Onlooker Play</mat-label>
+                  <mat-select placeholder="Onlooker Play" formControlName="onlooker">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <mat-label>Remarks</mat-label>
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="articulation">
+          <mat-card-header>
+            <mat-card-title>Articulation</mat-card-title>
+          </mat-card-header>
+          <ng-container>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Auditory Descrimination</mat-label>
+                  <mat-select placeholder="Auditory Descrimination" formControlName="auditoryDescrimination">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Phonology</mat-label>
+                  <mat-select placeholder="Phonology" formControlName="phonology">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Placement</mat-label>
+                  <mat-select placeholder="Placement" formControlName="placement">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Generalization</mat-label>
+                  <mat-select placeholder="Generalization" formControlName="generalization">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Word Level</mat-label>
+                  <mat-select placeholder="Word Level" formControlName="wordLevel">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Phrase Level</mat-label>
+                  <mat-select placeholder="Phrase Level" formControlName="phraseLevel">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <mat-label>Remarks</mat-label>
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="oroMotor">
+          <mat-card-header>
+            <mat-card-title>Oro Motor</mat-card-title>
+          </mat-card-header>
+          <ng-container>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>OPT</mat-label>
+                  <mat-select placeholder="OPT" formControlName="opt">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Hypo Sensitive</mat-label>
+                  <mat-select placeholder="Hypo Sensitive" formControlName="hypoSensitive">
+                    <mat-option *ngFor="let key of  oroKeys" [value]="key.name">
+                      {{ key.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Mixed Sensitive</mat-label>
+                  <mat-select placeholder="Hypo Sensitive" formControlName="mixedSensitive">
+                    <mat-option *ngFor="let key of  oroKeys" [value]="key.name">
+                      {{ key.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Hyper Sensitive</mat-label>
+                  <mat-select placeholder="Hyper Sensitive" formControlName="hyperSensitive">
+                    <mat-option *ngFor="let key of  oroKeys" [value]="key.name">
+                      {{ key.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Sucking</mat-label>
+                  <mat-select placeholder="Sucking" formControlName="sucking">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Blowing</mat-label>
+                  <mat-select placeholder="Blowing" formControlName="blowing">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Chewing</mat-label>
+                  <mat-select placeholder="Chewing" formControlName="chewing">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <mat-label>Remarks</mat-label>
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="fluency">
+          <mat-card-header>
+            <mat-card-title>Fluency</mat-card-title>
+          </mat-card-header>
+          <ng-container>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Fluency Shaping</mat-label>
+                  <mat-select placeholder="Fluency Shaping" formControlName="fluencyShaping">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Fluency Modification</mat-label>
+                  <mat-select placeholder="Fluency Modification" formControlName="fluencyModification">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Generalization</mat-label>
+                  <mat-select placeholder="Generalization" formControlName="generalization">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Maintenance</mat-label>
+                  <mat-select placeholder="Maintenance" formControlName="maintenance">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <mat-label>Remarks</mat-label>
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="voice">
+          <mat-card-header>
+            <mat-card-title>Voice</mat-card-title>
+          </mat-card-header>
+          <ng-container>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Respiratory</mat-label>
+                  <mat-select placeholder="Respiratory" formControlName="respiratory">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Resonance</mat-label>
+                  <mat-select placeholder="Resonance" formControlName="resonance">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Pitch</mat-label>
+                  <mat-select placeholder="Pitch" formControlName="pitch">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Loudness</mat-label>
+                  <mat-select placeholder="Loudness" formControlName="loudness">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Relaxation Exercises</mat-label>
+                  <mat-select placeholder="Relaxation Exercises" formControlName="relaxationExercises">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-label>Strengthening Exercises</mat-label>
+                  <mat-select placeholder="Strengthening Exercises" formControlName="strengtheningExercises">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.name }}&nbsp;:&nbsp;{{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <mat-label>Remarks</mat-label>
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary">UPDATE</button>
+      </mat-card-actions>
+
+    </mat-card-content>
+  </mat-card>
+</form>
+</mat-step>
+
+<mat-step label="Activity Form" [completed]="isNextStepEnabled">
+
+
+  <form [formGroup]="activityForm" novalidate class="center-div">
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <mat-card-title>ADD ACTIVITY</mat-card-title>
+
+        <div style="flex-grow: 1; display: flex; justify-content: flex-end;">
+          <mat-slide-toggle formControlName="activityStatus">Completed</mat-slide-toggle>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <table class="table table-bordered" formArrayName="activityDetails">
+          <table *ngFor="let seData of activity().controls; let i=index" [formGroupName]="i" class="full-width">
+           
+              <tr >
+              <td colspan="2">
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Activity name</mat-label>
+                    <input matInput formControlName="activity" placeholder="Enter activity name">
+                </mat-form-field>
+              </td>
+
+            <td colspan="2">
+              Response :
+              <textarea type="text" formControlName="response" class="form-control"></textarea>
+            </td>
+            <td colspan="2">
+              <div>
+                <mat-slide-toggle formControlName="status">Done</mat-slide-toggle>
+            </div>
+
+            </td>
+            <td>
+              <button (click)="removeActivity(i)" class="btn btn-danger">Remove</button>
+            </td>
+
+            </tr>
+
+          </table>
+        </table>
+        <button mat-raised-button  type="button" (click)="addActivity()" color="primary">Add new </button>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary"   type="button" (click) ="onActivitySubmit()">UPDATE</button>
+      </mat-card-actions>
+    </mat-card>
+    </form>
+
+
+
+
+
+</mat-step>
+</mat-horizontal-stepper>

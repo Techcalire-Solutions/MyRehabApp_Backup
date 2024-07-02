@@ -1,0 +1,101 @@
+<h2>TASKS</h2>
+<mat-horizontal-stepper #stepper [selectedIndex]="selectedIndex">
+  <mat-step  label="Opened">
+    <div class="table-wrapper">
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>DueDate</th>
+              <th>Task</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let task of openedTasks">
+            <!-- <div *ngIf="task.task"> -->
+              <td>{{task.date| date: 'dd/MM/yyyy'}}</td>
+              <td>{{task.task}}</td>
+            <!-- </div> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-step>
+
+  <mat-step  label="Assigned">
+    <div class="table-wrapper">
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>DueDate</th>
+              <th>Task</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let task of tasks">
+            <!-- <div *ngIf="task.task"> -->
+              <td>{{task.date| date: 'dd/MM/yyyy'}}</td>
+              <td>{{task.task}}</td>
+            <!-- </div> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-step>
+
+  <mat-step  label="Completed">
+    <div class="table-wrapper">
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>DueDate</th>
+              <th>CompletedDate</th>
+              <th>Task</th>
+              <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let task of completedTasks">
+            <!-- <div *ngIf="task.task"> -->
+              <td>{{task.date| date: 'dd/MM/yyyy'}}</td>
+              <td>{{task.completedDate| date: 'dd/MM/yyyy'}}</td>
+              <td>{{task.task}}</td>
+              <td>
+                <span style="cursor: pointer;" class="material-icons" (click)="reviewtask(task._id)">drive_file_move</span>
+              </td>
+
+            <!-- </div> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-step>
+
+  <mat-step  label="Reviewed">
+    <div class="table-wrapper">
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>DueDate</th>
+              <th>CompletedDate</th>
+              <th>Task</th>
+              <th>Edit</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let task of reviewedTasks">
+            <!-- <div *ngIf="task.task"> -->
+              <td>{{task.date| date: 'dd/MM/yyyy'}}</td>
+              <td>{{task.completedDate| date: 'dd/MM/yyyy'}}</td>
+              <td>{{task.task}}</td>
+              <td>
+                <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+                <i  (click)="editTask(task._id)"  class="fa fa-edit" style="font-size: 20px; color:green; cursor: pointer;"></i>
+              </td>
+            <!-- </div> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+

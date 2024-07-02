@@ -1,0 +1,434 @@
+<mat-horizontal-stepper #stepper linear>
+  <mat-step label="View  ST Session Form">
+
+    <div>
+      <mat-card>
+        <h2>ST SESSION FORM</h2>
+
+        <mat-card-content *ngIf="stData">
+          <div class="row">
+            <div class="col">
+              <h4>Submitted on : {{stData.date | date: 'dd/MM/yyyy'}}</h4>
+            </div>
+            <div class="col">
+              <h4>Last updates on : {{stData.updatedDate | date: 'dd/MM/yyyy'}}</h4>
+            </div>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="responsive-table">
+              <tr class="table-header">
+                <th class="col-1">Name</th>
+                <th class="col-2"></th>
+                <th class="col-3">Grade</th>
+                <th class="col-4">Remarks</th>
+              </tr>
+
+              <br>
+              <tr class="table-row">
+                <td>Pre Linguistic</td>
+                <td>
+              <tr class="inner-row">
+                <td>Joint Attention</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Imitation</td>
+              </tr>
+              </td>
+              <td>
+                <tr class="inner-row">
+                  <td>{{stData.preLinguistic.joinAttention}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.preLinguistic.imitation}}</td>
+                </tr>
+              </td>
+              <td>{{stData.preLinguistic.remarks}}</td>
+              </tr>
+
+              <br>
+              <tr class="table-row">
+                <td>Linguistic</td>
+                <td>
+              <tr class="inner-row">
+                <td>Lexical Items</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Advanced Concepts</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Syntactic Structures</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Pragmatic Skills</td>
+              </tr>
+              </td>
+              <td>
+                <tr class="inner-row">
+                  <td>{{stData.linguistic.lexicalItems}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.linguistic.advancedConcepts}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.linguistic.syntacticStructures}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.linguistic.pragmaticSkills}}</td>
+                </tr>
+              </td>
+              <td>{{stData.linguistic.remarks}}</td>
+              </tr>
+
+              <br>
+              <tr class="table-row">
+                <td>Communication</td>
+                <td>
+              <tr class="inner-row">
+                <td>Functional</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Gestrual</td>
+              </tr>
+              <tr class="inner-row">
+                <td>AAC</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Assistive</td>
+              </tr>
+              </td>
+              <td>
+                <tr class="inner-row">
+                  <td>{{stData.communication.functional}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.communication.gestrual}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.communication.aac}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.communication.assistive}}</td>
+                </tr>
+              </td>
+              <td>{{stData.communication.remarks}}</td>
+              </tr>
+
+              <br>
+              <tr class="table-row">
+                <td>Cognition</td>
+                <td>
+              <tr class="inner-row">
+                <td>Basic Skills</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Advanced Skills</td>
+              </tr>
+              </td>
+              <td>
+                <tr class="inner-row">
+                  <td>{{stData.cognition.basicSkills}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.cognition.advancedSkills}}</td>
+                </tr>
+              </td>
+              <td>{{stData.cognition.remarks}}</td>
+              </tr>
+
+              <br>
+              <tr class="table-row">
+                <td>Play</td>
+                <td>
+              <tr class="inner-row">
+                <td>Parallel Play</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Symbolic Play</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Constructive Play</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Pretend Play</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Physical Play</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Exploratory Play</td>
+              </tr>
+              <tr class="inner-row">
+                <td>SensoryStimulating Play</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Associative Play</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Onlooker Play</td>
+              </tr>
+              </td>
+              <td>
+                <tr class="inner-row">
+                  <td>{{stData.play.parallel}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.play.symbolic}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.play.constructive}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.play.pretend}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.play.physical}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.play.exploratory}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.play.sensoryStimulating}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.play.associative}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.play.onlooker}}</td>
+                </tr>
+              </td>
+              <td>{{stData.play.remarks}}</td>
+              </tr>
+
+              <br>
+              <tr class="table-row">
+                <td>Articulation</td>
+                <td>
+              <tr class="inner-row">
+                <td>Auditory Descrimination</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Phonology</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Placement</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Generalization</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Word Level</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Phrase Level</td>
+              </tr>
+              </td>
+              <td>
+                <tr class="inner-row">
+                  <td>{{stData.articulation.auditoryDescrimination}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.articulation.phonology}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.articulation.placement}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.articulation.generalization}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.articulation.wordLevel}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.articulation.phraseLevel}}</td>
+                </tr>
+              </td>
+              <td>{{stData.articulation.remarks}}</td>
+              </tr>
+
+              <br>
+              <tr class="table-row">
+                <td>Oro Motor</td>
+                <td>
+              <tr class="inner-row">
+                <td>OPT</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Hypo Sensitive</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Mixed Sensitive</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Hyper Sensitive</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Sucking</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Blowing</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Chewing</td>
+              </tr>
+              </td>
+              <td>
+                <tr class="inner-row">
+                  <td>{{stData.oroMotor.opt}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.oroMotor.hypoSensitive}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.oroMotor.mixedSensitive}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.oroMotor.hyperSensitive}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.oroMotor.sucking}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.oroMotor.blowing}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.oroMotor.chewing}}</td>
+                </tr>
+              </td>
+              <td>{{stData.oroMotor.remarks}}</td>
+              </tr>
+
+              <br>
+              <tr class="table-row">
+                <td>Fluency</td>
+                <td>
+              <tr class="inner-row">
+                <td>Fluency Shaping</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Fluency Modification</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Generalization</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Maintenance</td>
+              </tr>
+              </td>
+              <td>
+                <tr class="inner-row">
+                  <td>{{stData.fluency.fluencyShaping}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.fluency.fluencyModification}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.fluency.generalization}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.fluency.maintenance}}</td>
+                </tr>
+              </td>
+              <td>{{stData.fluency.remarks}}</td>
+              </tr>
+
+              <br>
+              <tr class="table-row">
+                <td>Voice</td>
+                <td>
+              <tr class="inner-row">
+                <td>Respiratory</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Resonance</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Pitch</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Roudness</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Relaxation Exercises</td>
+              </tr>
+              <tr class="inner-row">
+                <td>Strengthening Exercises</td>
+              </tr>
+              </td>
+              <td>
+                <tr class="inner-row">
+                  <td>{{stData.voice.respiratory}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.voice.resonance}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.voice.pitch}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.voice.loudness}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.voice.relaxationExercises}}</td>
+                </tr>
+                <tr class="inner-row">
+                  <td>{{stData.voice.strengtheningExercises}}</td>
+                </tr>
+              </td>
+              <td>{{stData.voice.remarks}}</td>
+              </tr>
+
+            </table>
+          </div>
+
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </mat-step>
+
+  <mat-step label="View Activities">
+    <div *ngIf="activities">
+      <div class="activity-container">
+        <div class="activity-info">
+          <div class="activity-header">
+            <span class="activity-date">Activity Date: {{ activities.assignedDate | date: 'dd/MM/yyyy' }}</span>
+            <span class="activity-status">Activity Status: {{ activities.activityStatus ? 'Completed' : 'Assigned'
+              }}</span>
+          </div>
+        </div>
+        <div class="activity-details">
+          <table>
+            <thead>
+              <tr>
+                <th>Activity Name</th>
+                <th>Response</th>
+                <th>Done</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let detail of activityDetails">
+                <td>{{ detail.activity }}</td>
+                <td>{{ detail.response }}</td>
+                <td [style.color]="detail.status ? 'green' : 'red'"
+                  [style.font-weight]="detail.status ? 'bold' : 'bold'">
+                  {{ detail.status ? 'Yes' : 'No' }}
+                </td>
+
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-step>
+
+
+
+
+
+
+
+</mat-horizontal-stepper>

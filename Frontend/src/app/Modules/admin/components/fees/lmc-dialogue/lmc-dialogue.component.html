@@ -1,0 +1,37 @@
+<form [formGroup]="lmcForm" novalidate class="center-div">
+  <ng-container>
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <mat-card-title>PAY FEES</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-card>
+          <div class="row">
+            <div class="col">
+              <div class="full-width" appearance="fill">
+                <label>Medical Report(if any)</label><br><br>
+                <input type="file" (change)="onFileSelected($event)"><br>
+                <br>
+                <button mat-raised-button type="button" color="accent" (click)="onUpload()" [disabled]="!uploadStatus">upload</button>
+                <br>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <mat-slide-toggle formControlName="medical">Eligible For Medical Leave</mat-slide-toggle>
+          </div>
+
+          <textarea type="number" *ngIf="lmcForm.controls['medical'].value === true" formControlName="sessionFee" placeholder="Fees to be collected"></textarea>
+        </mat-card>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <div mat-dialog-actions>
+          <button mat-raised-button mat-dialog-close (click)="onCancelClick()" type="button">Cancel</button>
+          <button mat-raised-button mat-dialog-close color="primary" cdkFocusInitial type="button" (click)="onConfirmClick()" [disabled]="uploadStatus">Ok</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</form>

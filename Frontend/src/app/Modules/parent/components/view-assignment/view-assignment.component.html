@@ -1,0 +1,21 @@
+<div class="img_size">
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  </head>
+  <body>
+    <div class="img_size" *ngIf="task">
+      <ng-container *ngIf="task.file_url.split('.').pop() === 'pdf'">
+        <pdf-viewer [src]="task.file_url"
+          [render-text]="true"
+          [original-size]="false"
+          style="width: 900px;height: 700px">
+        </pdf-viewer>
+      </ng-container>
+      <ng-container *ngIf="task.file_url.split('.').pop() !== 'pdf'">
+        <img class="img_size" [src]="task.file_url">
+      </ng-container>
+    </div>
+
+    <br><div *ngIf="task"><a>Notes: {{task.response}}</a></div>
+  </body>
+</div>

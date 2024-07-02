@@ -1,0 +1,82 @@
+<form [formGroup]="clientForm" (ngSubmit)="statusUpdate()">
+  <!-- <mat-card class="background"> -->
+    <mat-toolbar style="background-color:bisque;"> CLIENT STATUS</mat-toolbar><br>
+
+    <mat-card>
+
+      <div class="col">
+        <section class="example-section" >
+          <mat-radio-group class="example-radio-group" aria-label="Unit Type" formControlName="sessionType"><h4>Type :</h4>
+            <mat-radio-button class="example-radio-button" value="assessment">More Assessments</mat-radio-button><br>
+            <mat-radio-button class="example-radio-button" value="sesssion">More Sessions</mat-radio-button>
+          </mat-radio-group>
+        </section>
+      </div>
+
+      <mat-card-content *ngIf="clientForm.controls['sessionType'].value">
+        <div class="row"  *ngIf="clientForm.controls['sessionType'].value === 'assessment'">
+          <div class="col">
+            <div>
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Client Name" formControlName="clientId">
+                <mat-form-field class="full-width">
+                  <div class="row">
+                  <input matInput (input)="filterOptions($event)" placeholder="Search">
+                  </div>
+                </mat-form-field>
+                <mat-option *ngFor="let client of  filteredOptions" [value]="client._id">
+                  {{client.firstName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="row"  *ngIf="clientForm.controls['sessionType'].value === 'sesssion'">
+          <div class="col">
+            <div>
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Client Name" formControlName="clientId">
+                <mat-form-field class="full-width">
+                  <div class="row">
+                  <input matInput (input)="filterOptionsSessions($event)" placeholder="Search">
+                  </div>
+                </mat-form-field>
+                <mat-option *ngFor="let client of  filteredOptionsSessions" [value]="client._id">
+                  {{client.firstName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button *ngIf="clientForm.controls['sessionType'].value" mat-raised-button color="primary"  type="submit" [disabled]="!clientForm.valid">
+          UPDATE
+        </button>
+        <button  mat-raised-button color="primary" mat-dialog-close (click)="onCancelClick()" type="button">CANCEL</button>
+      </mat-card-actions>
+    </mat-card>
+  <!-- </form> -->
+
+
+  <!-- <form [formGroup]="secondaryUnitForm" (ngSubmit)="onSecondarySubmit()" *ngIf="unitForm.controls['unitType'].value ==='secondary'">
+    <mat-card>
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Name" formControlName="secondaryUnitName">
+              <mat-error *ngIf="secondaryUnitForm.controls['secondaryUnitName'].hasError('required')">
+                Name <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form> -->
+</form>

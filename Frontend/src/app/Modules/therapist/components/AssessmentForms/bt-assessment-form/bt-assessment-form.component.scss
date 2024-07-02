@@ -1,0 +1,47 @@
+.full-width{
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+@media (max-width:700px)
+{
+    .box{
+      padding: 0px;
+      margin: 0px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    mat-form-field {
+      width: 100%;
+    }
+}
+
+.sublist-list {
+  counter-increment: item-counter;
+  // color: $cadet;
+  // font-family: $base-font-family;
+  // font-size: 15px;
+  //text-transform: uppercase;
+}
+
+.sublist-list::before {
+  content: counter(item-counter, upper-roman)".";
+  // font-family: $heading-font-family;
+  // color: $maximum-blue;
+  // margin-left: -1vw;
+  // padding-right: 12px;
+}

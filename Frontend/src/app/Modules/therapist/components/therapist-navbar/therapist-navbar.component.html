@@ -1,0 +1,255 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+
+      <mat-toolbar>
+        <img style="width: 100%; height: 100%;" src="../../../../../assets/logo1.png" routerLink="home">
+      </mat-toolbar>
+
+      <mat-nav-list>
+
+        <mat-list-item style="margin-left: 9px;" [routerLinkActive]="['active']" routerLink="home">
+          <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 5px;">dashboard</span>
+          DASHBOARD
+        </mat-list-item>
+        <!-- <mat-list-item style="margin-left: 9px;" [routerLinkActive]="['active']" routerLink="profile">
+          <span class="material-icons" style="color: rgb(243, 156, 18); font-size: 25px; margin-right: 5px;">account_box</span>
+          PROFILE
+        </mat-list-item> -->
+
+        <!-- <mat-list-item style="margin-left: 9px;" [routerLinkActive]="['active']" routerLink="reports">
+          <span class="material-icons" style="color: rgb(243, 156, 18); font-size: 25px; margin-right: 5px;">account_box</span>
+          REPORTS
+        </mat-list-item> -->
+      <!-- <a mat-list-item routerLink="home">Home</a>
+      <a mat-list-item routerLink="viewclients" >View Clients</a>
+      <a mat-list-item routerLink="listclients">List Clients</a> -->
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+                <span class="material-icons" style="color: #2242d0; font-size: 30px; margin-right: 2px;">edit_note</span>
+                ASSESSMENT
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <a mat-list-item [routerLinkActive]="['active']" routerLink="viewassessmentsession">
+              <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">search</span>
+              All Sessions</a>
+            <a mat-list-item [routerLinkActive]="['active']" routerLink="viewcompletedassessments">
+              <span class="material-icons" style="color: #2242d0; font-size: 22px; margin-right: 6px;">check_circle</span>
+              Completed</a>
+            <a mat-list-item [routerLinkActive]="['active']" routerLink="viewendassessments">
+              <span class="material-icons" style="color: #2242d0; font-size: 22px; margin-right: 6px;">remove_done</span>
+              End</a>
+
+<!--
+          <a mat-list-item routerLink="manageassessment">Assessment Form</a>
+          <a mat-list-item ><br>Update Assessment Remarks</a>
+          <a mat-list-item ><br>Update Diagnosis</a>
+          <a mat-list-item ><br>Create Goal</a>
+          <a mat-list-item ><br>Number of Sessions Required<br></a> -->
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 5px;">people</span>
+             SESSIONS
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <a mat-list-item routerLink="viewsessions" [routerLinkActive]="['active']">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">search</span>
+            All Sessions
+          </a>
+
+          <a mat-list-item  routerLink="viewcompletedsessions" [routerLinkActive]="['active']">
+            <span class="material-icons" style="color: #2242d0; font-size: 22px; margin-right: 6px;">check_circle</span>
+            Completed
+          </a>
+
+          <a mat-list-item  routerLink="viewdischargedsessions" [routerLinkActive]="['active']">
+            <span class="material-icons" style="color: #2242d0; font-size: 22px; margin-right: 6px;">remove_done</span>
+            Discharged
+          </a>
+          <!-- <a mat-list-item > Task Assignment</a>
+          <a mat-list-item > Progress Report</a>
+          <a mat-list-item > Session Data/ Report</a>
+          <a mat-list-item > Functionality of Image Upload</a>
+          <a mat-list-item > Functionality of Voice file Upload</a>
+          <a mat-list-item > Refer to Another Therapist</a>
+          <a mat-list-item > Daily Activities</a> -->
+
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-list-item style="margin-left: 9px;" routerLink="goal"  [routerLinkActive]="['active']">
+        <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 5px;">flag</span>
+         GOAL
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 5px;">task</span>
+             TASKS
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <a mat-list-item routerLink="viewtask" [routerLinkActive]="['active']">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">view_list</span>
+            VIEW
+          </a>
+
+          <a mat-list-item routerLink="viewcompletedtask" [routerLinkActive]="['active']">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">fact_check</span>
+            COMPLETED
+          </a>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+
+
+      <mat-divider></mat-divider>
+
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 5px;">event_busy</span>
+           CANCELLATION
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <!-- <a mat-list-item routerLink="viewtodaysleave" [routerLinkActive]="['active']">
+          <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">today</span>
+          Leave
+        </a> -->
+
+        <a mat-list-item  routerLink="viewtodaylmc" [routerLinkActive]="['active']">
+          <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 6px;">date_range</span>
+          LMC
+        </a>
+      </mat-expansion-panel>
+
+
+
+      <mat-expansion-panel *ngIf="currentUser.md == true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 5px;">add</span>
+           ADMIN
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+            <!-- <a mat-list-item [routerLinkActive]="['active']" routerLink="manageleaves">
+              <span class="material-icons" style="color: rgb(243, 156, 18); font-size: 25px; margin-right: 3px;">today</span>
+              LEAVE
+            </a> -->
+            <a mat-list-item [routerLinkActive]="['active']" routerLink="addassessment">
+              <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">psychology</span>
+              ASSESSMENT
+            </a>
+            <a mat-list-item [routerLinkActive]="['active']" routerLink="addsession">
+              <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">settings_accessibility</span>
+              SESSION
+            </a>
+            <a mat-list-item [routerLinkActive]="['active']" routerLink="sessionhandover">
+              <span class="material-icons" style="font-size: 25px; color: #2242d0; margin-right: 3px;">swap_horiz</span>
+              HANDOVER
+            </a>
+            <mat-divider></mat-divider>
+            <mat-list-item routerLink="managewallet" [routerLinkActive]="['active']">
+              <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">account_balance_wallet</span>
+              WALLET</mat-list-item>
+            <mat-divider></mat-divider>
+            <!-- <a mat-list-item [routerLinkActive]="['active']" routerLink="addgroupsession">
+              <span class="material-icons" style="color: rgb(79, 79, 224); font-size: 25px; margin-right: 3px;">group_work</span>
+              GROUP
+            </a> -->
+          <!-- </mat-expansion-panel> -->
+        <!-- </mat-accordion> -->
+
+        <a  mat-list-item [routerLinkActive]="['active']" routerLink="manageleaves">
+          <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">event_busy</span>
+          LEAVES
+        </a>
+      </mat-expansion-panel>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+
+  <mat-sidenav-content>
+    <!-- <mat-toolbar class="bg-green-500"> -->
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="display">REHAB MASTER</span>
+
+      <h6 class="nav_main display"  style="cursor: pointer;"> Hi {{currentUser.username}}</h6>
+
+      <button mat-icon-button routerLink="profile" class="margin">
+        <span class="material-icons"  matBadgeColor="warn" >account_circle</span>
+      </button>
+
+
+      <!-- <button mat-icon-button [matMenuTriggerFor]="belowMenu" *ngIf="count != 0 && isNotificationDropdownOpen == false">
+        <span class="material-icons" matBadge={{count}} matBadgeColor="warn" (click)="click()">notifications</span>
+      </button>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <h3 mat-menu-item *ngFor="let leave of leaves">{{leave.clientId.firstName}} is on Leave</h3>
+      </mat-menu>
+      <button mat-icon-button [matMenuTriggerFor]="belowMenu" *ngIf="count == 0 || isNotificationDropdownOpen == true">
+        <span class="material-icons">notifications</span>
+      </button> -->
+
+      <div class="notification-container">
+        <button mat-icon-button (click)="toggleNotifications()">
+          <span class="material-icons">notifications</span>
+          <div *ngIf="notifications.length > 0" class="notification-badge">{{ notifications.length }}</div>
+        </button>
+
+        <div *ngIf="showNotifications" class="notification-list">
+          <div *ngFor="let notification of notifications" class="notification-item">
+            <a *ngIf="notification.notificationType.toLowerCase() === 'clientleave'">{{ notification.clientId.firstName }} on leave</a>
+            <a *ngIf="notification.notificationType.toLowerCase() === 'taskcompleted'">{{ notification.sessionMasterId.session_id.clientName.firstName }} is completed a task</a>
+            <a *ngIf="notification.notificationType.toLowerCase() === 'taskleavecompleted'">{{ notification.sessionMasterId.leave_session_id.clientName.firstName }} is completed a task</a>
+            <a *ngIf="notification.notificationType.toLowerCase() === 'taskcompensationcompleted'">{{ notification.sessionMasterId.compensation_session_id.clientName.firstName }} is completed a task</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon class="nav_username">settings</mat-icon></button> -->
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngIf="currentUser.md == true" (click)="manageFees()">
+          <mat-icon>price_change</mat-icon>
+          <span>Fees</span>
+        </button>
+        <button mat-menu-item *ngIf="currentUser.md == true" (click)="manageConcession()">
+          <mat-icon>local_offer</mat-icon>
+          <span>Concession</span>
+        </button>
+      </mat-menu>
+
+      <mat-icon class="nav_username" matTooltip="Logout" (click)="logOut()">power_settings_new</mat-icon>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

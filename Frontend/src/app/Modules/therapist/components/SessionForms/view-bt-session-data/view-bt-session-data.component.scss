@@ -1,0 +1,87 @@
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+.col-1{
+  width: 15%;
+}
+
+.col-2{
+  width: 5%
+}
+
+.col-3{
+  width: 80%;
+}
+
+
+//-------------activity css------
+.activity-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.activity-info {
+  background-color: #f0f0f0;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.activity-date {
+  color: #007bff; /* blue color */
+}
+
+.activity-status {
+  color: #28a745; /* green color */
+}
+
+.activity-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.activity-container th, .activity-container td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.activity-container th {
+  background-color: #f2f2f2;
+}
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.activity-date {
+  flex-grow: 1; /* Takes up all available space */
+  text-align: left;
+  font-weight: bold;
+}
+
+.activity-status {
+  text-align: right;
+  font-weight: bold;
+}
+

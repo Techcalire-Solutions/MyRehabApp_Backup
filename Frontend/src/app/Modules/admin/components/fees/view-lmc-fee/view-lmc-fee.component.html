@@ -1,0 +1,105 @@
+<form>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>LMC FEES</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+
+      <div style="overflow-x: auto;">
+        <table *ngIf="filtered" mat-table [dataSource]="filtered" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="date">
+              <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Date</h3></th>
+              <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="sessionStatus">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Session Status</h3></th>
+            <td mat-cell *matCellDef="let element"> {{element.sessionStatus}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="clientName">
+              <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Client Name</h3></th>
+              <td mat-cell *matCellDef="let element">
+                <a>{{element.clientId.firstName | uppercase}}</a>
+
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="therapistName">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Therapist Name</h3></th>
+            <td mat-cell *matCellDef="let element">{{element.therapistId.name | uppercase}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="sessionFee">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Session Fee</h3></th>
+            <td mat-cell *matCellDef="let element">{{element.sessionFee}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="ami">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Session Fee</h3></th>
+            <td mat-cell *matCellDef="let element">
+              <div>
+                <!-- your-component.component.html -->
+                <mat-slide-toggle [(ngModel)]="element.ami" [ngModelOptions]="{standalone: true}" (change)="onToggleChange($event, element._id, element.arrayId)">AMI</mat-slide-toggle>
+              </div>
+            </td>
+          </ng-container>
+
+           <!-- Action Column  -->
+          <ng-container matColumnDef="manage">
+              <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Manage</h3></th>
+              <td mat-cell *matCellDef="let row" >
+                 <button mat-raised-button color="primary" (click)="payFee(row._id, row.arrayId)" type="button">Select</button>
+                 <!-- <button mat-raised-button color="primary" *ngIf="row.sessionStatus == 'LMC'" (click)="openMedicalCertificate(row._id)" type="button">Select</button> -->
+             </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsAssessements"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsAssessements;"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Payment Completed</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>BillDate</th>
+              <th>ClientName</th>
+              <th>TherapistName</th>
+              <th>RecieveBy</th>
+              <th>CollectedTo</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let element of payedSessions">
+              <td>{{element.paymentDate | date: 'dd/MM/yyyy'}}</td>
+              <td>{{element.billDate | date: 'dd/MM/yyyy'}}</td>
+              <td>{{element.clientName | uppercase}}</td>
+              <td>{{element.therapistName | uppercase}}</td>
+              <td>{{element.receivedBy | uppercase}}</td>
+              <td>{{element.collectedTo | uppercase}}</td>
+              <td><button mat-raised-button color="primary" (click)="getSMaster(element._id, element.lmcId)" type="button">Select</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</form>

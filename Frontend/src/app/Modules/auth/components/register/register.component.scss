@@ -1,0 +1,280 @@
+
+.center {
+  background: #ABCDEF;
+  font-family: Assistant, sans-serif;
+  display: flex;
+  min-height: 90vh;
+}
+
+.login {
+  color: white;
+  background: #136a8a;
+  background:
+    -webkit-linear-gradient(to right, #267871, #136a8a);
+  background:
+    linear-gradient(to right, #267871, #136a8a);
+  margin: auto;
+  box-shadow:
+    0px 2px 10px rgba(0,0,0,0.2),
+    0px 10px 20px rgba(0,0,0,0.3),
+    0px 30px 60px 1px rgba(0,0,0,0.5);
+  border-radius: 8px;
+  padding: 50px;
+}
+.login .head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login .head .company {
+  font-size: 2.2em;
+}
+.login .msg {
+  text-align: center;
+}
+.login .form input[type=text].text {
+  border: none;
+  background: none;
+  box-shadow: 0px 2px 0px 0px white;
+  width: 100%;
+  color: white;
+  font-size: 1em;
+  outline: none;
+}
+.login .form .text::placeholder {
+  color: #D3D3D3;
+}
+.login .form input[type=password].password {
+  border: none;
+  background: none;
+  box-shadow: 0px 2px 0px 0px white;
+  width: 100%;
+  color: white;
+  font-size: 1em;
+  outline: none;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.login .form .password::placeholder {
+  color: #D3D3D3;
+}
+.login .form .btn-login {
+  background: none;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0px 0px 0px 2px white;
+  border-radius: 3px;
+  padding: 5px 2em;
+  transition: 0.5s;
+}
+.login .form .btn-login:hover {
+  background: white;
+  color: dimgray;
+  transition: 0.5s;
+}
+.login .forgot {
+  text-decoration: none;
+  color: white;
+  float: right;
+}
+footer {
+  position: absolute;
+  color: #136a8a;
+  bottom: 10px;
+  padding-left: 20px;
+}
+footer p {
+  display: inline;
+}
+footer a {
+  color: green;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+footer .heart {
+  color: #B22222;
+  font-size: 1.5em
+}
+
+
+@media(max-width:576px)
+{
+    .box{
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+// <!------------------------------------------------------------------------------------------------------->
+.center-div
+{
+  margin: 0 auto;
+  max-width: 700px;
+  height: 100px;
+  background-color: #ccc;
+  border-radius: 3px;
+  margin-top:20px;
+}
+.full-width {
+  width: 100%;
+}
+
+.shipping-card {
+  min-width: 120px;
+  margin: 20px auto;
+}
+
+.mat-radio-button {
+  margin-left: 10px;
+}
+// .mat-checkbox{
+//   margin-left: 10px;
+
+// }
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+
+main {display: flex;}
+main > * {border: 1px solid;}
+table {border-collapse: collapse; font-family: helvetica}
+td, th {border:  1px solid;
+      padding: 10px;
+      min-width: 80px;
+      background: white;
+      box-sizing: border-box;
+      text-align: left;
+}
+.table-container {
+  position: relative;
+  max-height:  50px;
+  width: 80px;
+  overflow: scroll;
+}
+
+thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: hsl(20, 50%, 70%);
+}
+
+thead th:first-child {
+  left: 0;
+  z-index: 3;
+}
+
+tfoot {
+  position: -webkit-sticky;
+  bottom: 0;
+  z-index: 2;
+}
+
+tfoot td {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  background: hsl(20, 50%, 70%);
+}
+
+tfoot td:first-child {
+  z-index: 3;
+}
+
+tbody {
+  overflow: scroll;
+  height: 100px;
+}
+
+/* MAKE LEFT COLUMN FIXEZ */
+tr > :first-child {
+  position: -webkit-sticky;
+  position: sticky;
+  background: hsl(180, 50%, 70%);
+  left: 0;
+}
+/* don't do this */
+tr > :first-child {
+  box-shadow: inset 0px 1px black;
+}
+
+table,th,td{
+
+  border:1px solid;
+
+
+
+}
+
+table{
+
+  border-collapse: collapse;
+
+  width:80%;
+
+  height:50%;
+
+  border-spacing: 10px;
+
+  border:1px solid;
+
+  width:80%;
+
+}
+
+td,th{
+
+  text-align: center;
+
+}
+
+thead{
+
+  border:1px solid;
+
+}
+
+th{
+
+  height:30px;
+
+}
+
+@media(max-width:576px)
+{
+    .box{
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+@media(max-width:576px)
+{
+    .boxsmall{
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+

@@ -1,0 +1,33 @@
+<mat-card class="login-card">
+  <mat-toolbar >LOGIN CREDENTIALS</mat-toolbar><br>
+  <mat-card-header>
+    <!-- <mat-card-title style="text-align: center;"> LOGIN CREDENTIALS</mat-card-title> -->
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="input-row">
+      <h3 class="input-label">Username:</h3>
+      <div class="input-container">
+        <input type="text" class="input-field" [(ngModel)]="client_ID" placeholder="Enter client_ID">
+        <button mat-icon-button class="copy-button" (click)="copyUsernameToClipboard()" [disabled]="isCopied">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </div>
+      <span *ngIf="isCopied">Copied!</span>
+    </div>
+    <div class="input-row">
+      <h3 class="input-label">Password:</h3>
+      <div class="input-container">
+        <input type="{{ showPassword ? 'text' : 'password' }}" class="input-field" [(ngModel)]="password" placeholder="Enter password">
+        <button mat-icon-button class="show-password-button" (click)="togglePasswordVisibility()">
+          <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="button-row">
+      <button mat-raised-button color="primary"  class="cancel-button" (click)="onCancelClick()">BACK</button>
+      <!-- <button mat-raised-button color="primary" class="add-button" (click)="onSubmit()" *ngIf="data.type != 'view'">ADD</button>
+    -->
+    </div>
+  </mat-card-content>
+</mat-card>

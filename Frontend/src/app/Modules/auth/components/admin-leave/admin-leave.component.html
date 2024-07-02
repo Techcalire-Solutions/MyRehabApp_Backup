@@ -1,0 +1,115 @@
+
+<form [formGroup]="leaveForm">
+  <mat-card class="background">
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label> Name</mat-label>
+            <mat-select formControlName="adminId">
+              <mat-option *ngFor="let item of user" [value]="item._id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field appearance="fill"  class="full-width">
+            <mat-label>Leave Type</mat-label>
+            <mat-select formControlName="leaveType" placeholder="Select leave type">
+              <mat-option value="annual">Annual Leave</mat-option>
+              <mat-option value="sick">Sick Leave</mat-option>
+              <mat-option value="personal">Personal Leave</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Reason</mat-label>
+            <textarea matInput formControlName="reason" placeholder="Enter reason"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="startDatePicker" formControlName="fromDate" placeholder="Choose start date">
+            <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field appearance="fill" class="full-width">
+              <mat-label>End Date</mat-label>
+              <input matInput [matDatepicker]="endDatePicker" formControlName="toDate" placeholder="Choose end date">
+              <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #endDatePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+      </div>
+
+      <mat-card-actions>
+        <button color="primary"*ngIf="!isEdit" mat-raised-button (click)="submitForm()" [disabled]="!leaveForm.valid">ADD</button>&nbsp;&nbsp;
+        <button color="primary" *ngIf="isEdit" mat-raised-button type="button" [disabled]="!leaveForm.valid" (click)="editFunction()">UPDATE</button>&nbsp;&nbsp;
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</form>
+
+
+<div style="overflow-x:scroll;">
+  <table mat-table *ngIf="leaves" [dataSource]="leaves" class="mat-elevation-z8">
+    <ng-container matColumnDef="userId">
+      <th mat-header-cell *matHeaderCellDef> Name</th>
+      <td mat-cell *matCellDef="let element">
+        {{element.adminId?.name}}
+      </td>
+   </ng-container>
+    <ng-container matColumnDef="leaveType">
+       <th mat-header-cell *matHeaderCellDef>leaveType</th>
+       <td mat-cell *matCellDef="let element"> {{element.leaveType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="reason">
+      <th mat-header-cell *matHeaderCellDef>reason</th>
+      <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+   </ng-container>
+
+   <ng-container matColumnDef="fromDate">
+    <th mat-header-cell *matHeaderCellDef>fromDate</th>
+    <td mat-cell *matCellDef="let element"> {{element.fromDate | date: 'dd/MM/yyyy'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="toDate">
+    <th mat-header-cell *matHeaderCellDef>toDate</th>
+    <td mat-cell *matCellDef="let element"> {{element.toDate | date: 'dd/MM/yyyy'}} </td>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>status</th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  </ng-container> -->
+
+  <ng-container matColumnDef="remarks">
+    <th mat-header-cell *matHeaderCellDef>remarks</th>
+    <td mat-cell *matCellDef="let element"> {{element.remarks}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Manage </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon style="color: green;" (click)="editRow(element._id)">edit_note</mat-icon>
+      &nbsp;&nbsp;&nbsp;
+      <mat-icon style="color: red;" (click)="deleteRow(element._id)">delete_sweep</mat-icon>
+    </td>
+  </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

@@ -1,0 +1,1172 @@
+
+<mat-horizontal-stepper #stepper linear >
+
+  <!-----------------------------------------PERSONAL INFORMATION---------------------------------------------------> 
+  <mat-step  label="Personal Information" completed={{personalformStatus}}>  
+    <form [formGroup]="personalForm" novalidate (ngSubmit)="onSave()">
+      <mat-card class="shipping-card">
+        <mat-card-header>
+          <mat-card-title>Personal Information</mat-card-title>
+        </mat-card-header>
+
+
+        <mat-card-content>
+          <div class="row box">
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name" formControlName="firstName">
+                <mat-error *ngIf="personalForm.controls['firstName'].hasError('required')">
+                  Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Emergency Contact Number</mat-label>
+                <input matInput placeholder="Emergency Contact Number" formControlName="emergencyNumber">
+                <mat-error *ngIf="personalForm.controls['emergencyNumber'].hasError('required')">
+                  Emergency Contact Number is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Gender" formControlName="gender">
+                  <mat-option *ngFor="let gender of genders" [value]="gender.name" >
+                    {{ gender.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="personalForm.controls['gender'].hasError('required')">
+                  Gender is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+
+          <div class="row box">
+
+
+            
+          
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Address 1</mat-label>
+                <input matInput placeholder="Address 1" formControlName="address1">
+                 <!-- <mat-error *ngIf="personalForm.controls['address1'].hasError('required')">
+                  Address 1 is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Address 2</mat-label>
+                <input matInput placeholder="Address 2" formControlName="address2">          
+              </mat-form-field>
+            </div>
+            <div class="col" *ngIf="personalForm.get('nationality').value != 'Others'">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Nationality" formControlName="nationality">
+                  <mat-option *ngFor="let nation of  nationalities" [value]="nation.name">
+                    {{ nation.name }}
+                  </mat-option>
+                </mat-select>
+                <!-- <mat-error *ngIf="personalForm.controls['nationality'].hasError('required')">
+                  Nationality<strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Pincode</mat-label>
+                <input matInput placeholder="Pincode" formControlName="pincode">
+                <!-- <mat-error *ngIf="personalForm.controls['pincode'].hasError('required')">
+                  pin is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+           
+          </div>
+
+
+          <div class="row box">
+  
+
+           
+            
+            <!-- <div class="col" *ngIf="personalForm.get('nationality').value === 'Others'">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Nationality" formControlName="nationality">
+              </mat-form-field>
+            </div> -->
+          </div>
+
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Home Language" formControlName="homeLanguage">
+                  <mat-option *ngFor="let language of  languages" [value]="language.name">
+                    {{ language.name }}
+                  </mat-option>
+                </mat-select>
+                <!-- <mat-error *ngIf="personalForm.controls['homeLanguage'].hasError('required')">
+                 Language is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Family Type" formControlName="familyType">
+                  <mat-option *ngFor="let familyType of  familyTypes" [value]="familyType.name">
+                    {{ familyType.name }}
+                  </mat-option>
+                </mat-select>
+                <!-- <mat-error *ngIf="personalForm.controls['familyType'].hasError('required')">
+                  This Field is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+
+         
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Family Members</mat-label>
+                <mat-select formControlName="familyMembers" multiple>
+                  <mat-option *ngFor="let familyMember of familyMemberList" [value]="familyMember">{{familyMember}}</mat-option>
+                </mat-select>
+                <!-- <mat-error *ngIf="personalForm.controls['familyMembers'].hasError('required')">
+                  This Field is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Sibling's Details</mat-label>
+                <input matInput placeholder="Sibling's Details" formControlName="siblingsDetails">
+              </mat-form-field>
+            </div>
+          </div>
+
+
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Referrer Details</mat-label>
+                <input matInput placeholder="Referrer Details" formControlName="referrerDetails">
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Reason For Referral</mat-label>
+                <input matInput placeholder="Reason For Referral" formControlName="reason">
+                <!-- <mat-error *ngIf="personalForm.controls['reason'].hasError('required')">
+                  Reason For Referral is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Email address</mat-label>
+                <input matInput placeholder="Email address" formControlName="email">
+                <!-- <mat-error *ngIf="personalForm.controls['email'].hasError('required')">
+                   email  is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Annual Income</mat-label>
+                <input matInput placeholder="Annual Income" formControlName="annualIncome">
+              </mat-form-field>
+            </div>
+          </div>
+
+
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Father's Name</mat-label>
+                <input matInput placeholder="Father's Name" formControlName="fatherName">
+                <!-- <mat-error *ngIf="personalForm.controls['fatherName'].hasError('required')">
+                  Father's Name is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Father's Occupation</mat-label>
+                <input matInput placeholder="Father's Occupation" formControlName="fatherOccupation">
+                <!-- <mat-error *ngIf="personalForm.controls['fatherOccupation'].hasError('required')">
+                  Father's Occupation is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Father's Contact Number</mat-label>
+                <input matInput placeholder="Father's Contact Number" formControlName="fatherMobile">
+                <!-- <mat-error *ngIf="personalForm.controls['fatherMobile'].hasError('required')">
+                  Father's Contact Number is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+
+
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Mother's Name</mat-label>
+               <input matInput placeholder="Mother's Name" formControlName="motherName">
+                <!-- <mat-error *ngIf="personalForm.controls['motherName'].hasError('required')">
+                  Mother's Name is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Mother's Occupation</mat-label>
+                <input matInput placeholder="Mother's Occupation" formControlName="motherOccupation">
+                <!-- <mat-error *ngIf="personalForm.controls['motherOccupation'].hasError('required')">
+                  Mother's Occupation is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Mother's Contact Number</mat-label>
+                <input matInput placeholder="Mother's Contact Number" formControlName="motherMobile">
+                <!-- <mat-error *ngIf="personalForm.controls['motherMobile'].hasError('required')">
+                  Mother's Contact Number is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+
+
+          <div class="row box">
+           
+
+           
+          </div>
+
+
+          <div class="row box">
+           
+
+           
+          </div>
+
+
+          <div class="row box">
+            
+          </div>
+
+
+          <div class="row box">
+          
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Preferred Timing for Assessment" formControlName="preferredTiming">
+                  <mat-option *ngFor="let times of timing" [value]="times.time" >
+                    {{ times.time }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+        </mat-card-content>
+
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary"  matStepperNext type="submit" disabled="{{saveButton}}" [disabled]="personalForm.pristine || !personalForm.valid" >Save</button>
+          <button mat-raised-button color="primary"  matStepperNext  type="button" disabled="{{nextButton}}">Next</button>
+        </mat-card-actions>
+
+      </mat-card>
+
+    </form>
+  </mat-step>
+
+  <!-----------------------------------------MEDICAL  INFORMATION--------------------------------------------------->
+  <mat-step  label="Medical Information" completed={{medicalformStatus}} optional>
+
+    <form [formGroup]="medicalForm" completed="false" optional novalidate (ngSubmit)="onMedicalSubmit()">
+      <mat-card class="shipping-card">
+
+        <mat-card-header>
+          <mat-card-title>Medical History</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+          <div class="row box">
+            <div class="col">
+              <br>
+              <mat-radio-group formControlName="pregnancy"><h4>Planned Pregnancy?</h4>
+                <mat-radio-button value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <br>
+    
+            <div class="col">
+              <br>
+              <mat-radio-group aria-label="Type of Delivery" formControlName="typeOfDelivery"><h4>Type of Delivery</h4>
+                <mat-radio-button value="normal">Normal</mat-radio-button><br>
+                <mat-radio-button value="cesarean">Cesarean</mat-radio-button><br>
+                <mat-radio-button value="vaccum">Vaccum</mat-radio-button><br>
+              </mat-radio-group>
+            </div>
+            <br>
+          </div>
+    
+    
+          <div class="row box">
+            <section class="example-section" >
+              <mat-radio-group><h4>Smoking or Alcohol is consumed during Pregnancy?</h4>&nbsp;&nbsp;&nbsp;
+                <mat-radio-button #consumption value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+              </mat-radio-group><br><br>
+              <mat-checkbox *ngIf="consumption.checked=== true" formControlName="alcohol" style=" margin-left: 10px;">Alcohol</mat-checkbox>&nbsp;&nbsp;&nbsp;
+              <mat-checkbox *ngIf="consumption.checked=== true" formControlName="smoking" style=" margin-left: 10px;">Smoking</mat-checkbox>
+            </section>
+          </div>
+    
+    
+          <div class="row box">
+            <mat-form-field class="full-width">
+              <mat-label>Medications(Max 150 characters)</mat-label>
+              <input matInput placeholder="Medications" formControlName="medications"  maxlength="150">
+            </mat-form-field>
+          </div>
+    
+    
+          <div class="row box">
+            <mat-form-field class="full-width">
+              <mat-label>Pregnancy Complications(Max 150 characters)</mat-label>
+              <input matInput placeholder="Pregnancy Complications" formControlName="pregnancyComplications" maxlength="150">
+            </mat-form-field>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <div class="row box">
+              <br>
+                <mat-radio-group aria-label="Pregnancy Type" formControlName="pregnancyType"><h4>Pregnancy Type</h4>
+                  <mat-radio-button value="fullterm">Full term pregnancy</mat-radio-button><br>
+                  <mat-radio-button value="premature">Premature Pregnancy</mat-radio-button>
+                </mat-radio-group>
+              </div>
+    
+              <div *ngIf="medicalForm.controls['pregnancyType'].value==='premature'" class="row box">
+                <mat-form-field class="full-width">
+                  <mat-label>Born in how many weeks?</mat-label>
+                  <input matInput placeholder="Born in how many weeks?" formControlName="prematureMonths">
+                </mat-form-field>
+              </div>
+            </div>
+            <br>
+    
+            <div class="col">
+              <section class="example-section" >
+                <h4>Neonatal Health:</h4>&nbsp;&nbsp;&nbsp;
+                    <mat-radio-group formControlName="babyCry">Did the baby cry too much? :&nbsp;&nbsp;&nbsp;
+                      <mat-radio-button value="Yes">Yes</mat-radio-button>
+                      <mat-radio-button value="No">No</mat-radio-button>
+                    </mat-radio-group><br><br>
+    
+                    &nbsp;&nbsp;&nbsp;&nbsp;<mat-radio-group formControlName="feedingProblem">Feeding problem if any :&nbsp;&nbsp;&nbsp;
+                      <mat-radio-button value="Yes">Yes</mat-radio-button>
+                      <mat-radio-button value="No">No</mat-radio-button>
+                    </mat-radio-group><br><br>
+    
+                    &nbsp;&nbsp;&nbsp;&nbsp;<mat-radio-group formControlName="sleepProblem">Sleep problems :&nbsp;&nbsp;&nbsp;
+                      <mat-radio-button value="Yes">Yes</mat-radio-button>
+                      <mat-radio-button value="No">No</mat-radio-button>
+                    </mat-radio-group><br><br>
+              </section>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Birth Weight(Max 150 characters)</mat-label>
+                <input matInput placeholder="Birth Weight" formControlName="birthWeight" maxlength="150">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Any Birth Complication(Max 150 characters)</mat-label>
+                <input matInput placeholder="Any Bith Compilcation" formControlName="birthCompilcation" maxlength="150">
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Describe any important illness/ surgeries/ injuries(Max 150 characters)</mat-label>
+                <textarea matInput placeholder="Describe any important illness" formControlName="importantIllness" maxlength="150"></textarea>
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Current medical diagnosis and condition(Max 150 characters)</mat-label>
+                <textarea matInput placeholder="Current medical diagnosis and condition" formControlName="medicalCondition" maxlength="150"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>History of Consanguineous marriage(Max 150 characters)</mat-label>
+                <textarea matInput placeholder="History of Consanguineous marriage" formControlName="consanguineousMarriageHistory" maxlength="150"></textarea>
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Is there a history of epilepsy, learning problem,speech delays,clumsiness or anything else important in the family?(Max 150 characters)</mat-label>
+                <textarea matInput placeholder="Is there a history of epilepsy, learning problem,speech delays,clumsiness or anything else important in the family?" formControlName="history" maxlength="150"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <section class="example-section" >
+                <h4>Vision:</h4>&nbsp;&nbsp;&nbsp;
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-label>Remarks(Max 150 characters)</mat-label>
+                  <textarea matInput placeholder="Remarks" formControlName="remarksVision" maxlength="150"></textarea>
+                </mat-form-field>
+                <mat-checkbox formControlName="eyeTest">Eye testing done</mat-checkbox>
+                <mat-checkbox formControlName="useGlass" style=" margin-left: 14px;">Use of glasses</mat-checkbox>
+                <mat-checkbox formControlName="eyeProblem" style=" margin-left: 14px;" value='problem'>Presence of headaches, blurring of vision, sore eyes etc in the child</mat-checkbox>
+              </section>
+            </div>
+    
+          </div>
+          <br>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <section class="example-section" >
+                <h4>Hearing:</h4>&nbsp;&nbsp;&nbsp;
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-label>Remarks(Max 150 characters)</mat-label>
+                  <textarea matInput placeholder="Remarks" formControlName="remarksHearing" maxlength="150"></textarea>
+                </mat-form-field>
+                <mat-checkbox formControlName="hearingTest">Hearing test done</mat-checkbox>
+                <mat-checkbox formControlName="hearingAid" style=" margin-left: 14px;">Hearing aid prescribed</mat-checkbox>
+                <mat-checkbox formControlName="earProblem" style=" margin-left: 14px;">History of frequent middle ear infections</mat-checkbox>
+              </section>
+            </div>
+          </div>
+          <br>
+    
+    
+          <div class="row box">
+           <div class="col">
+              <div class="full-width" appearance="fill">
+                <label>Investigation Conducted Report</label><br><br>
+                <input type="file" (change)="onFileSelected($event)"><br>
+                <br>
+                <button mat-raised-button type="button" color="accent" (click)="onUpload()" [disabled]="!uploadStatus">upload</button>
+                <br>
+              </div>
+            </div> 
+            <br>
+    
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Current Medications(Max 150 characters)</mat-label>
+                <textarea matInput placeholder="Current Medications" formControlName="currentMedication" maxlength="150"></textarea>
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Previous Medications(Max 150 characters)</mat-label>
+                <textarea matInput placeholder="Previous Medications" formControlName="previoustMedication" maxlength="150"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Allergies or Dietary Restrictions if any(Max 150 characters)</mat-label>
+                <textarea matInput placeholder="Allergies or Dietary Restrictions if any:" formControlName="allergies" maxlength="150"></textarea>
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Actual Therapies(Max 150 characters)</mat-label>
+                <textarea matInput placeholder="Actual Therapies" formControlName="actualTherapies" maxlength="150"></textarea>
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Previous Therapies(Max 150 characters)</mat-label>
+                <textarea matInput placeholder="Previous Therapies" formControlName="previousTherapies" maxlength="150"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <h4> Developmental milestones(Year and Months)</h4>
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Head Raise</mat-label>
+                <input matInput placeholder="Head Raise" formControlName="headRaise">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Roll over</mat-label>
+                <input matInput placeholder="Roll over" formControlName="rollOver">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Independent Sitting</mat-label>
+                <input matInput placeholder="Independent Sitting" formControlName="independentSitting">
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Crawled on Hands and Knees</mat-label>
+                <input matInput placeholder="Crawled on Hands and Knees" formControlName="crawled">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Pulled to Stand</mat-label>
+                <input matInput placeholder="Pulled to Stand" formControlName="pulledToStand">
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Independent Standing</mat-label>
+                <input matInput placeholder="Independent Standing" formControlName="independentStanding">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Walking</mat-label>
+                <input matInput placeholder="Walking" formControlName="walking">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Babbling</mat-label>
+                <input matInput placeholder="Blabbing" formControlName="babbling">
+              </mat-form-field>
+            </div>
+          </div>
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Said First Words</mat-label>
+                <input matInput placeholder="Said First Words" formControlName="saidFirstWords">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Present Language and Vocabulary</mat-label>
+                <input matInput placeholder="Present Language" formControlName="presentLanguage">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Finger Feeding Self</mat-label>
+                <input matInput placeholder="Finger Feeding Self" formControlName="fingerFeeding">
+              </mat-form-field>
+            </div>
+          </div>
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Used a Spoon for Feeding</mat-label>
+                <input matInput placeholder="Used a Spoon for Feeding" formControlName="spoon">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Dress and Undress Self</mat-label>
+                <input matInput placeholder="Dress and Undress Self" formControlName="dress">
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary"  matStepperPrevious  type="button" >Back</button>
+          <button mat-raised-button color="primary" type="submit" matStepperNext [disabled]="uploadStatus ">Next</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </mat-step>
+
+  <!-----------------------------------------SCHOOL INFORMATION--------------------------------------------------->
+  <mat-step  label="School Information" completed={{schoolformStatus}} optional>
+
+    <form [formGroup]="schoolForm" novalidate (ngSubmit)="updateSchoolForm()">
+      <mat-card class="shipping-card">
+
+        <mat-card-header>
+          <mat-card-title>School History</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>School Name and Address(Max 150 characters)</mat-label>
+                <input matInput placeholder="School Name and Address" formControlName="schoolNameAndAddress"  maxlength="150">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Grade(Max 150 characters)</mat-label>
+                <input matInput placeholder="Grade" formControlName="grade" maxlength="150">
+              </mat-form-field>
+            </div>
+          </div>
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Teacher's name and contact details(Max 150 characters)</mat-label>
+                <input matInput placeholder="Teacher's name and contact details" formControlName="teacherNameDetails" maxlength="150">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>List of previous schools attended(Max 150 characters)</mat-label>
+                <input matInput placeholder="List of previous schools attended" formControlName="previousSchool" maxlength="150">
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>How is your child's general perfomance in school?(Max 150 characters)</mat-label>
+                <input matInput placeholder="How is your child's general perfomance in school?" formControlName="generalBehaviour" maxlength="150">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Have the teachers noted any areas of difficulty?(Max 150 characters)</mat-label>
+                <input matInput placeholder="Have the teachers noted any areas of difficulty?" formControlName="teacherNoted" maxlength="150">
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>How does your child get along with others at school?(Max 150 characters)</mat-label>
+                <input matInput placeholder="How does your child get along with others at school?" formControlName="getAlongWithOthers" maxlength="150">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Which is the main support at School?(Max 150 characters)</mat-label>
+                <input matInput placeholder="Which is the main support at School?" formControlName="mainSupport" maxlength="150">
+              </mat-form-field>
+            </div>
+          </div>
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Could you describe your child's daily/weekly screen time participation, e.g. computer, phone, tab, etc.?"(Max 150 characters)</mat-label>
+                <input matInput placeholder="Could you describe your child's daily/weekly screen time participation, e.g. computer, phone, tab, etc.?" formControlName="screenTime" maxlength="150">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>What are your child's play interests, both indoor and outdoor?(Max 150 characters)</mat-label>
+                <input matInput placeholder="What are your child's play interests, both indoor and outdoor?" formControlName="playInterest" maxlength="150">
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary"  matStepperPrevious  type="button">Back</button>
+          <button mat-raised-button color="primary" type="submit" matStepperNext >Next</button>
+        </mat-card-actions>
+
+      </mat-card>     
+    </form>
+  </mat-step>
+
+  <!-----------------------------------------DAILY ROUTINE INFORMATION--------------------------------------------------->
+   <mat-step  class="flex" label="Daily Routine" completed={{DailyRoutineformStatus}} optional>
+   <form [formGroup]="routineForm" novalidate (ngSubmit)="updateRoutineForm()" optional>
+      <mat-card class="shipping-card">
+       
+        <mat-card-header>
+          <mat-card-title>Daily Routines Details</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+          <h3><b>Mealtimes</b></h3>
+
+          <div class="row box">
+            <div class="col">
+    
+               <mat-radio-group  formControlName="feedAgeTest"><h4>Feed Age appropriately?</h4>&nbsp;&nbsp;&nbsp;
+                <mat-radio-button value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+              </mat-radio-group><br><br>
+    
+              <mat-form-field class="full-width" *ngIf="routineForm.get('feedAgeTest').value=='false'">
+                <input matInput placeholder="Remarks" formControlName="feedAge">
+              </mat-form-field>
+    
+            </div>
+    
+            <div class="col">
+    
+              <mat-radio-group formControlName="goodAppetitieRadio"><h4>Good appetite?</h4>&nbsp;&nbsp;&nbsp;
+                <mat-radio-button  value="true">Yes</mat-radio-button>
+                <mat-radio-button  value="false">No</mat-radio-button>
+              </mat-radio-group><br><br>
+    
+              <mat-form-field class="full-width" *ngIf="routineForm.get('goodAppetitieRadio').value=='false'">
+                <input matInput placeholder="Remarks" formControlName="goodAppetitie">
+              </mat-form-field>
+            </div>
+            </div>
+    
+            <div class="row box">
+              <div class="col">
+    
+                <mat-radio-group formControlName="messyEaterRadio"><h4>Messy Eater?</h4>&nbsp;&nbsp;&nbsp;
+                  <mat-radio-button value="true">Yes</mat-radio-button>
+                  <mat-radio-button value="false">No</mat-radio-button>
+                </mat-radio-group><br><br>
+    
+                <mat-form-field class="full-width" *ngIf="routineForm.get('messyEaterRadio').value=='false'">
+                  <input matInput placeholder="Remarks" formControlName="messyEater">
+                </mat-form-field>
+              </div>
+    
+              <div class="col">
+    
+                <mat-radio-group formControlName="foodPreferenceRadio">
+                  <h4>Food Preference?</h4>
+                  <mat-radio-button value="true">Yes</mat-radio-button>
+                  <mat-radio-button  value="false">No</mat-radio-button>
+                </mat-radio-group>
+                <br><br>
+    
+                <mat-form-field class="full-width" *ngIf="routineForm.get('foodPreferenceRadio').value=='false'">
+                  <input matInput placeholder="Remarks" formControlName="foodPreference">
+                </mat-form-field>
+    
+    
+              </div>
+            </div>
+    
+            <div class="row box">
+              <div class="col">
+                <mat-radio-group formControlName="tasteAndTextureRadio" >
+                  <h4>Taste And Texture?</h4>
+                  <mat-radio-button value="true">Yes</mat-radio-button>
+                  <mat-radio-button value="false">No</mat-radio-button>
+                </mat-radio-group>
+                <br><br>
+    
+                <mat-form-field class="full-width" *ngIf="routineForm.get('tasteAndTextureRadio').value=='false'">
+                  <input matInput placeholder="Remarks" formControlName="tasteAndTexture">
+                </mat-form-field>
+    
+    
+              </div>
+    
+              <div class="col">
+              </div>
+            </div>
+    
+            <h3><b>Dressing</b></h3>
+    
+            <div class="row box">
+              <div class="col">
+    
+                <mat-radio-group formControlName="ageAppropriateRadio">
+                  <h4>Age appropriate?</h4>
+                  <mat-radio-button value="true">Yes</mat-radio-button>
+                  <mat-radio-button value="false">No</mat-radio-button>
+                </mat-radio-group>
+                <br><br>
+    
+                <mat-form-field class="full-width" *ngIf="routineForm.get('ageAppropriateRadio').value=='false'">
+                  <input matInput placeholder="Remarks" formControlName="ageAppropriate">
+                </mat-form-field>
+    
+              </div>
+    
+              <div class="col">
+    
+                <mat-radio-group formControlName="canDoUpButtonsRadio">
+                  <h4>Can do up buttons or laces?</h4>
+                  <mat-radio-button value="true">Yes</mat-radio-button>
+                  <mat-radio-button  value="false">No</mat-radio-button>
+                </mat-radio-group>
+                <br><br>
+    
+                <mat-form-field class="full-width" *ngIf="routineForm.get('canDoUpButtonsRadio').value=='false'">
+                  <input matInput placeholder="Remarks" formControlName="canDoUpButtons">
+                </mat-form-field>
+              </div>
+            </div>
+    
+            <div class="row box">
+              <div class="col">
+    
+                <mat-radio-group formControlName="canPutOnSocksRadio">
+                  <h4>Can put on socks?</h4>
+                  <mat-radio-button value="true">Yes</mat-radio-button>
+                  <mat-radio-button value="false">No</mat-radio-button>
+                </mat-radio-group>
+                <br><br>
+    
+                <mat-form-field class="full-width" *ngIf="routineForm.get('canPutOnSocksRadio').value=='false'">
+                  <input matInput placeholder="Remarks" formControlName="canPutOnSocks">
+                </mat-form-field>
+              </div>
+    
+              <div class="col">
+    
+              <mat-radio-group formControlName="canPutOnShoesRadio">
+                <h4>Can put on shoes?</h4>
+                <mat-radio-button value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+              </mat-radio-group>
+              <br><br>
+    
+              <mat-form-field class="full-width" *ngIf="routineForm.get('canPutOnShoesRadio').value=='false'">
+                <input matInput placeholder="Remarks" formControlName="canPutOnShoes">
+              </mat-form-field>
+              </div>
+            </div>
+    
+    
+    
+          <h3>Toileting And Bath</h3>
+          <div class="row box">
+            <div class="col">
+              <mat-radio-group formControlName="toiletTrained">Is your child toilet trained?
+              <br>
+                <mat-radio-button value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <br>
+            <div class="col">
+              <mat-radio-group formControlName="washingHands">Independence with washing hands
+                <br>
+                <mat-radio-button value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+           
+      
+      
+          </div>
+          <br>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-radio-group formControlName="accidents">Any accidents
+                <br>
+                <mat-radio-button value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <br>
+    
+            <div class="col">
+              <mat-radio-group  formControlName="toiletPaperUse">Independence with toilet paper use cleaning
+                <br>
+                <mat-radio-button value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+        
+          </div>
+          <br>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-radio-group  formControlName="managingClothing">Independence with managing clothing
+                <br>
+                <mat-radio-button value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <br>
+            <div class="col">
+              <mat-radio-group formControlName="bathingAndBrushing">Independence in bathing and brushing teeth
+                <br>
+                <mat-radio-button value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+           
+          </div>
+          <br>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-radio-group formControlName="dayAndNight">Toilet usage in Day
+                <br>
+                <mat-radio-button value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="col">
+              <mat-radio-group formControlName="toiletNight">Toilet usage in Night
+                <br>
+                <mat-radio-button value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div><br>
+          <div class="row box">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Remarks</mat-label>
+              <textarea matInput formControlName="toiletRemarks" maxlength="150"></textarea>
+            </mat-form-field>
+            </div> 
+            </div>
+          <br>
+    
+    
+          <mat-card-title>Please describe the following routines:</mat-card-title>
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Typical Night's Sleep</mat-label>
+                <mat-select placeholder="Typical Night Sleep" formControlName="typicalNightSleep">
+                  <mat-option *ngFor="let sleep of  sleeps" [value]="sleep.name">
+                    {{ sleep.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Time of Sleep</mat-label>
+                <input type="time" matInput placeholder="Time of Sleep" formControlName="timeOfSleep" maxlength="150">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Remarks(Max 150 characters)</mat-label>
+                  <input matInput placeholder="Remarks" formControlName="remarksSleep" maxlength="150">
+                </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>A  typical wake up routine</mat-label>
+                <mat-select placeholder="A  typical wake up routine" formControlName="typicalWakeup">
+                  <mat-option *ngFor="let item of  wakeup" [value]="item.name">
+                    {{ item.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Time of Waking Up</mat-label>
+                <input type="time" matInput placeholder="Time of Waking Up" formControlName="timeOfWakeup" maxlength="150">
+              </mat-form-field>
+            </div>
+    
+            <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Remarks(Max 150 characters)</mat-label>
+                  <input matInput placeholder="Remarks" formControlName="remarksWakeUp" maxlength="150">
+                </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>If applicable, how does your child complete homework:</mat-label>
+                <mat-select placeholder="If applicable, how does your child complete homework:" formControlName="homework">
+                  <mat-option *ngFor="let item of  homework" [value]="item.name">
+                    {{ item.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Remarks(Max 150 characters)</mat-label>
+                  <input matInput placeholder="Remarks"formControlName="remarksHomework" maxlength="150">
+                </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Please describe any routines strategies that help your child to function properly to focus/maintain attention span, calm down after being upset, stay self-regulated during the day, etc.(Max 150 characters)</mat-label>
+                <textarea matInput placeholder="Please describe any routines strategies that help your child to function properly to focus/maintain attention span, calm down after being upset, stay self-regulated during the day, etc." formControlName="routineStrategies" maxlength="150"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Describe the most difficult situation/Behaviour of your child during the day and how do you cope with it?(Max 150 characters)</mat-label>
+                <mat-select placeholder="Describe the most difficult situation/behaivour of your child during the day and how do you cope with it?" formControlName="difficultSituation">
+                  <mat-option *ngFor="let item of  difficult" [value]="item.name">
+                    {{ item.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Remarks(Max 150 characters)</mat-label>
+                  <input matInput placeholder="Remarks" formControlName="remarksChildBehaviour" maxlength="150">
+                </mat-form-field>
+            </div>
+          </div>
+    
+    
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>How can we be helpful to you and how did you come to know about us?(Max 150 characters)</mat-label>
+                <textarea matInput placeholder="How can we be helpful to you and how did you come to know about us?" formControlName="howYouKnowAboutUs" maxlength="150"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- <app-policies></app-policies>  -->
+            
+          <input #saveUserNameCheckBox
+            id="saveUserNameCheckBox" 
+            type="checkbox" 
+            [checked]="saveUsername" 
+            (change)="onSaveUsernameChanged(saveUserNameCheckBox.checked)"/>I understood,declare that the above mention information has been filled truthfully to the best of my ability
+          <br>
+          <br>
+    
+        </mat-card-content>
+
+
+        <mat-card-actions>
+          <button disabled="{{!saveUsername || finalButton}}" mat-raised-button color="primary" type="submit"  matStepperNext >Submit</button>
+        </mat-card-actions>
+
+      </mat-card>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
+
+

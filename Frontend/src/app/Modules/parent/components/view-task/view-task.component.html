@@ -1,0 +1,23 @@
+<!-- <h2>Responsive Table</h2> -->
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>TherapistName</th>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let task of tasks">
+            <td [style.background-color]="task.taskStatus.toLowerCase() == 'assigned' ? 'lightgreen' : null">{{task.assignedDate | date: 'dd/MM/yyyy'}}</td>
+            <td [style.background-color]="task.taskStatus.toLowerCase() == 'assigned' ? 'lightgreen' : null">{{task.sessionMasterId.session_id.therapistName.name}}</td>
+            <td [style.background-color]="task.taskStatus.toLowerCase() == 'assigned' ? 'lightgreen' : null">{{task.sessionMasterId.session_id.therapistName.therapyCategory.abbreviation}}</td>
+            <td [style.background-color]="task.taskStatus.toLowerCase() == 'assigned' ? 'lightgreen' : null">
+              <span style="cursor: pointer;" class="material-icons" (click)="openAssignement(task._id)">drive_file_move</span>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

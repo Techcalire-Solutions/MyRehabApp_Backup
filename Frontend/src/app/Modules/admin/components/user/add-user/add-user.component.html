@@ -1,0 +1,337 @@
+<form [formGroup]="userForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card>
+    <div class="row box">
+      <div class="col">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>ADD USER</mat-card-title>
+          </mat-card-header>
+          <mat-card-content >
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Name" formControlName="name">
+                  <mat-error *ngIf="userForm.controls['name'].hasError('required') || userForm.untouched">
+                    Name <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Email" formControlName="email" >
+                  <mat-error *ngIf="userForm.controls['email'].hasError('required')">
+                   Email is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!--  *ngIf="!isEdit || addStatus" -->
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput type="password" placeholder="Password" formControlName="password">
+                  <mat-error *ngIf="userForm.controls['password'].hasError('required')">
+                   Password is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                <mat-select placeholder="User Role" formControlName="role">
+                  <mat-option *ngFor="let item of  roles" [value]="item.name">
+                    {{item.name | titlecase}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="userForm.controls['role'].hasError('required')">
+                 User Role is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+              </div>
+
+              <div *ngIf="userForm.controls['role'].value ==='therapist'">
+                <mat-form-field class="full-width">
+                  <mat-select placeholder="Therapist Category" formControlName="therapyCategory">
+                    <mat-option *ngFor="let category of  categories" [value]="category._id">
+                      {{category.abbreviation}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div *ngIf="companyName === 'My Rehab App'">
+                <mat-form-field class="full-width">
+                  <mat-select placeholder="Company" formControlName="companyId">
+                    <mat-option *ngFor="let item of company" [value]="item._id">
+                      {{item.companyName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div *ngIf="companyName != 'My Rehab App'">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput type="text" placeholder="" readonly="" value="{{companyName}}">
+                  </mat-form-field>
+                </div>
+              </div>
+
+
+              <br><div>
+                <mat-slide-toggle formControlName="md">MD</mat-slide-toggle>
+              </div>
+            </div><br>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field  class="full-width">
+                  <mat-label>BirthDate</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="birthDate">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field  class="full-width">
+                  <mat-label>JoiningDate</mat-label>
+                  <input matInput [matDatepicker]="picker1" formControlName="joiningDate">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row" *ngIf="userForm.controls['role'].value ==='therapist'">
+              <div class="col">
+                <mat-form-field class="full-width">
+                <mat-select placeholder="Share Percentage" formControlName="sharePercentage">
+                  <mat-option value="60">60%</mat-option>
+                  <mat-option value="50">50%</mat-option>
+                </mat-select>
+              </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div formArrayName="qualifications" class="col">
+                <div *ngFor="let quantity of qualifications().controls; let i=index" [formGroupName]="i" class="row">
+                  <div class="col">
+                    <mat-form-field>
+                      <input matInput placeholder="Qualification" formControlName="qualification">
+                    </mat-form-field>
+                  </div>
+                  <button mat-icon-button (click)="removeQualification(i)">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </div>
+                <button mat-raised-button type="button" (click)="addQualification()" style="background-color:cornflowerblue;">Add Qualification</button>
+              </div>
+
+              <div formArrayName="experiences" class="col">
+                <div *ngFor="let quantity of experiences().controls; let j=index" [formGroupName]="j" class="row">
+                  <div class="col">
+                    <mat-form-field>
+                      <input matInput placeholder="Experience" formControlName="experience">
+                    </mat-form-field>
+                  </div>
+                  <button mat-icon-button (click)="removeExp(j)">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </div>
+                <button mat-raised-button type="button" (click)="addExpp()" style="background-color:cornflowerblue;">Add Experience</button>
+              </div>
+            </div>
+            <!-- </form> -->
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="col">
+        <mat-card>
+          <div class="row box">
+            <!-- <div class="col"> -->
+              <div class="container" appearance="fill">
+                <label for="fileInput1">Experince Certificate:</label>
+                <ng-container *ngIf="imageUrl; else noImage">
+                  <img [src]="imageUrl" alt="Image" title="Image" height="150" width="150" style="margin-left: 150px; margin-top: 50px;"/>
+                </ng-container>
+
+                <ng-template #noImage>
+                  <img src="../../../../../../assets/no_image_part.png" alt="Alternative Image" title="Image" height="150" width="150" style="margin-left: 150px; margin-top: 50px;"/>
+                </ng-template>
+                <input type="file" id="fileInput" (change)="onFileSelectedExp($event)" style="margin-left: 150px;" />
+                <button mat-raised-button type="button" color="accent" (click)="onUploadExp()" [disabled]="!uploadStatus">
+                  <span class="material-icons">upload_file</span>
+                </button>
+                <br>
+              <!-- </div> -->
+            </div>
+
+            <!-- <div class="col"> -->
+              <div class="container" appearance="fill">
+                <label for="fileInput1">Qualification</label>
+                <ng-container *ngIf="imageUrlQ; else noImage">
+                  <img [src]="imageUrlQ" alt="Image" title="Image" height="150" width="150" style="margin-left: 150px; margin-top: 50px;"/>
+                </ng-container>
+
+                <ng-template #noImage>
+                  <img src="../../../../../../assets/no_image_part.png" alt="Alternative Image" title="Image" height="150" width="150" style="margin-left: 150px; margin-top: 50px;"/>
+                </ng-template>
+                <input type="file" id="fileInput" (change)="onFileSelectedQual($event)" style="margin-left: 150px;" />
+                <button mat-raised-button type="button" color="accent" (click)="onUploadQ()" [disabled]="!uploadStatusQ">
+                  <span class="material-icons">upload_file</span>
+                </button>
+                <br>
+              </div>
+            <!-- </div> -->
+
+            <!-- <div class="col"> -->
+              <div class="container" appearance="fill">
+                <label for="fileInput1">Id:</label>
+                <ng-container *ngIf="imageUrlId; else noImage">
+                  <img [src]="imageUrlId" alt="Image" title="Image" height="150" width="150" style="margin-left: 150px; margin-top: 50px;"/>
+                </ng-container>
+
+                <ng-template #noImage>
+                  <img src="../../../../../../assets/no_image_part.png" alt="Alternative Image" title="Image" height="150" width="150" style="margin-left: 150px; margin-top: 50px;"/>
+                </ng-template>
+                <input type="file" id="fileInput" (change)="onFileSelectedId($event)" style="margin-left: 150px;" />
+                <button mat-raised-button type="button" color="accent" (click)="onUploadId()" [disabled]="!uploadStatusId">
+                  <span class="material-icons">upload_file</span>
+                </button>
+                <br>
+              </div>
+            <!-- </div> -->
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <mat-card-actions style="text-align: right;">
+      <button *ngIf ="!isEdit"  mat-raised-button color="primary" type="submit" [disabled]="userForm.pristine ||!userForm.valid || uploadStatus || uploadStatusQ || uploadStatusId">ADD</button>
+      <button *ngIf ="isEdit && !editAdminStatus" mat-raised-button (click)="editTherapistFunction()" enable mat-raised-button color="primary" [disabled]="userForm.pristine ||!userForm.valid || uploadStatus || uploadStatusQ || uploadStatusId" type="button">UPDATE</button>
+      <button *ngIf ="isEdit && editAdminStatus" mat-raised-button (click)="editAdminFunction()" enable mat-raised-button color="primary" [disabled]="userForm.pristine ||!userForm.valid || uploadStatus || uploadStatusQ || uploadStatusId" type="button">UPDATE</button>
+      <button  mat-raised-button *ngIf="addStatus === 'true'" type="button" class="cancel-button" (click)="onCancelClick()">CANCEL</button>
+    </mat-card-actions>
+  </mat-card>
+  </form>
+<!----------------------------------  TABLE   STARTS------------------------------------------------------------>
+<br>
+<mat-card *ngIf="!addStatus">
+<h2 style="margin-left: 40%;" *ngIf="!addStatus">Therapist</h2>
+
+<mat-form-field *ngIf="!addStatus">
+<mat-label>Search</mat-label>
+<input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
+<div style="overflow-x: auto;">
+<table mat-table *ngIf="filtered" [dataSource]="filtered" class="mat-elevation-z8">
+<ng-container matColumnDef="name">
+  <th mat-header-cell *matHeaderCellDef>Name </th>
+  <td mat-cell [style.background-color]="element.md == true ? 'lightgreen' : null" *matCellDef="let element"> {{element.name}} </td>
+</ng-container>
+
+<ng-container matColumnDef="email">
+  <th mat-header-cell *matHeaderCellDef>Email</th>
+  <td mat-cell [style.background-color]="element.md == true ? 'lightgreen' : null" *matCellDef="let element"> {{element.email}} </td>
+</ng-container>
+
+<ng-container matColumnDef="therapyCategory">
+  <th mat-header-cell *matHeaderCellDef> Therapy Category</th>
+  <td mat-cell [style.background-color]="element.md == true ? 'lightgreen' : null" *matCellDef="let element"> {{element.therapyCategory.abbreviation}}</td>
+</ng-container>
+
+<ng-container matColumnDef="sharePercentage">
+  <th mat-header-cell *matHeaderCellDef> Share Percentage</th>
+  <td mat-cell [style.background-color]="element.md == true ? 'lightgreen' : null" *matCellDef="let element"> {{element.sharePercentage}}%</td>
+</ng-container>
+
+<ng-container matColumnDef="viewMore">
+  <th mat-header-cell *matHeaderCellDef> View</th>
+  <td mat-cell [style.background-color]="element.md == true ? 'lightgreen' : null" *matCellDef="let element">
+    <span class="material-icons" style="cursor: pointer;" (click)="viewMore(element._id)">preview</span>
+  </td>
+</ng-container>
+
+<ng-container matColumnDef="view">
+  <th mat-header-cell *matHeaderCellDef>Doc View</th>
+  <td mat-cell [style.background-color]="element.md == true ? 'lightgreen' : null" *matCellDef="let element">
+    <span class="material-icons" style="cursor: pointer;" (click)="viewDocs(element)">document_scanner</span>
+  </td>
+</ng-container>
+
+<ng-container matColumnDef="action">
+  <th mat-header-cell *matHeaderCellDef>Manage </th>
+  <td mat-cell [style.background-color]="element.md == true ? 'lightgreen' : null" *matCellDef="let element">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <i  (click)="editTherapist(element._id)"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+    &nbsp;&nbsp;
+    <i  (click)="deleteUser(element._id)" class="fa fa-trash" style="font-size: 20px; color:red"></i>
+  </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumnsTherapist"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumnsTherapist;"></tr>
+</table>
+</div>
+
+<!---------------------------------- TABLE   ENDS------------------------------------------------------------>
+<br><h2 style="margin-left: 40%;">Admin</h2>
+
+<mat-form-field>
+<mat-label>Search</mat-label>
+<input matInput (keyup)="applyFilterAdmin($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
+<div style="overflow-x: auto;">
+<table mat-table *ngIf="filteredAdmin" [dataSource]="filteredAdmin" class="mat-elevation-z8">
+<ng-container matColumnDef="name">
+ <th mat-header-cell *matHeaderCellDef>Name </th>
+ <td mat-cell [style.background-color]="element.md == true ? 'lightgreen' : null" *matCellDef="let element"> {{element.name}} </td>
+</ng-container>
+
+<ng-container matColumnDef="email">
+<th mat-header-cell *matHeaderCellDef>Email</th>
+<td mat-cell [style.background-color]="element.md == true ? 'lightgreen' : null" *matCellDef="let element"> {{element.email}} </td>
+</ng-container>
+
+<ng-container matColumnDef="viewMore">
+<th mat-header-cell *matHeaderCellDef> View</th>
+<td mat-cell [style.background-color]="element.md == true ? 'lightgreen' : null" *matCellDef="let element">
+  <span class="material-icons" style="cursor: pointer;" (click)="viewMore(element._id)">preview</span>
+</td>
+</ng-container>
+
+<ng-container matColumnDef="view">
+<th mat-header-cell *matHeaderCellDef>Doc View</th>
+<td mat-cell [style.background-color]="element.md == true ? 'lightgreen' : null" *matCellDef="let element">
+  <span style="cursor: pointer;" class="material-icons" (click)="viewDocs(element)">document_scanner</span>
+</td>
+</ng-container>
+
+<ng-container matColumnDef="action">
+<th mat-header-cell *matHeaderCellDef>Manage </th>
+<td mat-cell [style.background-color]="element.md == true ? 'lightgreen' : null" *matCellDef="let element">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <i  (click)="editAdmin(element._id)"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+  &nbsp;&nbsp;
+  <i  (click)="deleteUser(element._id)" class="fa fa-trash" style="font-size: 20px; color:red"></i>
+</td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumnsAdmin"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumnsAdmin;"></tr>
+</table>
+</div>
+</mat-card>

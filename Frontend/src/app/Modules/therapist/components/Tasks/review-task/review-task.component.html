@@ -1,0 +1,64 @@
+<mat-card *ngIf="task">
+  <mat-card-header>
+    <mat-card-title>{{task.task}}</mat-card-title>
+  </mat-card-header>
+
+  <div class="row box">
+    <div class="col">
+      <mat-card-content>
+        <div class="img_size">
+          <head>
+            <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+          </head>
+          <body>
+            <div class="img_size">
+              <ng-container *ngIf="task.file_url.split('.').pop() === 'pdf'">
+                <pdf-viewer [src]="task.file_url"
+                  [render-text]="true"
+                  [original-size]="false"
+                  style="width: 900px;height: 700px">
+                </pdf-viewer>
+              </ng-container>
+              <ng-container *ngIf="task.file_url.split('.').pop() !== 'pdf'">
+                <img class="img_size" [src]="task.file_url">
+              </ng-container>
+            </div>
+
+            <br><div><a>Notes: {{task.response}}</a></div>
+          </body>
+        </div>
+      </mat-card-content>
+    </div>
+
+    <div class="col">
+      <form [formGroup]="taskForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+        <mat-card *ngIf="task" class="shipping-card">
+          <mat-card-header>
+            <mat-card-title>REVIEW</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Point" formControlName="point">
+                <mat-option *ngFor="let item of types" [value]="item.name">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Remarks" formControlName="remarks">
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button *ngIf="!editStatus" mat-raised-button color="primary" type="submit" [disabled]="taskForm.pristine ||!taskForm.valid || uploadStatus">ADD</button>
+            <button *ngIf="editStatus"mat-raised-button color="primary" type="submit" [disabled]="taskForm.pristine ||!taskForm.valid || uploadStatus">UPDATE</button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+
+</mat-card>

@@ -1,0 +1,351 @@
+<form [formGroup]="medicalForm" completed="false" optional novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+
+    <mat-card-header>
+      <mat-card-title>Medical History</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="row box">
+        <div class="col">
+          <br>
+          <mat-radio-group formControlName="pregnancy"><h4>Planned Pregnancy?</h4>
+            <mat-radio-button value="true">Yes</mat-radio-button>
+            <mat-radio-button value="false">No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <br>
+
+        <div class="col">
+          <br>
+          <mat-radio-group aria-label="Type of Delivery" formControlName="typeOfDelivery"><h4>Type of Delivery</h4>
+            <mat-radio-button value="normal">Normal</mat-radio-button><br>
+            <mat-radio-button value="cesarean">Cesarean</mat-radio-button><br>
+            <mat-radio-button value="vaccum">Vaccum</mat-radio-button><br>
+          </mat-radio-group>
+        </div>
+        <br>
+      </div>
+
+
+      <div class="row box">
+        <section class="example-section">
+          <mat-radio-group formControlName="consumption">
+            <h4>Smoking or Alcohol is consumed during Pregnancy?</h4>
+            <mat-radio-button value="true">Yes</mat-radio-button>
+            <mat-radio-button value="false">No</mat-radio-button>
+          </mat-radio-group><br><br>
+          <mat-checkbox *ngIf="medicalForm.controls['consumption'].value==='true'" formControlName="alcohol" style="margin-left: 10px;">Alcohol</mat-checkbox>&nbsp;&nbsp;&nbsp;
+          <mat-checkbox *ngIf="medicalForm.controls['consumption'].value==='true'" formControlName="smoking"  style="margin-left: 10px;">Smoking</mat-checkbox>
+        </section>
+      </div>
+
+
+
+      <div class="row box">
+        <mat-form-field class="full-width">
+          <mat-label>Medications(Max 150 characters)</mat-label>
+          <input matInput placeholder="Medications" formControlName="medications"  maxlength="150">
+        </mat-form-field>
+      </div>
+
+
+      <div class="row box">
+        <mat-form-field class="full-width">
+          <mat-label>Pregnancy Complications(Max 150 characters)</mat-label>
+          <input matInput placeholder="Pregnancy Complications" formControlName="pregnancyComplications" maxlength="150">
+        </mat-form-field>
+      </div>
+
+
+      <div class="row box">
+        <div class="col">
+          <div class="row box">
+          <br>
+            <mat-radio-group aria-label="Pregnancy Type" formControlName="pregnancyType"><h4>Pregnancy Type</h4>
+              <mat-radio-button value="fullterm">Full term pregnancy</mat-radio-button><br>
+              <mat-radio-button value="premature">Premature Pregnancy</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <div *ngIf="medicalForm.controls['pregnancyType'].value==='premature'" class="row box">
+            <mat-form-field class="full-width">
+              <mat-label>Born in how many weeks?</mat-label>
+              <input matInput placeholder="Born in how many weeks?" formControlName="prematureMonths">
+            </mat-form-field>
+          </div>
+        </div>
+        <br>
+
+        <div class="col">
+          <section class="example-section" >
+            <h4>Neonatal Health:</h4>&nbsp;&nbsp;&nbsp;
+                <mat-radio-group formControlName="babyCry">Did the baby cry too much? :&nbsp;&nbsp;&nbsp;
+                  <mat-radio-button value="Yes">Yes</mat-radio-button>
+                  <mat-radio-button value="No">No</mat-radio-button>
+                </mat-radio-group><br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<mat-radio-group formControlName="feedingProblem">Feeding problem if any :&nbsp;&nbsp;&nbsp;
+                  <mat-radio-button value="Yes">Yes</mat-radio-button>
+                  <mat-radio-button value="No">No</mat-radio-button>
+                </mat-radio-group><br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<mat-radio-group formControlName="sleepProblem">Sleep problems :&nbsp;&nbsp;&nbsp;
+                  <mat-radio-button value="Yes">Yes</mat-radio-button>
+                  <mat-radio-button value="No">No</mat-radio-button>
+                </mat-radio-group><br><br>
+          </section>
+        </div>
+      </div>
+
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Birth Weight(Max 150 characters)</mat-label>
+            <input matInput placeholder="Birth Weight" formControlName="birthWeight" maxlength="150">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Any Birth Complication(Max 150 characters)</mat-label>
+            <input matInput placeholder="Any Bith Compilcation" formControlName="birthCompilcation" maxlength="150">
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Describe any important illness/ surgeries/ injuries(Max 150 characters)</mat-label>
+            <textarea matInput placeholder="Describe any important illness" formControlName="importantIllness" maxlength="150"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Current medical diagnosis and condition(Max 150 characters)</mat-label>
+            <textarea matInput placeholder="Current medical diagnosis and condition" formControlName="medicalCondition" maxlength="150"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>History of Consanguineous marriage(Max 150 characters)</mat-label>
+            <textarea matInput placeholder="History of Consanguineous marriage" formControlName="consanguineousMarriageHistory" maxlength="150"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Is there a history of epilepsy, learning problem,speech delays,clumsiness or anything else important in the family?(Max 150 characters)</mat-label>
+            <textarea matInput placeholder="Is there a history of epilepsy, learning problem,speech delays,clumsiness or anything else important in the family?" formControlName="history" maxlength="150"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row box">
+        <div class="col">
+          <section class="example-section" >
+            <h4>Vision:</h4>&nbsp;&nbsp;&nbsp;
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Remarks(Max 150 characters)</mat-label>
+              <textarea matInput placeholder="Remarks" formControlName="remarksVision" maxlength="150"></textarea>
+            </mat-form-field>
+            <mat-checkbox formControlName="eyeTest">Eye testing done</mat-checkbox>
+            <mat-checkbox formControlName="useGlass" style=" margin-left: 14px;">Use of glasses</mat-checkbox>
+            <mat-checkbox formControlName="eyeProblem" style=" margin-left: 14px;" value='problem'>Presence of headaches, blurring of vision, sore eyes etc in the child</mat-checkbox>
+          </section>
+        </div>
+
+      </div>
+      <br>
+
+
+      <div class="row box">
+        <div class="col">
+          <section class="example-section" >
+            <h4>Hearing:</h4>&nbsp;&nbsp;&nbsp;
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Remarks(Max 150 characters)</mat-label>
+              <textarea matInput placeholder="Remarks" formControlName="remarksHearing" maxlength="150"></textarea>
+            </mat-form-field>
+            <mat-checkbox formControlName="hearingTest">Hearing test done</mat-checkbox>
+            <mat-checkbox formControlName="hearingAid" style=" margin-left: 14px;">Hearing aid prescribed</mat-checkbox>
+            <mat-checkbox formControlName="earProblem" style=" margin-left: 14px;">History of frequent middle ear infections</mat-checkbox>
+          </section>
+        </div>
+      </div>
+      <br>
+
+
+      <div class="row box">
+       <!-- <div class="col">
+          <div class="full-width" appearance="fill">
+            <label>Investigation Conducted Report</label><br><br>
+            <input type="file" (change)="onFileSelected($event)"><br>
+            <br>
+            <button type="button" (click)="onUpload()">upload</button>
+            <br>
+          </div>
+        </div> -->
+        <br>
+
+        <div class="col">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Current Medications(Max 150 characters)</mat-label>
+            <textarea matInput placeholder="Current Medications" formControlName="currentMedication" maxlength="150"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Previous Medications(Max 150 characters)</mat-label>
+            <textarea matInput placeholder="Previous Medications" formControlName="previoustMedication" maxlength="150"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Allergies or Dietary Restrictions if any(Max 150 characters)</mat-label>
+            <textarea matInput placeholder="Allergies or Dietary Restrictions if any:" formControlName="allergies" maxlength="150"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Actual Therapies(Max 150 characters)</mat-label>
+            <textarea matInput placeholder="Actual Therapies" formControlName="actualTherapies" maxlength="150"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Previous Therapies(Max 150 characters)</mat-label>
+            <textarea matInput placeholder="Previous Therapies" formControlName="previousTherapies" maxlength="150"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <h4> Developmental milestones(Year and Months)</h4>
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Head Raise</mat-label>
+            <input matInput placeholder="Head Raise" formControlName="headRaise">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Roll over</mat-label>
+            <input matInput placeholder="Roll over" formControlName="rollOver">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Independent Sitting</mat-label>
+            <input matInput placeholder="Independent Sitting" formControlName="independentSitting">
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Crawled on Hands and Knees</mat-label>
+            <input matInput placeholder="Crawled on Hands and Knees" formControlName="crawled">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Pulled to Stand</mat-label>
+            <input matInput placeholder="Pulled to Stand" formControlName="pulledToStand">
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Independent Standing</mat-label>
+            <input matInput placeholder="Independent Standing" formControlName="independentStanding">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Walking</mat-label>
+            <input matInput placeholder="Walking" formControlName="walking">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Babbling</mat-label>
+            <input matInput placeholder="Blabbing" formControlName="babbling">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Said First Words</mat-label>
+            <input matInput placeholder="Said First Words" formControlName="saidFirstWords">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Present Language and Vocabulary</mat-label>
+            <input matInput placeholder="Present Language" formControlName="presentLanguage">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Finger Feeding Self</mat-label>
+            <input matInput placeholder="Finger Feeding Self" formControlName="fingerFeeding">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Used a Spoon for Feeding</mat-label>
+            <input matInput placeholder="Used a Spoon for Feeding" formControlName="spoon">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Dress and Undress Self</mat-label>
+            <input matInput placeholder="Dress and Undress Self" formControlName="dress">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">UPDATE</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

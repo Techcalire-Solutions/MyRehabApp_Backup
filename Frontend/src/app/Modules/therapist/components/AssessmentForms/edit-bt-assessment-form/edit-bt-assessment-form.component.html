@@ -1,0 +1,229 @@
+<form [formGroup]="btAssessmentForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>UPDATE BEHAVIORAL ASSESSMENT REPORT</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="fill">
+              <input matInput placeholder="K/C/O:" formControlName="kco">
+            </mat-form-field>
+          </div>
+
+          <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <input matInput placeholder="Informants:" formControlName="informants">
+              </mat-form-field>
+          </div>
+        </div>
+      </mat-card>
+
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Presenting Concerns:</mat-label>
+            <textarea matInput placeholder="Presenting Concerns:" formControlName="presentingConcerns"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Personal History:</mat-label>
+            <textarea matInput placeholder="Personal History:" formControlName="personalHistory"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card><br>
+
+
+      <mat-card>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="H/o of Gadget Exposure:" formControlName="gadgetExposure">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="H/o of Seizure:" formControlName="seizure">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder= "H/o of Drug Usage:" formControlName="drugUsage">
+            </mat-form-field>
+          </div>
+        </div>
+
+      </mat-card><br>
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Therapy History:</mat-label>
+            <textarea matInput placeholder="Therapy History:" formControlName="therapyHistory"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card><br>
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Family History:</mat-label>
+            <textarea matInput placeholder="Family History:" formControlName="familyHistory"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card><br>
+
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Developmental Milestones:</mat-label>
+            <textarea matInput placeholder="Developmental Milestones:" formControlName="developmentalMilestones"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card><br>
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Occupational History:</mat-label>
+            <textarea matInput placeholder="Occupational History:" formControlName="occupationalHistory"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card><br>
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>School History:</mat-label>
+            <textarea matInput placeholder="School History:" formControlName="schoolHistory"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card><br>
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Behavioural Concerns:</mat-label>
+            <textarea matInput placeholder="Behavioural Concerns:" formControlName="behaviouralConcerns"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card><br>
+
+
+      <mat-card>
+        <mat-card-header>General Behavioural Observation</mat-card-header>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Physical Appearance:</mat-label>
+            <textarea matInput placeholder="Physical Appearance:" formControlName="physicalAppearance"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card>
+
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Activity Level:</mat-label>
+            <textarea matInput placeholder="Activity Level:" formControlName="activityLevel"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card>
+
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Attention & Concentration:</mat-label>
+            <textarea matInput placeholder="Attention & Concentration:" formControlName="attentionConcentration"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card>
+
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Emotional Regulation:</mat-label>
+            <textarea matInput placeholder="Emotional Regulation:" formControlName="emotionalRegulation"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card>
+
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Attachment:</mat-label>
+            <textarea matInput placeholder="Attachment:" formControlName="attachment"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card><br>
+
+
+      <mat-card>
+        <div class="row">
+            <div class="col">
+              <section class="example-section">
+                <h4>Tests Conducted:</h4>
+
+                <mat-checkbox formControlName="vsms">VSMS/VABS</mat-checkbox><br>
+                <mat-checkbox formControlName="ddst">DDST/DST/GCBS</mat-checkbox><br>
+                <mat-checkbox formControlName="sfbt">SFBT</mat-checkbox><br>
+                <mat-checkbox formControlName="gdt">GDT</mat-checkbox><br>
+                <mat-checkbox formControlName="bkt">BKT/MISIC</mat-checkbox><br>
+                <mat-checkbox formControlName="mchat">MCHAT/ISAA</mat-checkbox><br>
+                <mat-checkbox formControlName="vanderbelt">Vanderbelt/Conner's / ADHD SRS</mat-checkbox><br>
+                <mat-checkbox formControlName="dpcl">DPCL/CBCL</mat-checkbox><br>
+                <mat-checkbox formControlName="nimhans">NIMHANS Index for SLD /LDDI</mat-checkbox><br>
+              </section>
+            </div>
+          </div>
+      </mat-card><br>
+
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Test Findings:</mat-label>
+            <textarea matInput placeholder="Test Findings:" formControlName="testFindings"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card><br>
+
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Impression:</mat-label>
+            <textarea matInput placeholder="Impression:" formControlName="impression"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card><br>
+
+      <mat-card>
+        <div class="row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Action Plan for Future:</mat-label>
+            <textarea matInput placeholder="Action Plan for Future:" formControlName="actionPlanforFuture"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card><br>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">UPDATE</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

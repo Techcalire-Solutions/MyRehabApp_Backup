@@ -1,0 +1,88 @@
+.full-width{
+  width: 100%;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin-left: 25px;
+}
+
+@media(max-width:784px)
+{
+    .background{
+        padding: 0px;
+        margin: 0px;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+    }
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin-left: 25px;
+}
+
+table{
+  width : 100%
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+
+span {
+  cursor: pointer;
+}
+
+span:hover {
+background-position: right center;
+//background-color: #3e8e41/* change the direction of the change here */
+}
+
+span:active {
+//background-color: #3e8e41;
+box-shadow: 0 5px white;
+transform: translateY(5px);
+}
+
+.search-field {
+  width: 95%;
+  margin-left: 5px;
+}
+
+.search-field input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.search-field input:focus {
+  outline: none;
+  border-color: #2196F3; /* Change the border color when focused */
+}

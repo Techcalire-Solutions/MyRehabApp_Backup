@@ -1,0 +1,69 @@
+<form [formGroup]="ptForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>PHYSIO THERAPY FORM</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div class="row" appearance="fill">
+        <div class="col">
+          <mat-form-field class="full-width" >
+            <input matInput placeholder="Height" formControlName="height">
+            <!-- <ng-container *ngIf="ptForm.dirty||ptForm.untouched"> -->
+            <mat-error *ngIf="ptForm.controls['height'].hasError('required')">
+              height is <strong>required</strong>
+            </mat-error>
+          <!-- </ng-container> -->
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field clas="input-upper" class="full-width" >
+            <input matInput placeholder="Weight" formControlName="weight" onkeyup="this.value = this.value.toUpperCase();">
+            <mat-error *ngIf="ptForm.controls['weight'].hasError('required')">
+              weight <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row box">
+        <div class="col">
+          <br>
+          <mat-radio-group formControlName="tried"><h4>Tried Physical Therapy before this condition</h4>
+            <mat-radio-button value="true">Yes</mat-radio-button>
+            <mat-radio-button value="false">No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div class="col">
+          <div class="row box">
+          <br>
+            <mat-radio-group aria-label="Surgery" formControlName="surgery"><h4>Previous Surgeries</h4>
+              <mat-radio-button value="yes">Yes</mat-radio-button><br>
+              <mat-radio-button value="no">No</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <div *ngIf="ptForm.controls['pregnancyType'].value==='yes'" class="row box">
+            <mat-form-field class="full-width">
+              <mat-label>SurgeryName</mat-label>
+              <input matInput placeholder="" formControlName="surgeryName">
+            </mat-form-field>
+          </div>
+          <div *ngIf="ptForm.controls['pregnancyType'].value==='yes'" class="row box">
+            <mat-form-field class="full-width">
+              <mat-label>SurgeryDate and Duration</mat-label>
+              <input matInput placeholder="" formControlName="surgeryDate">
+            </mat-form-field>
+          </div>
+
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button  mat-raised-button color="primary" type="submit" [disabled]="ptForm.pristine ||!ptForm.valid">ADD</button>
+      <!-- <button mat-raised-button (click)="editFunction()" enable mat-raised-button color="primary" type="button">UPDATE</button> -->
+    </mat-card-actions>
+  </mat-card>
+  </form>

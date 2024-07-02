@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+app-print-client {
+  /* hide the printing component from @media screen */
+  display: none;
+}
+
+@media print {
+  /* invert the display (show/hide) properties of the main */
+  /* aplication component and the printing component       */
+
+  app-print-client{
+    display: block;
+  }
+
+  app-client-info {
+    display: none;
+  }
+
+  app-admin-navbar{
+    display: none;
+  }
+}

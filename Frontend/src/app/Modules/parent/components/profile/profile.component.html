@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<mat-card *ngIf="client">
+  <mat-card-header>
+    <mat-card-title>PROFILE</mat-card-title>
+  </mat-card-header>
+
+  <div class="row box">
+    <div class="card">
+      <ng-container *ngIf="clientLogin.image_url; else alternativeImage">
+        <div class="image-container">
+          <img class="profile-photo" src="{{ clientLogin.image_url }}" />
+          <label *ngIf="!uploadStatus" for="fileInput" class="custom-file-upload">
+            <i class="fa fa-cloud-upload" style="font-size: 40px; cursor: pointer;"></i>
+          </label>
+          <input type="file" id="fileInput" style="display: none;" (change)="onFileSelected($event)" />
+          <i *ngIf="uploadStatus" (click)="onUpload()" class="edit-icon fa fa-pencil" style="font-size: 40px; cursor: pointer;"></i>
+        </div>
+      </ng-container>
+
+      <ng-template #alternativeImage>
+        <div class="image-container">
+          <img src="../../../../../../assets/no_image_part.png" alt="Alternative Image" style="width: 250px; height: 250px;" />
+          <label *ngIf="!uploadStatus" for="fileInput" class="custom-file-upload">
+            <i class="fa fa-cloud-upload" style="font-size: 40px; cursor: pointer;"></i>
+          </label>
+          <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none;" />
+          <i *ngIf="uploadStatus" (click)="onUpload()" class="edit-icon fa fa-pencil" style="font-size: 40px; cursor: pointer;"></i>
+        </div>
+      </ng-template>
+      <h1>{{client.firstName| uppercase}}</h1>
+      <p>{{client.emergencyNumber}}</p>
+      <p>{{client.dateOfBirth| date: 'dd/MM/yyyy'}}</p>
+      <div style="margin: 24px 0;">
+        <a (click)="editPass()"><span class="material-icons">password</span></a>&nbsp;&nbsp;
+        <a (click)="viewMore()"><i class="fa fa-edit"></i></a>
+      </div>
+      <p><button routerLink="requestleave">Request Leave</button></p>
+    </div>
+
+    <div class="card">
+      <h1>Report</h1>
+      <!-- <p class="title">TODAY ({{date}})</p>
+
+      <p class="title">MONTH ({{currentMonth}})</p> -->
+      <p>LmcCount : {{lmcCount}}</p>
+      <p>LeaveCount : {{leavesCount}}</p><br>
+
+      <p>Pending Session Fees : {{pendingAmount}}</p>
+      <p>Pending Assessment Fees : {{assessmentAmount}}</p>
+      <p>Pending Group Fees : {{groupAmount}}</p>
+      <p>Pending Lmc Fees : {{lmcFeeCount}}</p><br>
+      <p>Wallet Balance : {{walletAmount}}</p>
+      <p><button routerLink="viewtransaction">View Wallet</button></p>
+    </div>
+  </div>
+</mat-card>
+

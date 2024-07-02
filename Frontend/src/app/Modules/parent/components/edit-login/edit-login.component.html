@@ -1,0 +1,40 @@
+<form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>EDIT LOGIN CREDENTIALS</mat-card-title>
+    </mat-card-header>
+    <mat-card-content *ngIf="client">
+
+      <div class="row" appearance="fill">
+        <div class="col">
+          <mat-form-field class="full-width" >
+            <input matInput placeholder="PhoneNumber" value={{client.phoneNumber}} [disabled]="true">
+            <!-- <ng-container *ngIf="categoryForm.dirty||categoryForm.untouched"> -->
+            <!-- <mat-error *ngIf="loginForm.controls['phoneNumber'].hasError('required')">
+              number <strong>required</strong>
+            </mat-error> -->
+          <!-- </ng-container> -->
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" appearance="fill">
+        <div class="col">
+          <mat-form-field clas="input-upper" class="full-width" >
+            <input  matInput placeholder="Password" formControlName="password">
+            <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+              Abbreviation is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.pristine ||!loginForm.valid">UPDATE</button>
+      <!-- <button mat-raised-button (click)="editFunction()" enable mat-raised-button color="primary" type="button">UPDATE</button> -->
+    </mat-card-actions>
+  </mat-card>
+  </form>

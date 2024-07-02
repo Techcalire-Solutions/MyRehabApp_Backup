@@ -1,0 +1,83 @@
+<mat-card [formGroup]="reportForm">
+  <div class="date-filter-container">
+    <div class="date-filter">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" formControlName="selectedStartDate">
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" formControlName="selectedEndDate">
+
+        <button (click)="filterRows()">Apply Filter</button>
+    </div>
+
+    <mat-form-field class="full-width">
+      <mat-label>Therapist Name</mat-label>
+      <mat-select #id (selectionChange)="filterReportByTherapist(id.value)" placeholder="Therapist Name">
+        <mat-form-field class="search-field">
+          <div class="row">
+          <input matInput (input)="filterOptionsTherapist($event)" placeholder="Search">
+          </div>
+        </mat-form-field>
+        <mat-option *ngFor="let user of filteredOptionsTherapist" [value]="user._id">
+          {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="scrollable-table-container">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="5">Sessions</th>
+                <th colspan="5">Assessments</th>
+                <th colspan="3">Group</th>
+                <!-- <th colspan="1">Leave</th> -->
+            </tr>
+            <tr>
+              <th></th>
+              <th>Session</th> <!-- First subheading under "Sessions" -->
+              <th>Leave</th> <!-- Second subheading under "Sessions" -->
+              <th>Compensation</th>
+              <th>Completed</th>
+              <th>Amount</th>
+               <!-- Third subheading under "Sessions" -->
+              <th>Assessments</th> <!-- First subheading under "Sessions" -->
+              <th>Leave</th> <!-- Second subheading under "Sessions" -->
+              <th>Compensation</th>
+              <th>Completed</th>
+              <th>Amount</th>
+
+              <th>Session</th>
+              <th>Completed</th>
+              <th>Amount</th>
+
+              <th></th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let date of dates; let i = index">
+                <tr>
+                    <td>{{ date | date: 'EEE, dd/MM/yyyy' }}</td>
+
+                    <td>{{ sessionCounts[i] }}</td>
+                    <td>{{ leaveSessionCountDay[i] }}</td>
+                    <td>{{ compSessionCountDay[i] }}</td>
+                    <td>{{ sessionMasterCounts[i] }}</td>
+
+                    <td>{{ assessmentCountDay[i] }}</td>
+                    <td>{{ leaveAssessmentCountDay[i] }}</td>
+                    <td>{{ compAssessmentCountDay[i] }}</td>
+                    <td>{{ assessmentMasterDay[i] }}</td>
+
+                    <td>{{ groupSessionCountDay[i] }}</td>
+                    <td>{{ groupMasterCountDay[i] }}</td>
+
+                    <td></td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+  </div>
+</mat-card>

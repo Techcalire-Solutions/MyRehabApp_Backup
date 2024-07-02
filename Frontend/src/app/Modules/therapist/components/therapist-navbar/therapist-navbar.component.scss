@@ -1,0 +1,98 @@
+.sidenav-container {
+    height: 100%;
+  }
+
+  .sidenav {
+    width: 200px;
+  }
+
+  .sidenav .mat-toolbar {
+    background: inherit;
+    // position: fixed;
+  }
+
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .nav_main{
+    position: relative;
+    margin: 0px 0px 0px auto;
+    float: left;
+    display: flex;
+  }
+
+  .nav_username{
+    position: relative;
+    margin-right: 5px;
+    margin-left: 20px;
+    float: left;
+    display: flex;
+  }
+
+  .mat-list-item.active{
+    color: black;
+  }
+  .active {
+    background-color: lightgreen;
+  }
+
+  .notification-icon .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    padding: 3px 6px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+  }
+
+  /* notification.component.css */
+
+  .notification-container {
+    position: relative;
+  }
+
+  .notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #058789; /* Customize as needed */
+    color: white;
+    border-radius: 50%;
+    padding: 0px 6px;
+    height: 20px;
+    width: 20px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    margin-left: 4px;
+  }
+
+.notification-list {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 300px; /* Customize width as needed */
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  padding: 10px;
+  z-index: 1;
+}
+
+.notification-item {
+  margin-bottom: 8px;
+  color: black;
+  font-size: small;
+}
+
+@media(max-width:576px)
+{
+    .display{
+        display: none;
+    }
+
+    .margin{ margin-left: auto;}
+}

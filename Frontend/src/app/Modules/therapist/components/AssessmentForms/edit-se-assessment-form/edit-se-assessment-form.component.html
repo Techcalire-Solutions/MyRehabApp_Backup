@@ -1,0 +1,1401 @@
+<form [formGroup]="seAssessmentForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>UPDATE EDUCATIONAL ASSESSMENT REPORT</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-card>
+        <mat-card-subtitle><h2>BACKGROUND INFORMATION</h2></mat-card-subtitle>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Informant:" formControlName="informant">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Child strength reported by parent:" formControlName="strengthChild">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Parental concerns:" formControlName="parentalConcern">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card><br>
+
+      <mat-card>
+        <ng-container formGroupName="fuctionalAreas">
+          <mat-card-header><mat-card-subtitle><h2>FUCTIONAL AREAS</h2></mat-card-subtitle></mat-card-header>
+          <mat-card>
+            <ng-container formGroupName="learningAndApplying">
+              <mat-card-header><mat-card-subtitle><h4><b>Learning and Applying Knowledge</b></h4></mat-card-subtitle></mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Watching:" formControlName="watching">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Listening:" formControlName="listening">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Memory:" formControlName="memory">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Attention:" formControlName="attention">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Solving Problems:" formControlName="solvingProblem">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Social Problems:" formControlName="socialProblem">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Motivational Problems:" formControlName="motivationalProblems">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Emotional Problems:" formControlName="emotionalProblems">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <ng-container formGroupName="perceptualMotorSkills">
+              <mat-card-header><mat-card-subtitle><h4><b>Perceptual Motor Skills</b></h4></mat-card-subtitle></mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Visual Perception Skills:" formControlName="visual">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Auditory Perception Skills:" formControlName="auditory">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Motor Cordination:" formControlName="motorCordination">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Spatial Orientation(direction,position):" formControlName="spatialOrientation">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Learning Style:" formControlName="learningStyle">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Handedness:" formControlName="handedness">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <ng-container formGroupName="generalTasks">
+              <mat-card-header><mat-card-subtitle><h4><b>General Tasks</b></h4></mat-card-subtitle></mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Undertaking a Single Task:" formControlName="singleTasks">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Undertaking Multiple Tasks:" formControlName="multipleTasks">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <ng-container formGroupName="communication">
+              <mat-card-header><mat-card-subtitle><h4><b>Communication</b></h4></mat-card-subtitle></mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Communicating with-receiving spoken messages:" formControlName="spokenMessages">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Communicating with-recieving non-verbal messages:" formControlName="nonVerbalMessages">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Speaking:" formControlName="speaking">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Producing non-verbal messages:" formControlName="producingMessage">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Conversation:" formControlName="conversation">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <ng-container formGroupName="mobility">
+              <mat-card-header><mat-card-subtitle><h4><b>Mobility</b></h4></mat-card-subtitle></mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Lifting and carrying objects:" formControlName="lifting">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Fine hand use(picking up,grasping):" formControlName="fineHand">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Walking/Jumping/Running/Climbing stairs:" formControlName="walkingStairs">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Moving around using equipment(wheelchair, skates etc):" formControlName="movingAround">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Using transportation(car,bus,train,plain etc):" formControlName="usingTransportation">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Driving(Riding bicycle,motorbike,driving car etc):" formControlName="driving">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <ng-container formGroupName="selfCare">
+              <mat-card-header><mat-card-subtitle><h4><b>Self-Care</b></h4></mat-card-subtitle></mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Washing oneself(bathing,drying,washing hands etc):" formControlName="washingOneself">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Caring for body parts(brushing teeths,shaving,grooming etc):" formControlName="bodyParts">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Toileting:" formControlName="toiletting">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Dressing:" formControlName="dressing">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Eating:" formControlName="eating">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Drinking:" formControlName="drinking">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <ng-container formGroupName="domesticSelf">
+              <mat-card-header><mat-card-subtitle><h4><b>Domestic Life</b></h4></mat-card-subtitle></mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Acquisition of goods & services(eg. shopping):" formControlName="acquisition">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Doing household work(cleaning,washing dishes,laundry,ironing,cooking etc):" formControlName="householdWork">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Assisting others:" formControlName="assisting">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <ng-container formGroupName="interpersonalInteractons">
+              <mat-card-header><mat-card-subtitle><h4><b>Interpersonal interactions and Relationship</b></h4></mat-card-subtitle></mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Basic interpersonal interactions:" formControlName="basic">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Relating with strangers:" formControlName="withStrangers">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Formal relationships:" formControlName="formalRelation">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Informal social relationships:" formControlName="informalRelation">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Family/intimate relationships:" formControlName="familyRelation">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <ng-container formGroupName="majorLifeAreas">
+              <mat-card-header><mat-card-subtitle><h4><b>Major Life Areas</b></h4></mat-card-subtitle></mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Informal education:" formControlName="informalEducation">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="School education:" formControlName="schoolEducation">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Higher education:" formControlName="higherEducation">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <mat-card-header><mat-card-subtitle><h4><b>Community,Social and Civic Life</b></h4></mat-card-subtitle></mat-card-header>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Community Life/Recreation and leisure/Religion and Spirituality:" formControlName="communityLife">
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card><br>
+
+          <mat-card>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Significant experiences which may have had impcat on specific functional abilities(if any):" formControlName="functionalAbilities">
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card><br>
+        </ng-container>
+      </mat-card><br>
+
+      <mat-card>
+        <ng-container formGroupName="specificEducationalAreas">
+          <mat-card-header><mat-card-subtitle><h2>SPECIFIC EDUCATIONAL AREAS</h2></mat-card-subtitle></mat-card-header>
+          <mat-card>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Methodology/Materials Used:" formControlName="materialsUsed">
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card><br>
+
+          <mat-card>
+            <mat-card-header><mat-card-subtitle><h4><b>Object Interaction</b></h4></mat-card-subtitle></mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Mouthig/Banging/Relational play/Symbolic play/Pretend play:" formControlName="objectInteraction">
+                  </mat-form-field>
+                </div>
+              </div>
+          </mat-card><br>
+
+          <mat-card>
+            <ng-container formGroupName="communicationLanguage">
+              <mat-card-header><mat-card-subtitle><h4><b>Communication & Language</b></h4></mat-card-subtitle></mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Expressive:" formControlName="expressive">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Receptive:" formControlName="receptive">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <ng-container formGroupName="concepts">
+              <mat-card-header><mat-card-subtitle><h4><b>Concepts</b></h4></mat-card-subtitle></mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Colour:" formControlName="color">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Shapes:" formControlName="shapes">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Size:" formControlName="size">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Quantity:" formControlName="quantity">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Matching:" formControlName="matching">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Similarities:" formControlName="similarities">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Differences:" formControlName="differences">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Classification:" formControlName="classification">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Seriation:" formControlName="seriation">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="One to One:" formControlName="oneToOne">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Reversibility:" formControlName="reversibility">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Special Concepts:" formControlName="specialConcepts">
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card><br>
+
+          <mat-card>
+            <ng-container formGroupName="earlyLiteracy">
+              <mat-card-header><mat-card-subtitle><h4><b>Early Literacy Skills</b></h4></mat-card-subtitle></mat-card-header>
+
+              <mat-card>
+                <ng-container formGroupName="preReading">
+                  <mat-card-header><mat-card-subtitle><h4><b>Pre-Reading</b></h4></mat-card-subtitle></mat-card-header>
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Name Familiar Picture:" formControlName="namePicture">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Answer Questions about what they see in Book:" formControlName="whatTheySee">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Know the Correct way to Hold or Handle a Book:" formControlName="handleBook">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Recognize Alphabets:" formControlName="alphabets">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Read some Sight Words:" formControlName="sightWords">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Recognize and Match Letters to Letter Sound:" formControlName="letterSound">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </ng-container>
+              </mat-card>
+
+              <mat-card>
+                <ng-container formGroupName="preWriting">
+                  <mat-card-header><mat-card-subtitle><h4><b>Pre-Writing</b></h4></mat-card-subtitle></mat-card-header>
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Imitates Horizontal Stroke:" formControlName="horizontalStroke">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Imitate a Vertical Stroke:" formControlName="verticalStroke">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Copies a circle with a circular scribble:" formControlName="circularScribble">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Copies a Plus shape:" formControlName="plusShape">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Copies Square:" formControlName="square">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Copies Triangle:" formControlName="triangle">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Tripod Grasp:" formControlName="grasp">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Copies some Capital Alphabets:" formControlName="capitalAlphabets">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Copies some Small Alphabets:" formControlName="smallAlphabets">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                </ng-container>
+              </mat-card>
+
+              <mat-card>
+                <ng-container formGroupName="preMaths">
+                  <mat-card-header><mat-card-subtitle><h4><b>Pre-Mathematics & Numbers</b></h4></mat-card-subtitle></mat-card-header>
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Rote Counting(1-10):" formControlName="roteCount">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Recognition of Numerals(1-10):" formControlName="recognitionNumeral">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Meaningful Counting(1-10):" formControlName="meaningfulCounting">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="More/Less:" formControlName="moreLess">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </ng-container>
+              </mat-card>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <ng-container formGroupName="presentLiteracy">
+              <mat-card-header><mat-card-subtitle><h4><b>Present Literacy Skills & Levels</b></h4></mat-card-subtitle></mat-card-header>
+
+              <mat-card>
+                <ng-container formGroupName="reading">
+                  <mat-card-header><mat-card-subtitle><h4><b>Reading</b></h4></mat-card-subtitle></mat-card-header>
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Phonetic Awareness:" formControlName="phoneticAwareness">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Finger Tracing:" formControlName="fingerTracing">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Spelling Aloud before Blending:" formControlName="spellingAloud">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Omits a Word:" formControlName="omitsWord">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Subtitute a Word:" formControlName="substituteWord">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Ignores Punctuation:" formControlName="ignorePunctuation">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <mat-radio-group formControlName="posture"><h4>Posture:</h4>
+                      <mat-radio-button value="Appropriate">Appropriate</mat-radio-button>
+                      <mat-radio-button value="Inappropriate">Inappropriate</mat-radio-button>
+                    </mat-radio-group>
+
+                    <mat-radio-group formControlName="loudVoice"><h4>Loudness in Voice:</h4>
+                      <mat-radio-button value="Too loud">Too loud</mat-radio-button>
+                      <mat-radio-button value="Too soft">Too soft</mat-radio-button>
+                      <mat-radio-button value="Appropriate">Appropriate</mat-radio-button>
+                    </mat-radio-group>
+
+                    <mat-radio-group formControlName="distanceBookEye"><h4>Distance between Book & Eyes:</h4>
+                      <mat-radio-button value="Too far">Too far</mat-radio-button>
+                      <mat-radio-button value="Too near">Too near</mat-radio-button>
+                      <mat-radio-button value="Appropriate">Appropriate</mat-radio-button>
+                    </mat-radio-group>
+
+                    <mat-radio-group formControlName="reading"><h4>Reading:</h4>
+                      <mat-radio-button value="Too fast">Too fast</mat-radio-button>
+                      <mat-radio-button value="Too slow">Too slow</mat-radio-button>
+                      <mat-radio-button value="Appropriate">Appropriate</mat-radio-button>
+                    </mat-radio-group>
+
+                    <!-- <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Name Familiar Picture:" formControlName="posture">
+                        </mat-form-field>
+                      </div>
+                    </div> -->
+
+                    <!-- <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Answer Questions about what they see in Book:" formControlName="loudVoice">
+                        </mat-form-field>
+                      </div>
+                    </div> -->
+
+                    <!-- <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Know the Correct way to Hold or Handle a Book:" formControlName="distanceBookEye">
+                        </mat-form-field>
+                      </div>
+                    </div> -->
+
+                    <!-- <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Recognize Alphabets:" formControlName="reading">
+                        </mat-form-field>
+                      </div>
+                    </div> -->
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Adds a Word:" formControlName="addWord">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Mispronounce a Word:" formControlName="mispronounceWord">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Ask Examiner to Pronounce a Word:" formControlName="pronounceWord">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Any Other Specify:" formControlName="specify">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </ng-container>
+              </mat-card>
+
+              <mat-card>
+                <ng-container formGroupName="writing">
+                  <mat-card-header><mat-card-subtitle><h4><b>Writing</b></h4></mat-card-subtitle></mat-card-header>
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Left to Right Orientation:" formControlName="leftToRight">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Ignores Margin:" formControlName="ignoreMargin">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Ignores Lines:" formControlName="ignoreLine">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Excessive Over Writing:" formControlName="overWritting">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <mat-radio-group formControlName="posture"><h4>Posture:</h4>
+                      <mat-radio-button value="Appropriate">Appropriate</mat-radio-button>
+                      <mat-radio-button value="Inappropriate">Inappropriate</mat-radio-button>
+                    </mat-radio-group>
+
+                    <mat-radio-group formControlName="writingStyle"><h4>Wrinting Style:</h4>
+                      <mat-radio-button value="Macro">Macro</mat-radio-button>
+                      <mat-radio-button value="Micro">Micro</mat-radio-button>
+                      <mat-radio-button value="Appropriate">Appropriate</mat-radio-button>
+                    </mat-radio-group>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Mixing of Capital and Small Letters:" formControlName="mixingCapitalSmall">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Omits dots on 'i' and line on 't':" formControlName="omits">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <mat-radio-group formControlName="spaciningLine"><h4>Spacing between Lines:</h4>
+                      <mat-radio-button value="Appropriate">Appropriate</mat-radio-button>
+                      <mat-radio-button value="Inappropriate">Inappropriate</mat-radio-button>
+                    </mat-radio-group>
+
+                    <mat-radio-group formControlName="puctuations"><h4>Punctuations:</h4>
+                      <mat-radio-button value="Appropriate">Appropriate</mat-radio-button>
+                      <mat-radio-button value="Inappropriate">Inappropriate</mat-radio-button>
+                    </mat-radio-group>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Reversals of Letters:" formControlName="letterReversal">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Reversals of Words:" formControlName="wordReversal">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Any Other Specify:" formControlName="anyOther">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </ng-container>
+              </mat-card>
+
+              <mat-card>
+                <ng-container formGroupName="spelling">
+                  <mat-card-header><mat-card-subtitle><h4><b>Spelling</b></h4></mat-card-subtitle></mat-card-header>
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Sight Words:" formControlName="sightWords">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="CVC Words:" formControlName="cvcWords">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Blend Words:" formControlName="blendWords">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Consonant Diagraphs:" formControlName="consonant">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Any Other Specify:" formControlName="anyOther">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </ng-container>
+              </mat-card>
+
+              <mat-card>
+                <ng-container formGroupName="readingComprehension">
+                  <mat-card-header><mat-card-subtitle><h4><b>Reading Comprehension</b></h4></mat-card-subtitle></mat-card-header>
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Answers with Prompt:" formControlName="promptAnswers">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Questions to be Repeated once,twice, 3-5 times:" formControlName="repeatedQuestion">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Questions to be Transalated to Mother Tounge:" formControlName="transalatedQuestion">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Answers by referring back to reading material:" formControlName="answerReadingMaterial">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Refuses to Answers/Repeats the Question:" formControlName="refusesOrRepeats">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Any Other Specify:" formControlName="anyOther">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </ng-container>
+              </mat-card>
+
+              <mat-card>
+                <ng-container formGroupName="aritmeticComputation">
+                  <mat-card-header><mat-card-subtitle><h4><b>Arithmetic Computation</b></h4></mat-card-subtitle></mat-card-header>
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Right Left Organization:" formControlName="rightLeft">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Identification of Operational Symbols:" formControlName="operationalSymbols">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Place Values:" formControlName="placeValues">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Finger Counting:" formControlName="fingerCounting">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Draw Lines and Count for addition:" formControlName="drawAddtion">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Draw Lines and cuts and sustracts:" formControlName="darwSubtraction">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Ignores Carry Over in Addition:" formControlName="ignoreAddition">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Ignores Deduction after borrowing in Substraction:" formControlName="ignoreSubtraction">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Place Value Errors in Multiplication:" formControlName="errorMultplication">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Place Value Errors in Division:" formControlName="errorDivision">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Errors while Transferring from Work to Fair Work:" formControlName="errorTransfer">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Substitution(of Square for Rectangle):" formControlName="substitutions">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Error in Placing Decimal Points:" formControlName="errorDecimalPoint">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Addition:" formControlName="addition">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Subtraction:" formControlName="subtraction">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Multiplication:" formControlName="multiplication">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Division:" formControlName="division">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Any Other Specify:" formControlName="anyOther">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </ng-container>
+              </mat-card>
+
+              <mat-card>
+                <ng-container formGroupName="arithmeticReasoning">
+                  <mat-card-header><mat-card-subtitle><h4><b>Arithmetic Reasoning</b></h4></mat-card-subtitle></mat-card-header>
+
+                  <dl>Requires Assitance in Solving Story Sum</dl>
+                    <dt class="sublist-list"><div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Needs to be read out for Story Sum:" formControlName="readStorySum">
+                        </mat-form-field>
+                      </div>
+                    </div></dt>
+
+                    <dt class="sublist-list"><div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Needs to be explained for story sums including the operations to use:" formControlName="explainStorySum">
+                        </mat-form-field>
+                      </div>
+                    </div></dt>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Addition:" formControlName="addition">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Substraction:" formControlName="subtraction">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Multiplication:" formControlName="mutiplication">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Division:" formControlName="division">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row box">
+                      <div class="col">
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Any Other Specify:" formControlName="anyOther">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </ng-container>
+              </mat-card>
+            </ng-container>
+          </mat-card><br>
+
+          <mat-card>
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <textarea matInput placeholder="Test Administered:" formControlName="testAdministered"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <textarea matInput placeholder="Impression:" formControlName="impressions"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <textarea matInput placeholder="Observations:" formControlName="observations"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <textarea matInput placeholder="Recommendations:" formControlName="recommendations"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card><br>
+        </ng-container>
+      </mat-card>
+
+      <mat-card>
+        <div class="row box">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Provisional Diagnosis:" formControlName="provisonalDiadnosis">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row box">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Family and Environmental Strength:" formControlName="environmentalStreams">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row box">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Family and Environmental Barriers:" formControlName="environmentalBarriers">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">UPDATE</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
