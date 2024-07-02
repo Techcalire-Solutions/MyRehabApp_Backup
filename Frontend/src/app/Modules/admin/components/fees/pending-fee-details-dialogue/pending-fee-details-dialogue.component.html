@@ -1,0 +1,54 @@
+<table mat-table *ngIf="data" [dataSource]= "data" class="mat-elevation-z8">
+  <ng-container matColumnDef="date" >
+     <th mat-header-cell class="aligncentr" *matHeaderCellDef >Date</th>
+     <td mat-cell *matCellDef="let element">
+      <a *ngIf="element.type == 'Session'">{{element.sessionMasterId.date | date: 'dd/MM/yyyy'}}</a>
+      <a *ngIf="element.type == 'LMC'">{{element.lmcId.date | date: 'dd/MM/yyyy'}}</a>
+      <a *ngIf="element.type == 'GroupSession'">{{element.groupMasterId.date | date: 'dd/MM/yyyy'}}</a>
+    </td>
+   </ng-container>
+
+   <ng-container matColumnDef="therapistName" >
+     <th mat-header-cell class="aligncentr" *matHeaderCellDef> Therapist Name </th>
+     <td mat-cell *matCellDef="let element">
+      <a *ngIf="element.type == 'Session'">{{element.sessionMasterId.session_id.therapistName.name}}</a>
+      <a *ngIf="element.type == 'LMC'">{{element.lmcId.session_id.therapistName.name}}</a>
+
+    </td>
+   </ng-container>
+
+   <ng-container matColumnDef="slotName">
+     <th mat-header-cell class="aligncentr" *matHeaderCellDef>Slot Name</th>
+     <td mat-cell *matCellDef="let element">
+      <a *ngIf="element.type == 'Session'">{{element.sessionMasterId.session_id.slotName.slotName}} </a>
+      <a *ngIf="element.type == 'LMC'">{{element.lmcId.session_id.slotName.slotName}} </a>
+      <a *ngIf="element.type == 'GroupSession'">{{element.groupMasterId.session_id.slotName.slotName}}</a>
+     </td>
+   </ng-container>
+
+   <ng-container matColumnDef="pendingAmount">
+     <th mat-header-cell class="aligncentr" *matHeaderCellDef>Pending Amount</th>
+     <td mat-cell *matCellDef="let element"> {{element.pendingAmount}} </td>
+   </ng-container>
+
+   <ng-container matColumnDef="sessionStatus">
+    <th mat-header-cell class="aligncentr" *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let element">
+      <a *ngIf="element.type == 'Session'">{{element.sessionMasterId.sessionStatus}} </a>
+      <a *ngIf="element.type == 'LMC'">{{element.lmcId.sessionStatus}}</a>
+       </td>
+  </ng-container>
+
+   <ng-container matColumnDef="manage">
+     <th mat-header-cell *matHeaderCellDef>Manage</th>
+     <td mat-cell *matCellDef="let element">
+      <button mat-raised-button color="primary" (click)="payFee(element._id)" type="button">PAY</button>
+     </td>
+   </ng-container>
+
+
+   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<br><button mat-raised-button color="primary" (click)="payCurrentFee()" type="button">PAY CURRENT</button>

@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<mat-card *ngIf="users">
+  <mat-card-header>
+    <mat-card-title>USER</mat-card-title>
+  </mat-card-header>
+
+  <div class="row box">
+    <div class="card">
+      <ng-container *ngIf="users.file_url; else alternativeImage">
+        <div class="image-container">
+          <img class="profile-photo" src="{{ users.file_url }}" />
+        </div>
+      </ng-container>
+
+      <ng-template #alternativeImage>
+        <div class="image-container">
+          <img src="../../../../../../assets/no_image_part.png" alt="Alternative Image" style="width: 250px; height: 250px;" />
+        </div>
+      </ng-template>
+      <h1>{{users.name | uppercase}} <a *ngIf="users.md">MD</a></h1>
+      <!-- <p class="title">{{users.}}</p> -->
+      <p>{{users.role | uppercase}}</p>
+      <p *ngIf="users.role == 'therapist'">{{users.therapyCategory.therapyName}}</p>
+      <p>{{users.email}}</p>
+    </div>
+
+    <div class="card" *ngIf="celeb"><br><br>
+      <p>BirthDate: {{celeb.birthDate | date: 'dd/MM/yyyy'}}</p>
+      <p>JoiningDate: {{celeb.joiningDate | date: 'dd/MM/yyyy'}}</p>
+      <p class="title" *ngIf="qualifications.length != 0">Qualification</p>
+      <p *ngFor="let item of qualifications">{{item.qualifications}}</p>
+      <br>
+      <p class="title" *ngIf="experiences.length != 0">Experiences</p>
+      <p *ngFor="let item of experiences">{{item.experiences}}</p>
+    </div>
+  </div>
+</mat-card>
+

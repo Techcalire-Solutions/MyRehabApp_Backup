@@ -1,0 +1,281 @@
+<mat-card *ngIf="otData">
+  <mat-card class="container">
+    <div class="row">
+      <div class="col">
+        <h4>Date of assessment : {{otData.date | date: 'dd/MM/yyyy'}}</h4>
+      </div>
+      <div class="col">
+        <h4>Updated Date : {{otData.updatedDate | date: 'dd/MM/yyyy'}}</h4>
+      </div>
+    </div>
+    <ul class="responsive-table">
+      <li class="table-header">
+        <h3><b>OCCUPATIONAL THERAPY ASSESSMENT FORM</b></h3>
+        <li class="table-row">
+          <div>Medical Diagnosis : {{otData.medicalDiagnosis}}</div>
+        </li>
+        <li class="table-row">
+          <div>General Appearance : {{otData.generalAppearence}}</div>
+        </li>
+        <li class="table-row">
+          <div>On Observation : {{otData.onObservation}}</div>
+        </li>
+    </ul>
+  </mat-card>
+
+  <mat-accordion>
+    <mat-card class="container">
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            PERFORMANCE AREAS
+          </mat-panel-title>
+          <mat-panel-description>
+             {{panelOpenState ? 'Currently I am open' : 'Click me to open'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <section class="dl-blurbs">
+          <dl>
+            <dt>Activities of Daily Living</dt><br>
+            <dd>Grooming&nbsp; : &nbsp;&nbsp;{{otData.performanceAreas.dailyLiving.grooming}}</dd>
+            <dd>Oral Hygiene&nbsp; : &nbsp;&nbsp;{{otData.performanceAreas.dailyLiving.oralHygiene}}</dd>
+            <dd>Bathing&nbsp; : &nbsp;&nbsp;{{otData.performanceAreas.dailyLiving.bathing}}</dd>
+            <dd>Toilet Hygiene&nbsp; : &nbsp;&nbsp;{{otData.performanceAreas.dailyLiving.toiletHygiene}}</dd>
+            <dd>Dressing&nbsp; : &nbsp;&nbsp;{{otData.performanceAreas.dailyLiving.dressing}}</dd>
+            <dd>Functional Mobility&nbsp; : &nbsp;&nbsp;{{otData.performanceAreas.dailyLiving.functionalMobility}}</dd>
+
+            <br><dt>Educational Activities</dt><br>
+            <dd>{{otData.performanceAreas.educational}}</dd>
+            <br><dt>Play and Leisure</dt><br>
+            <dd>{{otData.performanceAreas.playAndLeisure}}</dd>
+          </dl>
+        </section>
+      </mat-expansion-panel>
+    </mat-card>
+
+    <mat-card class="container">
+      <mat-expansion-panel (opened)="panelOpenStateComponents = true" (closed)="panelOpenStateComponents = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            PERFORMANCE COMPONENTS
+          </mat-panel-title>
+          <mat-panel-description>
+             {{panelOpenStateComponents ? 'Currently I am open' : 'Click me to open'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <section class="dl-blurbs">
+          <dl>
+            <dt>01. Sensory Motor</dt><br>
+            <dl>
+              <dt class="sublist">Sensory Integration</dt><br>
+                <dl>
+                  <dt class="sublist-list">Sensory Awareness&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.sensorymotor.sensoryIntegration.sensoryAwareness}}</dt><br>
+                  <dt class="sublist-list">Sensory Processing&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.sensorymotor.sensoryIntegration.sensoryProcessing}}</dt><br>
+                  <dt class="sublist-list">Ability to Interpret stimuli</dt><br>
+                  <dl>
+                    <dt class="sublist-list-list">Tactile&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.sensoryIntegration.interpretAbility.tactile}}</dt><br>
+                    <dt class="sublist-list-list">Proprioceptive&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.sensoryIntegration.interpretAbility.propriceptive}}</dt><br>
+                    <dt class="sublist-list-list">Vestibular&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.sensoryIntegration.interpretAbility.vestibular}}</dt><br>
+                    <dt class="sublist-list-list">Auditory&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.sensoryIntegration.interpretAbility.auditory}}</dt><br>
+                    <dt class="sublist-list-list">Visual&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.sensoryIntegration.interpretAbility.visual}}</dt><br>
+                    <dt class="sublist-list-list">Gustatory&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.sensoryIntegration.interpretAbility.gustatory}}</dt><br>
+                    <dt class="sublist-list-list">Olfactory&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.sensoryIntegration.interpretAbility.olfactory}}</dt><br>
+                  </dl>
+                </dl>
+                <dl>
+                  <dt class="sublist">Perceptual Skills</dt><br>
+                  <dl>
+                    <dt class="sublist-list">Stereognosis&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.perceptualSkills.stereognosis}}</dt><br>
+                    <dt class="sublist-list">Kinesthesia&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.perceptualSkills.kinesthesia}}</dt><br>
+                    <dt class="sublist-list">Body Schema&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.perceptualSkills.bodyScheme}}</dt><br>
+                    <dt class="sublist-list">R/L Discrimination&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.perceptualSkills.rlDiscrimination}}</dt><br>
+                    <dt class="sublist-list">Form Constancy&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.perceptualSkills.formConstancy}}</dt><br>
+                    <dt class="sublist-list">Position in Space&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.perceptualSkills.positionSpace}}</dt><br>
+                    <dt class="sublist-list">Visual Closure&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.perceptualSkills.visualClosure}}</dt><br>
+                    <dt class="sublist-list">Figure Ground Discrimination&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.perceptualSkills.groundDiscrimination}}</dt><br>
+                    <dt class="sublist-list">Depth Perception&nbsp; : &nbsp;&nbsp;
+                      {{otData.performanceComponents.sensorymotor.perceptualSkills.depthPerception}}</dt><br>
+                    <dt class="sublist-list">Topographical Orientation&nbsp; : &nbsp;&nbsp;
+                        {{otData.performanceComponents.sensorymotor.perceptualSkills.topographicalOrientation}}</dt><br>
+                  </dl>
+                </dl>
+            </dl>
+            <br><dt>02. Neuro-muscular</dt><br>
+            <dl>
+              <dt class="sublist-list">ROM&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.neuroMuscular.rom}}</dt><br>
+              <dt class="sublist-list">Muscle Tone&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.neuroMuscular.muscleTone}}</dt><br>
+              <dt class="sublist-list">Tightness&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.neuroMuscular.tightness}}</dt><br>
+              <dt class="sublist-list">Contracture&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.neuroMuscular.contracture}}</dt><br>
+              <dt class="sublist-list">Deformity&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.neuroMuscular.deformity}}</dt><br>
+              <dt class="sublist-list">Muscle Strength&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.neuroMuscular.muscleStrength}}</dt><br>
+              <dt class="sublist-list">Endurance&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.neuroMuscular.endurance}}</dt><br>
+              <dt class="sublist-list">Postural Control in Sitting&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.neuroMuscular.posturalSitting}}</dt><br>
+              <dt class="sublist-list">Postural Control in Standing&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.neuroMuscular.posturalStanding}}</dt><br>
+              <dt class="sublist-list">Gait&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.neuroMuscular.gait}}</dt><br>
+              <dt class="sublist-list">Other Findings&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.neuroMuscular.otherFindings}}</dt><br>
+            </dl>
+            <br><dt>03. Motor</dt><br>
+            <dl>
+              <dt class="sublist-list">Activity Tolerance&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.motor.activityTolerance}}</dt><br>
+              <dt class="sublist-list">Gross Motor Coordination&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.motor.grossMotor}}</dt><br>
+              <dt class="sublist-list">Midline Crossing&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.motor.midlineCrossing}}</dt><br>
+              <dt class="sublist-list">Laterality&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.motor.laterality}}</dt><br>
+              <dt class="sublist-list">Bilateral Integration&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.motor.bilateralIntegration}}</dt><br>
+              <dt class="sublist-list">Praxis&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.motor.praxis}}</dt><br>
+              <dt class="sublist-list">Fine Motor Coordination&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.motor.fineMotor}}</dt><br>
+              <dt class="sublist-list">Standing Balance and Equilibrium&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.motor.standingBalance}}</dt><br>
+              <dt class="sublist-list">Oral Motor Control&nbsp; : &nbsp;&nbsp;
+                {{otData.performanceComponents.motor.oralMotor}}</dt><br>
+            </dl>
+            <br><dt>04. Hand Functions</dt><br>
+            <dl>
+              <table>
+                <tr>
+                  <th></th>
+                  <th>RIGHT</th>
+                  <th>LEFT</th>
+                </tr>
+
+                <ng-container>
+                  <tr>
+                    <td>Reach</td>
+                    <td>{{otData.performanceComponents.handFunction.reach.right}}</td>
+                    <td>{{otData.performanceComponents.handFunction.reach.left}}</td>
+                  </tr>
+                </ng-container>
+
+                <ng-container>
+                  <tr>
+                    <td>Grasp</td>
+                    <td>{{otData.performanceComponents.handFunction.grasp.right}}</td>
+                    <td>{{otData.performanceComponents.handFunction.grasp.left}}</td>
+                  </tr>
+                </ng-container>
+
+                <ng-container>
+                  <tr>
+                    <td>Prehension</td>
+                    <td>{{otData.performanceComponents.handFunction.prehension.right}}</td>
+                    <td>{{otData.performanceComponents.handFunction.prehension.left}}</td>
+                  </tr>
+                </ng-container>
+
+                <ng-container>
+                  <tr>
+                    <td>Opposition</td>
+                    <td>{{otData.performanceComponents.handFunction.opposition.right}}</td>
+                    <td>{{otData.performanceComponents.handFunction.opposition.left}}</td>
+                  </tr>
+                </ng-container>
+
+                <ng-container>
+                  <tr>
+                    <td>Release</td>
+                    <td>{{otData.performanceComponents.handFunction.release.right}}</td>
+                    <td>{{otData.performanceComponents.handFunction.release.left}}</td>
+                  </tr>
+                </ng-container>
+
+                <ng-container>
+                  <tr>
+                    <td>Pre-Writing Skills</td>
+                    <td>{{otData.performanceComponents.handFunction.preWriting.right}}</td>
+                    <td>{{otData.performanceComponents.handFunction.preWriting.left}}</td>
+                  </tr>
+                </ng-container>
+              </table>
+            </dl>
+
+            <br><dt>05. Cognitive Functioning</dt><br>
+            <dl>
+              <dt class="sublist">A. Cognitive Integration</dt><br>
+                <dl>
+                  <dt class="sublist-list">Arousal&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveIntegration.arousal}}</dt><br>
+                  <dt class="sublist-list">Initiation of Activity&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveIntegration.initiationActivity}}</dt><br>
+                  <dt class="sublist-list">Termination of Activity&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveIntegration.terminationActivity}}</dt><br>
+                  <dt class="sublist-list">Orientation of Time&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveIntegration.orientationTime}}</dt><br>
+                  <dt class="sublist-list">Orientation of Place&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveIntegration.orientationPlace}}</dt><br>
+                  <dt class="sublist-list">recognition&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveIntegration.recognition}}</dt><br>
+                </dl>
+            </dl>
+
+            <dl>
+              <dt class="sublist">B. Cognitive Component</dt><br>
+                <dl>
+                  <dt class="sublist-list">Attention Span&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveComponent.attentionSpan}}</dt><br>
+                  <dt class="sublist-list">Concentration Span&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveComponent.concentrationSpan}}</dt><br>
+                  <dt class="sublist-list">STM&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveComponent.stm}}</dt><br>
+                  <dt class="sublist-list">LTM&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveComponent.ltm}}</dt><br>
+                  <dt class="sublist-list"> Recent Memory&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveComponent.recentMemory}}</dt><br>
+                  <dt class="sublist-list">Working Memory&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveComponent.workingMemory}}</dt><br>
+                  <dt class="sublist-list">Sequencing&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveComponent.sequencing}}</dt><br>
+                  <dt class="sublist-list">Categorisation&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveComponent.categorisation}}</dt><br>
+                  <dt class="sublist-list">Concept Formation&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveComponent.conceptFormation}}</dt><br>
+                  <dt class="sublist-list">Problem Solving Skills&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveComponent.problemSolving}}</dt><br>
+                  <dt class="sublist-list"> Generalisation of Learning&nbsp; : &nbsp;&nbsp;
+                    {{otData.performanceComponents.cognitiveFunctioning.cognitiveComponent.generalisationLearning}}</dt><br>
+
+                </dl>
+            </dl>
+          </dl>
+        </section>
+      </mat-expansion-panel>
+    </mat-card>
+
+    <mat-card>
+      <div>Recommendation : {{otData.remarks}}</div>
+    </mat-card>
+  </mat-accordion>
+</mat-card>

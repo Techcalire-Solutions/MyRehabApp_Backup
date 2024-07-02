@@ -1,0 +1,17 @@
+@media(max-width:576px)
+{
+    .box{
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+.center{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+
+
+}

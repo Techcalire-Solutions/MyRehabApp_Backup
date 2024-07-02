@@ -1,0 +1,39 @@
+
+.full-width{
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.date-filter-container {
+  margin: 20px 0; /* Add margin for spacing */
+}
+
+.date-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.date-filter label {
+  margin-right: 10px; /* Add space between labels and input fields */
+}
+
+.date-filter input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px; /* Add space between input fields */
+}
+
+.date-filter button {
+  padding: 5px 10px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+

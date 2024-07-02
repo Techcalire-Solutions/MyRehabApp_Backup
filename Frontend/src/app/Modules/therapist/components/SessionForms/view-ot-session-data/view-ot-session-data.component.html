@@ -1,0 +1,278 @@
+
+<mat-card>
+
+  <h2>OT SESSION DATA</h2>
+
+  <div *ngIf="otData" class="tab">
+    <div class="row">
+      <div class="col">
+        <h4>Submitted on : {{otData.date | date: 'dd/MM/yyyy'}}</h4>
+      </div>
+      <div class="col">
+        <h4>Last updates on : {{otData.updatedDate | date: 'dd/MM/yyyy'}}</h4>
+      </div>
+    </div>
+
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+          <th>Remarks</th>
+          <th>key_prompt</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td rowspan = "2">Sensory Modulation</td>
+            <td>Threshold</td>
+            <td (click)="logRemarks()">{{otData.sensoryModulation.threshold.remarks}}</td>
+            <td *ngIf="otData.sensoryModulation.threshold.key || otData.sensoryModulation.threshold.prompt">
+              {{otData.sensoryModulation.threshold.key}}/{{otData.sensoryModulation.threshold.prompt}}</td>
+        </tr>
+        <tr>
+            <td>Arousal</td>
+            <td (click)="logRemarks()">{{otData.sensoryModulation.arousal.remarks}}</td>
+            <td *ngIf="otData.sensoryModulation.arousal.key || otData.sensoryModulation.arousal.prompt">
+              {{otData.sensoryModulation.arousal.key}}/{{otData.sensoryModulation.arousal.prompt}}</td>
+        </tr>
+
+
+
+        <tr>
+          <td>Proprioceptive Discrimination</td>
+            <td></td>
+            <td (click)="logRemarks()">{{otData.proprioceptiveDiscrimination.remarks}}</td>
+            <td *ngIf="otData.proprioceptiveDiscrimination.key || otData.proprioceptiveDiscrimination.prompt">
+              {{otData.proprioceptiveDiscrimination.key}}/{{otData.proprioceptiveDiscrimination.prompt}}</td>
+        </tr>
+
+
+
+        <tr>
+          <td>Vestibular Discrimination</td>
+          <td></td>
+          <td (click)="logRemarks()">{{otData.vestibularDiscrimination.remarks}}</td>
+          <td *ngIf="otData.vestibularDiscrimination.key || otData.vestibularDiscrimination.prompt">
+            {{otData.vestibularDiscrimination.key}}/{{otData.vestibularDiscrimination.prompt}}</td>
+        </tr>
+
+
+
+        <tr>
+          <td rowspan = "2">Tactile Discrimination</td>
+          <td>Tool Manipulation</td>
+          <td (click)="logRemarks()">{{otData.tactileDiscrimination.toolManipulation.remarks}}</td>
+          <td *ngIf="otData.tactileDiscrimination.toolManipulation.key|| otData.tactileDiscrimination.toolManipulation.prompt">
+            {{otData.tactileDiscrimination.toolManipulation.key}}/{{otData.tactileDiscrimination.toolManipulation.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Vision Occluded</td>
+          <td (click)="logRemarks()">{{otData.tactileDiscrimination.visionOccluded.remarks}}</td>
+          <td *ngIf="otData.tactileDiscrimination.visionOccluded.key || otData.tactileDiscrimination.visionOccluded.key">
+            {{otData.tactileDiscrimination.visionOccluded.key}}/{{otData.tactileDiscrimination.visionOccluded.prompt}}</td>
+        </tr>
+
+
+
+        <tr>
+          <td rowspan = "6">Visual</td>
+            <td>Acuity</td>
+            <td (click)="logRemarks()">{{otData.visual.acuity.remarks}}</td>
+            <td *ngIf="otData.visual.acuity.key || otData.visual.acuity.prompt">
+              {{otData.visual.acuity.key}}/{{otData.visual.acuity.prompt}}</td>
+        </tr>
+        <tr>
+            <td>Eye Strain</td>
+            <td (click)="logRemarks()">{{otData.visual.eyeStrain.remarks}}</td>
+            <td *ngIf="otData.visual.eyeStrain.key || otData.visual.eyeStrain.prompt">
+              {{otData.visual.eyeStrain.key}}/{{otData.visual.eyeStrain.prompt}}</td>
+        </tr>
+        <tr>
+            <td>Quick Localisation</td>
+            <td (click)="logRemarks()">{{otData.visual.quickLocalisation.remarks}}</td>
+            <td *ngIf="otData.visual.quickLocalisation.key || otData.visual.quickLocalisation.prompt">
+              {{otData.visual.quickLocalisation.key}}/{{otData.visual.quickLocalisation.prompt}}</td>
+        </tr>
+        <tr>
+            <td>General Eye Movements</td>
+            <td (click)="logRemarks()">{{otData.visual.generalEyeMovements.remarks}}</td>
+            <td *ngIf="otData.visual.generalEyeMovements.key || otData.visual.generalEyeMovements.prompt">
+              {{otData.visual.generalEyeMovements.key}}/{{otData.visual.generalEyeMovements.prompt}}</td>
+        </tr>
+        <tr>
+            <td>Dissociation</td>
+            <td (click)="logRemarks()">{{otData.visual.dissociation.remarks}}</td>
+            <td *ngIf="otData.visual.dissociation.key || otData.visual.dissociation.prompt">
+              {{otData.visual.dissociation.key}}/{{otData.visual.dissociation.prompt}}</td>
+        </tr>
+        <tr>
+            <td>Perceptual</td>
+            <td (click)="logRemarks()">{{otData.visual.perceptual.remarks}}</td>
+            <td *ngIf="otData.visual.perceptual.key || otData.visual.perceptual.prompt">
+              {{otData.visual.perceptual.key}}/{{otData.visual.perceptual.prompt}}</td>
+        </tr>
+
+
+        <tr>
+          <td rowspan = "5">Postural</td>
+          <td>Muscle Tone</td>
+          <td (click)="logRemarks()">{{otData.postural.muscleTone.remarks}}</td>
+          <td *ngIf="otData.postural.muscleTone.key || otData.postural.muscleTone.prompt">
+            {{otData.postural.muscleTone.key}}/{{otData.postural.muscleTone.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Reflex</td>
+          <td (click)="logRemarks()">{{otData.postural.reflex.remarks}}</td>
+          <td *ngIf="otData.postural.reflex.key || otData.postural.reflex.prompt">
+            {{otData.postural.reflex.key}}/{{otData.postural.reflex.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Endurance</td>
+          <td (click)="logRemarks()">{{otData.postural.endurance.remarks}}</td>
+          <td *ngIf="otData.postural.endurance.key || otData.postural.endurance.prompt">
+            {{otData.postural.endurance.key}}/{{otData.postural.endurance.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Postural Control</td>
+          <td (click)="logRemarks()">{{otData.postural.posturalControl.remarks}}</td>
+          <td *ngIf="otData.postural.posturalControl.key || otData.postural.posturalControl.prompt">
+            {{otData.postural.posturalControl.key}}/{{otData.postural.posturalControl.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Gait</td>
+          <td (click)="logRemarks()">{{otData.postural.gait.remarks}}</td>
+          <td *ngIf="otData.postural.gait.key||otData.postural.gait.prompt">
+            {{otData.postural.gait.key}}/{{otData.postural.gait.prompt}}</td>
+        </tr>
+
+
+        <tr>
+          <td rowspan = "4">Bilateral Integration</td>
+          <td>Midline Crossing</td>
+          <td (click)="logRemarks()">{{otData.bilateralIntegration.midlineCrossing.remarks}}</td>
+          <td *ngIf="otData.bilateralIntegration.midlineCrossing.key||otData.bilateralIntegration.midlineCrossing.prompt">
+            {{otData.bilateralIntegration.midlineCrossing.key}}/{{otData.bilateralIntegration.midlineCrossing.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Symmetrical</td>
+          <td (click)="logRemarks()">{{otData.bilateralIntegration.symmetrical.remarks}}</td>
+          <td *ngIf="otData.bilateralIntegration.symmetrical.key||otData.bilateralIntegration.symmetrical.prompt">
+            {{otData.bilateralIntegration.symmetrical.key}}/{{otData.bilateralIntegration.symmetrical.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Asymmetrical</td>
+          <td (click)="logRemarks()">{{otData.bilateralIntegration.asymmetrical.remarks}}</td>
+          <td *ngIf="otData.bilateralIntegration.asymmetrical.key||otData.bilateralIntegration.asymmetrical.prompt">
+            {{otData.bilateralIntegration.asymmetrical.key}}/{{otData.bilateralIntegration.asymmetrical.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Reciprocal</td>
+          <td (click)="logRemarks()">{{otData.bilateralIntegration.reciprocal.remarks}}</td>
+          <td *ngIf="otData.bilateralIntegration.reciprocal.key||otData.bilateralIntegration.reciprocal.prompt">
+            {{otData.bilateralIntegration.reciprocal.key}}/{{otData.bilateralIntegration.reciprocal.prompt}}</td>
+        </tr>
+
+
+        <tr>
+          <td rowspan = "3">Praxis</td>
+          <td>ideation</td>
+          <td (click)="logRemarks()">{{otData.praxis.ideation.remarks}}</td>
+          <td *ngIf="otData.praxis.ideation.key||otData.praxis.ideation.prompt">
+            {{otData.praxis.ideation.key}}/{{otData.praxis.ideation.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Motor Planning</td>
+          <td (click)="logRemarks()">{{otData.praxis.motorPlanning.remarks}}</td>
+          <td *ngIf="otData.praxis.motorPlanning.key||otData.praxis.motorPlanning.prompt">
+            {{otData.praxis.motorPlanning.key}}/{{otData.praxis.motorPlanning.prompt}}</td>
+        </tr>
+        <tr>
+          <td>execution</td>
+          <td (click)="logRemarks()">{{otData.praxis.execution.remarks}}</td>
+          <td *ngIf="otData.praxis.execution.key||otData.praxis.execution.prompt">
+            {{otData.praxis.execution.key}}/{{otData.praxis.execution.prompt}}</td>
+        </tr>
+
+
+        <tr>
+          <td>Gross Motor</td>
+          <td></td>
+          <td (click)="logRemarks()">{{otData.grossMotor.remarks}}</td>
+          <td *ngIf="otData.grossMotor.key||otData.grossMotor.prompt">
+            {{otData.grossMotor.key}}/{{otData.grossMotor.prompt}}</td>
+        </tr>
+
+
+        <tr>
+          <td rowspan = "4">FineMotor</td>
+          <td>Strength</td>
+          <td (click)="logRemarks()">{{otData.fineMotor.strength.remarks}}</td>
+          <td *ngIf="otData.fineMotor.strength.key||otData.fineMotor.strength.prompt">
+            {{otData.fineMotor.strength.key}}/{{otData.fineMotor.strength.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Grip</td>
+          <td (click)="logRemarks()">{{otData.fineMotor.grip.remarks}}</td>
+          <td *ngIf="otData.fineMotor.grip.key||otData.fineMotor.grip.prompt">
+            {{otData.fineMotor.grip.key}}/{{otData.fineMotor.grip.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Isolation(Wrist)</td>
+          <td (click)="logRemarks()">{{otData.fineMotor.isolationWrist.remarks}}</td>
+          <td *ngIf="otData.fineMotor.isolationWrist.key||otData.fineMotor.isolationWrist.prompt">
+            {{otData.fineMotor.isolationWrist.key}}/{{otData.fineMotor.isolationWrist.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Isolation(Finger)</td>
+          <td (click)="logRemarks()">{{otData.fineMotor.isolationFingers.remarks}}</td>
+          <td *ngIf="otData.fineMotor.isolationFingers.key||otData.fineMotor.isolationFingers.prompt">
+            {{otData.fineMotor.isolationFingers.key}}/{{otData.fineMotor.isolationFingers.prompt}}</td>
+        </tr>
+
+
+        <tr>
+          <td rowspan = "2">Auditory And Language</td>
+          <td>Articulation</td>
+          <td (click)="logRemarks()">{{otData.auditoryAndLanguage.articulation.remarks}}</td>
+          <td *ngIf="otData.auditoryAndLanguage.articulation.key||otData.auditoryAndLanguage.articulation.prompt">
+            {{otData.auditoryAndLanguage.articulation.key}}/{{otData.auditoryAndLanguage.articulation.prompt}}</td>
+        </tr>
+        <tr>
+          <td>Following Instructions</td>
+          <td (click)="logRemarks()">{{otData.auditoryAndLanguage.followingInstructions.remarks}}</td>
+          <td *ngIf="otData.auditoryAndLanguage.followingInstructions.key||otData.auditoryAndLanguage.followingInstructions.prompt">
+            {{otData.auditoryAndLanguage.followingInstructions.key}}/{{otData.auditoryAndLanguage.followingInstructions.prompt}}</td>
+        </tr>
+
+
+        <tr>
+          <td>ADL</td>
+          <td></td>
+          <td (click)="logRemarks()">{{otData.adl.remarks}}</td>
+          <td *ngIf="otData.adl.key||otData.adl.prompt">
+            {{otData.adl.key}}/{{otData.adl.prompt}}</td>
+        </tr>
+
+
+        <tr>
+          <td >Emotional</td>
+          <td></td>
+          <td (click)="logRemarks()">{{otData.emotional.remarks}}</td>
+          <td *ngIf="otData.emotional.key||otData.emotional.prompt">
+            {{otData.emotional.key}}/{{otData.emotional.prompt}}</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+  </div>
+</mat-card>
+
+
+
+
+
+
+

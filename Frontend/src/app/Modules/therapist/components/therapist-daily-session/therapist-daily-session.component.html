@@ -1,0 +1,201 @@
+<!-- ASSESSMENT TABLE -->
+<br><h2 style="margin-left: 40%;">ASSESSMENTS</h2>
+
+ <table *ngIf="assessments" mat-table [dataSource]="assessments" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="slotName">
+    <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Slot Name</h3></th>
+    <td mat-cell *matCellDef="let element" [style.background-color]="element.wl? 'lightgreen' : 'null'"> {{element.slotName.slotName}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="clientName">
+      <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Client Name</h3></th>
+      <td mat-cell *matCellDef="let element" [style.background-color]="element.wl? 'lightgreen' : 'null'"> {{element.clientName.firstName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="manage">
+    <th mat-header-cell *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Manage</h3></th>
+    <td mat-cell class="aligncentr" *matCellDef="let element" [style.background-color]="element.wl? 'lightgreen' : 'null'">
+      <button mat-raised-button color="accent" type="button" (click)="assessementSession(element._id)">Select</button>
+      &nbsp;&nbsp;
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="assessmentColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: assessmentColumns;"></tr>
+ </table>
+
+ <!-- TABLE ENDS -->
+
+<!-- Session Table -->
+
+<br><h2 style="margin-left: 40%;">SESSIONS</h2>
+
+<table *ngIf="selectedSessions" mat-table [dataSource]="selectedSessions" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+
+
+  <ng-container matColumnDef="slotName">
+    <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Slot Name</h3></th>
+    <td mat-cell *matCellDef="let element" [style.background-color]="element.wl? 'lightgreen' : 'null'"> {{element.slotName.slotName}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="clientName">
+      <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Client Name</h3></th>
+      <td mat-cell *matCellDef="let element" [style.background-color]="element.wl? 'lightgreen' : 'null'"> {{element.clientName.firstName}} </td>
+  </ng-container>
+
+
+  <!-- <ng-container matColumnDef="therapistName">
+      <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Therapist Name</h3></th>
+      <td mat-cell *matCellDef="let element"> {{element.therapistName.name}} </td>
+  </ng-container> -->
+
+  <ng-container matColumnDef="manage">
+    <th mat-header-cell *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Manage</h3></th>
+    <td mat-cell class="aligncentr" *matCellDef="let element" [style.background-color]="element.wl? 'lightgreen' : 'null'">
+      <button mat-raised-button color="accent" type="button" (click)="dailySession(element._id)">Select</button>
+      &nbsp;&nbsp;
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="sessionColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: sessionColumns;"></tr>
+</table>
+
+<!-- Table end -->
+
+<br><h2 style="margin-left: 40%;">GROUP SESSIONS</h2>
+
+<table *ngIf="groupSessions" mat-table [dataSource]="groupSessions" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+
+
+  <ng-container matColumnDef="slotName">
+    <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Slot Name</h3></th>
+    <td mat-cell *matCellDef="let element"> {{element.slotName.slotName}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="clientName">
+      <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Client Name</h3></th>
+      <td mat-cell *matCellDef="let element">
+        <tr *ngFor="let data of element.clientName">
+          {{data.clientId.firstName}}
+          <mat-divider></mat-divider>
+        </tr>
+      </td>
+  </ng-container>
+
+
+  <!-- <ng-container matColumnDef="therapistName">
+      <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Therapist Name</h3></th>
+      <td mat-cell *matCellDef="let element"> {{element.therapistName.name}} </td>
+  </ng-container> -->
+
+  <ng-container matColumnDef="manage">
+    <th mat-header-cell *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Manage</h3></th>
+    <td mat-cell class="aligncentr" *matCellDef="let element">
+      <button mat-raised-button color="accent" type="button" (click)="groupSession(element._id)">Select</button>
+      &nbsp;&nbsp;
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="sessionColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: sessionColumns;"></tr>
+</table>
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+<br><h2 style="margin-left: 40%;">LEAVE SESSIONS</h2>
+
+ <table *ngIf="leaveSession" mat-table [dataSource]="leaveSession" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="slotName">
+    <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Slot Name</h3></th>
+    <td mat-cell *matCellDef="let element"> {{element.slotName.slotName}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="clientName">
+      <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Client Name</h3></th>
+      <td mat-cell *matCellDef="let element"> {{element.clientName.firstName}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="therapistName">
+      <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Therapist Name</h3></th>
+      <td mat-cell *matCellDef="let element"> {{element.therapistName.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="sessionType">
+    <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Session Type</h3></th>
+    <td mat-cell *matCellDef="let element"> {{element.sessionType}} </td>
+</ng-container>
+
+  <ng-container matColumnDef="manage">
+    <th mat-header-cell *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Manage</h3></th>
+    <td mat-cell class="aligncentr" *matCellDef="let element">
+      <button mat-raised-button color="accent" *ngIf="element.sessionType == 'Assessment'" type="button" (click)="leaveSessionAssessment(element._id)">Select</button>
+      <button mat-raised-button color="accent" *ngIf="element.sessionType == 'Session'" type="button" (click)="leaveSessionSession(element._id)">Select</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="leaveColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: leaveColumns;"></tr>
+ </table>
+
+
+ <br><h2 style="margin-left: 40%;">COMPENSATION SESSIONS</h2>
+
+ <table *ngIf="compensationSession" mat-table [dataSource]="compensationSession" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="slotName">
+    <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Start Time</h3></th>
+    <td mat-cell *matCellDef="let element"> {{element.slotName.slotName}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="clientName">
+      <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Client Name</h3></th>
+      <td mat-cell *matCellDef="let element"> {{element.clientName.firstName}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="therapistName">
+      <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Therapist Name</h3></th>
+      <td mat-cell *matCellDef="let element"> {{element.therapistName.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="sessionType">
+    <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Session Type</h3></th>
+    <td mat-cell *matCellDef="let element"> {{element.sessionType}} </td>
+</ng-container>
+
+  <ng-container matColumnDef="manage">
+    <th mat-header-cell *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Manage</h3></th>
+    <td mat-cell class="aligncentr" *matCellDef="let element">
+      <button mat-raised-button color="accent" *ngIf="element.sessionType == 'Assessment'" type="button" (click)="leaveSessionAssessment(element._id)">Select</button>
+      <button mat-raised-button color="accent" *ngIf="element.sessionType == 'Session'" type="button" (click)="leaveSessionSession(element._id)">Select</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="compensationColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: compensationColumns;"></tr>
+ </table>

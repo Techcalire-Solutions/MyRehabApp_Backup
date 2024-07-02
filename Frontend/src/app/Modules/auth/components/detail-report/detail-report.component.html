@@ -1,0 +1,35 @@
+
+<head>
+    <title>Therapist Session Count</title>
+</head>
+<body *ngIf="data.status.toLowerCase() === 'sessions'">
+    <h1>Therapist Session Counts</h1>
+    <br><h2>Sessions</h2>
+    <ul id="therapist-list-session"></ul>
+    <br><h2>Leave Sessions</h2>
+    <ul id="therapist-list-leave"></ul>
+    <br><h2>Compensation Sessions</h2>
+    <ul id="therapist-list-comp"></ul>
+    <br><h2>Completed Sessions</h2>
+    <ul id="therapist-list-sm"></ul>
+</body>
+<body *ngIf="data.status.toLowerCase() === 'assessments'">
+  <h1>Therapist Assessment Counts</h1>
+  <br><h2>Assessments</h2>
+  <ul id="therapist-assessment-list"></ul>
+  <br><h2>Leave Assessments</h2>
+  <ul id="therapist-leave-asses"></ul>
+  <br><h2>Compensation Assessments</h2>
+  <ul id="therapist-comp-assess"></ul>
+  <br><h2>Completed Asessments</h2>
+  <ul id="therapist-list-am"></ul>
+</body>
+
+<body *ngIf="data.status.toLowerCase() === 'lmcs'">
+  <h1>LMC Counts</h1>
+  <ul> Lmcs: {{lmcCount}}</ul>
+  <ul> Pending Lmcs: {{notPayCount}}</ul>
+  <ul> Lmcs to Clinic: {{clinicLmcCount}}</ul>
+  <br><h2> Lmc to Therapists</h2>
+  <ul id="therapist-lmc-list"></ul>
+</body>

@@ -1,0 +1,78 @@
+<form class="center-div">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>PENDING</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+      <div  style="overflow-x: auto;">
+        <table *ngIf="filtered" mat-table [dataSource]="filtered" class="mat-elevation-z8">
+          <ng-container matColumnDef="type">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Type</h3></th>
+            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="date">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Date</h3></th>
+            <td mat-cell *matCellDef="let element">
+              <a *ngIf="element.type == 'Session'">{{element.sessionMasterId.date | date: 'dd/MM/yyyy'}}</a>
+              <a *ngIf="element.type == 'LMC'">{{element.lmcId.date | date: 'dd/MM/yyyy'}}</a>
+              <a *ngIf="element.type == 'GroupSession'">{{element.groupMasterId.date | date: 'dd/MM/yyyy'}}</a>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="clientName">
+              <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Client Name</h3></th>
+              <td mat-cell *matCellDef="let element">
+              <a *ngIf="element.type =='Session'">
+                <a *ngIf="element.sessionMasterId.sessionStatus != 'LeaveSession' && 'GroupSession'">{{element.sessionMasterId.session_id.clientName.firstName}}</a>
+                <a *ngIf="element.sessionMasterId.sessionStatus == 'LeaveSession'">{{element.sessionMasterId.leave_session_id.clientName.firstName}}</a>
+              </a>
+              <a *ngIf="element.type === 'LMC'">{{element.lmcId.session_id.clientName.firstName}}</a>
+              <a *ngIf="element.type === 'GroupSession'">{{element.clientId.firstName}}</a>
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="therapistName">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Therapist Name</h3></th>
+            <td mat-cell *matCellDef="let element">
+              <a *ngIf="element.type==='Session'"> {{element.sessionMasterId.therapistName}} </a>
+              <a *ngIf="element.type==='LMC'"> {{element.lmcId.session_id.therapistName.name}} </a>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="pendingAmount">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Pending Amount</h3></th>
+            <td mat-cell *matCellDef="let element">{{element.pendingAmount}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="sessionStatus">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Status</h3></th>
+            <td mat-cell *matCellDef="let element">
+              <a *ngIf="element.type === 'Session'">{{element.sessionMasterId.sessionStatus}}</a>
+              <a *ngIf="element.type === 'LMC'">{{element.lmcId.sessionStatus}}</a>
+              <a *ngIf="element.type === 'GroupSession'">GroupSession</a>
+            </td>
+          </ng-container>
+
+           <!-- Action Column  -->
+           <ng-container matColumnDef="manage">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Manage</h3></th>
+            <td mat-cell *matCellDef="let row" >
+               <button mat-raised-button color="primary" (click)="payFee(row._id)" type="button">Select</button>
+           </td>
+        </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+
+    </mat-card-content>
+  </mat-card>
+</form>

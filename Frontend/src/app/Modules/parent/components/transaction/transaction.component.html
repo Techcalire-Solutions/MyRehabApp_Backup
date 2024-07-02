@@ -1,0 +1,45 @@
+<div class="row box" *ngIf="wallet">
+  <div class="col">
+    <mat-card>
+      <h2>CASH-IN</h2>
+      <table class="fl-table">
+        <thead>
+          <tr>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>PaymentMode</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let x of wallet.cashIn">
+              <td>{{x.date| date: 'dd/MM/yyyy'}}</td>
+              <td>{{x.amount}}</td>
+              <td>{{x.paymentMode}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card>
+  </div>
+
+  <div class="col">
+    <mat-card>
+      <h2>CASH-OUT</h2>
+      <table class="fl-table">
+        <thead>
+          <tr>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Therapist</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let x of wallet.cashOut">
+              <td>{{x.date| date: 'dd/MM/yyyy'}}</td>
+              <td>{{x.amount}}</td>
+              <td>{{x.sessionMasterId.therapistName}}({{x.sessionMasterId.category}})</td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card>
+  </div>
+</div>

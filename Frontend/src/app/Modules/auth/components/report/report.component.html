@@ -1,0 +1,61 @@
+<mat-card [formGroup]="reportForm">
+  <div class="date-filter-container">
+    <div class="date-filter">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" formControlName="selectedStartDate">
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" formControlName="selectedEndDate">
+
+        <button (click)="filterRows()">Apply Filter</button>
+    </div>
+  </div>
+  <div class="scrollable-table-container">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="4">Sessions</th>
+                <th colspan="4">Assessments</th>
+                <th colspan="2">Group</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th>Session</th> <!-- First subheading under "Sessions" -->
+              <th>Leave</th> <!-- Second subheading under "Sessions" -->
+              <th>Compensation</th>
+              <th>Completed</th>
+               <!-- Third subheading under "Sessions" -->
+              <th>Assessments</th> <!-- First subheading under "Sessions" -->
+              <th>Leave</th> <!-- Second subheading under "Sessions" -->
+              <th>Compensation</th>
+              <th>Completed</th>
+
+              <th>Session</th>
+              <th>Completed</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let date of dates; let i = index">
+                <tr>
+                    <td>{{ date | date: 'EEE, dd/MM/yyyy' }}</td>
+                    
+                    <td>{{ sessionCounts[i] }}</td>
+                    <td>{{ leaveSessionCountDay[i] }}</td>
+                    <td>{{ compSessionCountDay[i] }}</td>
+                    <td>{{ sessionMasterCounts[i] }}</td>
+
+                    <td>{{ assessmentCountDay[i] }}</td>
+                    <td>{{ leaveAssessmentCountDay[i] }}</td>
+                    <td>{{ compAssessmentCountDay[i] }}</td>
+                    <td>{{ assessmentMasterDay[i] }}</td>
+
+                    <td>{{ groupSessionCountDay[i] }}</td>
+                    <td>{{ groupMasterCountDay[i] }}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+  </div>
+</mat-card>

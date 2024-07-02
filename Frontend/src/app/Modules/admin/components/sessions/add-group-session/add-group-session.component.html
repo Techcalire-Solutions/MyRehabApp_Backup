@@ -1,0 +1,205 @@
+
+<form [formGroup]="sessionForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>GROUP SESSION</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+
+      <div class="row" *ngIf="isEdit == false">
+        <div class="col">
+          <div *ngIf="slots">
+          <mat-form-field class="full-width">
+            <mat-label>Slot Name</mat-label>
+            <mat-select placeholder="Slot Name" formControlName="slotName">
+              <mat-form-field class="search-field">
+                <div class="row">
+                <input matInput (input)="filterOptionsSlot($event)" placeholder="Search">
+                </div>
+              </mat-form-field>
+              <mat-option *ngFor="let slot of filteredOptionsSlot" [value]="slot._id">
+                {{ slot.slotName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="isEdit">
+        <div class="col">
+          <div *ngIf="slot">
+            <textarea [disabled]="true" class="full-width" [value]="slot.slotName"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div formArrayName="clientName"> -->
+        <div class="row" >
+          <div class="col">
+            <div *ngIf="clients">
+              <mat-form-field class="full-width">
+                <mat-label>Client Name</mat-label>
+                <mat-select placeholder="Client Name" formControlName="clientId" multiple>
+                  <!-- <mat-form-field class="search-field">
+                    <div class="row">
+                    <input matInput (input)="filterOptions($event)" placeholder="Search">
+                    </div>
+                  </mat-form-field> -->
+                  <mat-option *ngFor="let option of filteredOptions" [value]="option._id">
+                    {{ option.firstName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      <!-- </div> -->
+
+      <!-- <div formArrayName="therapistName"> -->
+        <div class="row" *ngIf="isEdit == false">
+          <div class="col">
+            <div>
+            <mat-form-field class="full-width">
+              <mat-label>Therapist Name</mat-label>
+              <!-- <mat-select placeholder="Therapist Name" formControlName="therapistId" multiple [(ngModel)]="selectedTherapists">
+                <mat-form-field class="search-field">
+                  <div class="row">
+                  <input matInput (input)="filterOptionsTherapist($event)" placeholder="Search">
+                  </div>
+                </mat-form-field>
+                <mat-option *ngFor="let user of filteredOptionsTherapist" [value]="user._id">
+                  {{user.name}}
+                </mat-option>
+              </mat-select> -->
+
+              <mat-select placeholder="Therapist Name" formControlName="therapistId" multiple>
+                <!-- <mat-form-field class="search-field">
+                  <div class="row">
+                    <input matInput (input)="filterOptionsTherapist($event)" placeholder="Search">
+                  </div>
+                </mat-form-field> -->
+                <mat-option *ngFor="let user of filteredOptionsTherapist" [value]="user._id">
+                  <a></a>{{ user.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+          </div>
+        </div>
+      <!-- </div> -->
+
+
+
+      <div class="row" *ngIf="isEdit">
+        <div class="col">
+          <div *ngIf="therapist">
+            <textarea [disabled]="true" class="full-width" [value]="therapist.name"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="sessionForm.pristine ||!sessionForm.valid">ADD</button>
+    </mat-card-actions>
+  </mat-card>
+  </form>
+
+
+<!----------------------------------SESSIONS  TABLE   STARTS------------------------------------------------------------>
+<mat-form-field>
+  <mat-label>Search</mat-label>
+  <input (keyup)="applyFilter($event)" matInput placeholder="Ex. ium" #input>
+</mat-form-field>
+
+<div style="overflow-x: auto;">
+  <table mat-table *ngIf="filtered" [dataSource]= "filtered" matSort class="mat-elevation-z8">
+
+  <ng-container matColumnDef="slotName">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>Slot Name </th>
+  <td mat-cell [style.background-color]="element.status == true ? 'gray' : null" *matCellDef="let element"> {{element.slotName.slotName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="clientName">
+  <th mat-header-cell *matHeaderCellDef  mat-sort-header>Client Name </th>
+  <td mat-cell [style.background-color]="element.status == true ? 'gray' : null" *matCellDef="let element">
+    <tr *ngFor="let data of element.clientName">
+      {{data.clientId.firstName}}
+      <mat-divider></mat-divider>
+    </tr>
+  </td>
+  </ng-container>
+
+  <ng-container matColumnDef="therapistName">
+  <th mat-header-cell *matHeaderCellDef  mat-sort-header>Therapist Name </th>
+  <td mat-cell [style.background-color]="element.status == true ? 'gray' : null" *matCellDef="let element">
+    <tr *ngFor="let data of element.therapistName">
+      {{data.therapistId.name}}
+      <mat-divider></mat-divider>
+    </tr>
+  </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+  <th mat-header-cell *matHeaderCellDef  mat-sort-header>Status</th>
+  <td mat-cell [style.background-color]="element.status == true ? 'gray' : null"  *matCellDef="let element"> {{element.status == true? "Completed":"Ongoing"}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="manage">
+  <th mat-header-cell *matHeaderCellDef>Manage</th>
+  <td mat-cell [style.background-color]="element.status == true ? 'gray' : null" *matCellDef="let element">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <i  (click)="editSession(element._id)"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+  &nbsp;&nbsp;
+  <i  (click)="deleteSession(element._id)" class="fa fa-trash" style="font-size: 20px; color:red"></i>
+  </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table><br>
+</div>
+<!--
+<h2 *ngIf="completedSessions">DISCHARGED SESSIONS</h2>
+<table mat-table *ngIf="completedSessions" [dataSource]= "completedSessions" matSort class="mat-elevation-z8">
+
+<ng-container matColumnDef="slotName">
+<th mat-header-cell *matHeaderCellDef mat-sort-header>Slot Name </th>
+<td mat-cell [style.background-color]="element.status == true ? 'gray' : null" *matCellDef="let element"> {{element.slotName.slotName}} </td>
+</ng-container>
+
+<ng-container matColumnDef="clientName">
+<th mat-header-cell *matHeaderCellDef  mat-sort-header>Client Name </th>
+<td mat-cell [style.background-color]="element.status == true ? 'gray' : null" *matCellDef="let element"> {{element.clientName.firstName}} </td>
+</ng-container>
+
+<ng-container matColumnDef="therapistName">
+<th mat-header-cell *matHeaderCellDef  mat-sort-header>Therapist Name </th>
+<td mat-cell [style.background-color]="element.status == true ? 'gray' : null" *matCellDef="let element"> {{element.therapistName.name}} </td>
+</ng-container>
+
+<ng-container matColumnDef="status">
+<th mat-header-cell *matHeaderCellDef  mat-sort-header>Status</th>
+<td mat-cell [style.background-color]="element.status == true ? 'gray' : null"  *matCellDef="let element"> {{element.status == true? "Completed":"Ongoing"}}</td>
+</ng-container>
+
+<ng-container matColumnDef="manage">
+<th mat-header-cell *matHeaderCellDef>Manage</th>
+<td mat-cell [style.background-color]="element.status == true ? 'gray' : null" *matCellDef="let element">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<i  (click)="editSession(element._id)"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+&nbsp;&nbsp;
+<i  (click)="deleteSession(element._id)" class="fa fa-trash" style="font-size: 20px; color:red"></i>
+</td>
+</ng-container>
+
+
+
+<tr mat-header-row *matHeaderRowDef="displayedColumnsCompleted"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumnsCompleted;"></tr>
+</table> -->
+<!----------------------------------SESSION TABLE   ENDS------------------------------------------------------------>

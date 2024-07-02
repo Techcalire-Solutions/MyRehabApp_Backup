@@ -1,0 +1,26 @@
+<div class="pricingTable">
+  <h4 class="pricingTable-title">GROUP SESSION MASTER</h4>
+  <h5 class="pricingTable-subtitle">{{master?.date | date: 'dd/MM/yyyy'}}</h5>
+
+  <ul class="pricingTable-firstTable">
+    <li class="pricingTable-firstTable_table">
+      <h1 class="pricingTable-firstTable_table__header">CLIENTS</h1>
+      <ul class="pricingTable-firstTable_table__options">
+        <li *ngFor="let client of clients">
+          {{client.clientId.firstName}}
+        </li>
+      </ul>
+      <button class="pricingTable-firstTable_table__getstart" (click)="addClients()">ADD</button>
+    </li>
+
+    <li class="pricingTable-firstTable_table">
+      <h1 class="pricingTable-firstTable_table__header">THERAPISTS</h1>
+      <ul class="pricingTable-firstTable_table__options">
+        <li *ngFor="let user of therapsists">
+          {{user.therapistId.name}}
+        </li>
+      </ul>
+      <button class="pricingTable-firstTable_table__getstart" (click)="addTherapists()">ADD</button>
+    </li>
+  </ul>
+</div>

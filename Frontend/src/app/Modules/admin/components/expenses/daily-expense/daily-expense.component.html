@@ -1,0 +1,119 @@
+
+<form [formGroup]="dailyexpenseForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>DAILY EXPENSE</mat-card-title>
+    </mat-card-header>
+    <mat-card-content >
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="datePicker" formControlName="date" placeholder="Date">
+            <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+            <mat-datepicker #datePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput disabled value="{{user}}" placeholder="Collected From">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Expense Type" formControlName="type">
+              <mat-option *ngFor="let item of  types" [value]="item.name">
+                {{item.name | titlecase}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col"  *ngIf="dailyexpenseForm.get('type').value === 'Others'">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Other Expense" formControlName="otherExpense">
+          </mat-form-field>
+        </div>
+
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput type="number" placeholder="Expense" formControlName="expense">
+            <mat-error *ngIf="dailyexpenseForm.controls['expense'].hasError('required')">
+              is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button *ngIf ="!isEdit"  mat-raised-button color="primary" type="submit" [disabled]="dailyexpenseForm.pristine ||!dailyexpenseForm.valid">ADD</button>
+      <button *ngIf ="isEdit" mat-raised-button (click)="editFunction()" enable mat-raised-button color="primary" type="button">UPDATE</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+<br><h2 style="margin-left: 40%;">DAILY EXPENSE</h2>
+
+<form [formGroup]="form">
+  <div class="date-filter-container row">
+    <div class="date-filter col" style="width: 90%">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" formControlName="startDate">
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" formControlName="endDate">
+
+        <button (click)="filterRows()">Apply Filter</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button (click)="makeExcel()">Make Excel</button>
+    </div>
+  </div>
+</form>
+
+<mat-form-field>
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
+
+<table mat-table *ngIf="filtered" [dataSource]="filtered" class="mat-elevation-z8">
+<ng-container matColumnDef="date">
+  <th mat-header-cell *matHeaderCellDef>Date </th>
+  <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </td>
+</ng-container>
+
+<ng-container matColumnDef="type">
+  <th mat-header-cell *matHeaderCellDef>Type</th>
+  <td mat-cell *matCellDef="let element">
+    <a *ngIf="element.type !='Others'">{{element.type}}</a>
+    <a *ngIf="element.type ==='Others'">{{element.otherExpense}}</a>
+  </td>
+</ng-container>
+
+<ng-container matColumnDef="expense">
+  <th mat-header-cell *matHeaderCellDef>Expense</th>
+  <td mat-cell *matCellDef="let element"> {{element.expense}} </td>
+  </ng-container>
+
+<ng-container matColumnDef="action">
+<th mat-header-cell *matHeaderCellDef>Manage</th>
+<td mat-cell *matCellDef="let element">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<i  (click)="editExpense(element._id)"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+&nbsp;&nbsp;
+<i  (click)="deleteDailyExpense(element._id)" class="fa fa-trash" style="font-size: 20px; color:red"></i>
+</td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

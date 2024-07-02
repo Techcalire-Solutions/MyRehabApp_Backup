@@ -1,0 +1,87 @@
+<mat-card class="background">
+  <div class="row">
+    <div class="col">
+      <mat-card-header>
+        <mat-card-title> INVOICE </mat-card-title>
+      </mat-card-header>
+    </div>
+
+    <div class="col">
+      <mat-card-header>
+        <button style="margin-left: auto;" mat-raised-button color="primary" (click)="printDiv()">PRINT</button>
+      </mat-card-header>
+    </div>
+  </div>
+
+  <mat-card-content>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clinic Invoice</title>
+    </head>
+    <body id="clinic_invoice">
+        <header>
+            <h1>{{companyName}}</h1>
+        </header>
+
+        <section class="row">
+          <div class="col">
+            <p><strong>Name&nbsp;:&nbsp;&nbsp;</strong>{{fee.sessionMasterId.session_id.clientName.firstName}}</p>
+            <p><strong>Date of Birth&nbsp;:&nbsp;&nbsp;</strong>{{fee.sessionMasterId.session_id.clientName.dateOfBirth}}</p>
+            <p><strong>Contact Number&nbsp;:&nbsp;&nbsp;</strong>{{fee.sessionMasterId.session_id.clientName.emergencyNumber}}</p>
+            <p><strong>Address&nbsp;:&nbsp;&nbsp;</strong>{{fee.sessionMasterId.session_id.clientName.address1}}</p>
+          </div>
+
+          <div class="col">
+
+            <p><strong>Date&nbsp;:&nbsp;&nbsp;</strong>{{fee.paymentDate | date:'dd/MM/yyyy'}}</p>
+            <p><strong>TherapistName&nbsp;:&nbsp;&nbsp;</strong>{{fee.sessionMasterId.session_id.therapistName.name}}</p>
+            <p><strong>SlotName&nbsp;:&nbsp;&nbsp;</strong>{{fee.sessionMasterId.session_id.slotName.slotName}}</p>
+            <p><strong>PaymentMode&nbsp;:&nbsp;&nbsp;</strong>{{fee.paymentMode}}</p>
+          </div>
+        </section>
+
+        <section>
+            <h2>Invoice Details</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Consultation</td>
+                        <td>{{fee.sessionMasterId.sessionFee}}</td>
+                    </tr>
+                    <tr>
+                        <td>Discount</td>
+                        <td>{{fee.sessionMasterId.concession}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row">
+              <div class="col">
+                <p class="total">Total Amount: {{fee.amountToBeCollected}}</p>
+              </div>
+              <div class="col">
+                <p class="total">Collected Amount: {{fee.collectedAmount}}</p>
+              </div>
+              <div class="col">
+                <p class="total">Pending Amount: {{fee.amountToBeCollected}}</p>
+              </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Thank you for choosing our clinic. Please make the payment within 30 days.</p>
+        </footer>
+
+    </body>
+
+    </html>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,74 @@
+<form [formGroup]="feeForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+  <ng-container *ngIf="sessionMaster">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>PAY FEES</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card>
+        <div class="row">
+          <div class="col">
+            <mat-card-header>
+              <mat-card-subtitle>
+                <h2>Client Name : {{clients[0].clientId.firstName}}</h2>
+              </mat-card-subtitle>
+            </mat-card-header>
+          </div>
+          <div class="col">
+            <mat-card-header>
+              <mat-card-subtitle><h2>Amount to be Collected :
+                {{findFee(clients[0].sessionFee, clients[0].concession)}}
+              </h2></mat-card-subtitle>
+            </mat-card-header>
+          </div>
+        </div>
+      </mat-card><br>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput disabled value="Group Session" placeholder="Session Type">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput disabled value="{{user}}" placeholder="Recieved By">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Collected Amount" formControlName="collectedAmount">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Remarks" formControlName="remarks">
+          </mat-form-field>
+        </div>
+      </div><br>
+
+      <div class="row">
+        <div class="col">
+          <label id="example-radio-group-label">Payment Mode: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="paymentMode">
+            <mat-radio-button value="Cash">Cash</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-radio-button value="GooglePay">Google Pay</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-radio-button value="BankTransfer">Bank Transfer</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!feeForm.valid">ADD</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>
+</form>

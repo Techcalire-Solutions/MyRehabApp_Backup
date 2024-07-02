@@ -1,0 +1,113 @@
+table{
+  width: 100%;
+}
+
+body {
+  font-family: 'lato', sans-serif;
+}
+.container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+  small {
+    font-size: 0.5em;
+  }
+}
+
+.responsive-table {
+  tr {
+    border-radius: 3px;
+    padding: 25px 30px;
+    justify-content: space-between;
+  }
+  tr:hover {
+    background-color: #cdcdcd;
+  }
+  .table-header {
+    background-color: #95A5A6;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    height: 50px;
+  }
+  .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    border-bottom: 1px solid;
+  }
+  .inner-row{
+    height: 40px;
+  }
+
+  .col-1 {
+    flex-basis: 10%;
+  }
+  .col-2 {
+    flex-basis: 10%;
+  }
+  .col-3 {
+    flex-basis: 5%;
+  }
+  .col-4 {
+    flex-basis: 75%;
+  }
+}
+//-------------activity css------
+.activity-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.activity-info {
+  background-color: #f0f0f0;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.activity-date {
+  color: #007bff; /* blue color */
+}
+
+.activity-status {
+  color: #28a745; /* green color */
+}
+
+.activity-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.activity-container th, .activity-container td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.activity-container th {
+  background-color: #f2f2f2;
+}
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.activity-date {
+  flex-grow: 1; /* Takes up all available space */
+  text-align: left;
+  font-weight: bold;
+}
+
+.activity-status {
+  text-align: right;
+  font-weight: bold;
+}
+

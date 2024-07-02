@@ -1,0 +1,98 @@
+
+<form [formGroup]="schoolForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+
+    <mat-card-header>
+      <mat-card-title>School History</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>School Name and Address(Max 150 characters)</mat-label>
+            <input matInput placeholder="School Name and Address" formControlName="schoolNameAndAddress"  maxlength="150">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Grade(Max 150 characters)</mat-label>
+            <input matInput placeholder="Grade" formControlName="grade" maxlength="150">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Teacher's name and contact details(Max 150 characters)</mat-label>
+            <input matInput placeholder="Teacher's name and contact details" formControlName="teacherNameDetails" maxlength="150">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>List of previous schools attended(Max 150 characters)</mat-label>
+            <input matInput placeholder="List of previous schools attended" formControlName="previousSchool" maxlength="150">
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>How is your child's general perfomance in school?(Max 150 characters)</mat-label>
+            <input matInput placeholder="How is your child's general perfomance in school?" formControlName="generalBehaviour" maxlength="150">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Have the teachers noted any areas of difficulty?(Max 150 characters)</mat-label>
+            <input matInput placeholder="Have the teachers noted any areas of difficulty?" formControlName="teacherNoted" maxlength="150">
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>How does your child get along with others at school?(Max 150 characters)</mat-label>
+            <input matInput placeholder="How does your child get along with others at school?" formControlName="getAlongWithOthers" maxlength="150">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Which is the main support at School?(Max 150 characters)</mat-label>
+            <input matInput placeholder="Which is the main support at School?" formControlName="mainSupport" maxlength="150">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row box">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Could you describe your child's daily/weekly screen time participation, e.g. computer, phone, tab, etc.?"(Max 150 characters)</mat-label>
+            <input matInput placeholder="Could you describe your child's daily/weekly screen time participation, e.g. computer, phone, tab, etc.?" formControlName="screenTime" maxlength="150">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>What are your child's play interests, both indoor and outdoor?(Max 150 characters)</mat-label>
+            <input matInput placeholder="What are your child's play interests, both indoor and outdoor?" formControlName="playInterest" maxlength="150">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">UPDATE</button>
+    </mat-card-actions>
+
+  </mat-card>
+</form>

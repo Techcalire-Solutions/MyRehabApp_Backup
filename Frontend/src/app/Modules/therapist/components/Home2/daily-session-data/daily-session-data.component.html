@@ -1,0 +1,99 @@
+
+
+
+<!-- information -->
+<mat-grid-list class="grid" *ngFor="let tile of session" cols="4" rowHeight="60px">
+  <mat-grid-tile style="background-color:#FAB036" [colspan]="1"
+      [rowspan]="2">
+    Name: {{tile.clientName.firstName}}
+  </mat-grid-tile>
+  <mat-grid-tile style="background-color:#81BECE" [colspan]="3"
+      [rowspan]="1">
+    Sessions Completed:
+  </mat-grid-tile>
+  <mat-grid-tile style="background-color:#83D350" [colspan]="1"
+      [rowspan]="1">
+    Age: {{ageCalculator(tile.clientName.dateOfBirth)}}
+  </mat-grid-tile>
+  <mat-grid-tile style="background-color:#F34C3F" [colspan]="2"
+      [rowspan]="1">{{tile.therapistName.name}}
+  </mat-grid-tile>
+</mat-grid-list>
+
+<!-- information -->
+<!-- navigation -->
+<div *ngFor="let tile of session">
+  <section>
+    <div id="outer">
+      <div class="inner" *ngFor="let tile of session" ><button class="bg-orange-200 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full" mat-raised-button (click)="viewClient(tile.clientName._id)">View Client</button></div>
+      <div *ngIf="therapyabbreviation.toUpperCase() == 'SE'"class="inner"><button class="bg-orange-200 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full" mat-raised-button (click)="addGoal(tile._id)">Goal</button></div>
+      <!-- <div *ngIf="therapyabbreviation == 'ST'"class="inner"><button class="bg-orange-200 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full" mat-raised-button (click)="addSkill(tile._id)">Skill</button></div> -->
+      <div class="inner"><button class="bg-orange-200 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full" mat-raised-button (click)="startSession()">Start Session</button></div>
+      <!-- <div class="inner"><button class="bg-orange-200 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full" mat-raised-button>Review</button></div> -->
+      <div class="inner" *ngIf="tile.status == false"><button class="bg-orange-200 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full" mat-raised-button (click)="endSession()">Discharge</button></div>
+    </div>
+  </section>
+  <mat-divider></mat-divider>
+</div>
+<!-- navigation -->
+
+
+<!-- form -->
+<form class="center-div">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Session Master</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="overflow-x: auto;">
+
+      <table *ngIf="sessionMaster" mat-table [dataSource]="sessionMaster" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+
+        <ng-container matColumnDef="date">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Date</h3></th>
+            <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="session_id">
+          <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Session ID </h3></th>
+          <td mat-cell *matCellDef="let element">
+            <a *ngIf="element.sessionStatus === 'Session'">{{element.session_id._id | uppercase}}</a>
+            <a *ngIf="element.sessionStatus === 'LeaveSession'">{{element.leave_session_id._id | uppercase}}</a>
+            <a *ngIf="element.sessionStatus === 'CompensationSession'">{{element.compensation_session_id._id | uppercase}}</a>
+          </td>
+      </ng-container>
+
+
+
+        <ng-container matColumnDef="therapistName">
+          <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Therapist Name</h3></th>
+          <td mat-cell *matCellDef="let element">{{element.therapistName | uppercase}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="sessionStatus">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Status</h3></th>
+            <td mat-cell *matCellDef="let element"> {{element.sessionStatus}} </td>
+        </ng-container>
+
+         <!-- Action Column  -->
+        <ng-container matColumnDef="manage" >
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Manage</h3></th>
+            <td mat-cell *matCellDef="let row" >
+               <button mat-raised-button color="primary" (click)="getData(row._id)" type="button">View</button>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <button mat-raised-button color="primary" (click)="editData(row._id)" type="button">Edit</button>
+           </td>
+          </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </mat-card-content>
+  </mat-card>
+</form>
+<!-- form -->

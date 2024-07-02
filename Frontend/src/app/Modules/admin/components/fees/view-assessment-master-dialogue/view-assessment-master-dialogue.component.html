@@ -1,0 +1,12 @@
+<mat-toolbar class="assessment-toolbar">ASSESSMENT PAYMENT DETAILS</mat-toolbar><br>
+<div class="assessment-details" mat-dialog-content>
+  <b>Date: {{ data.date | date: 'dd/MM/yyyy' }}</b>
+  <ul>
+    <li *ngIf="data.sessionStatus === 'Assessment'">Session Conducted By: {{ data.assessment_id.therapistName.name }}</li>
+    <li *ngIf="data.sessionStatus === 'LeaveAssessment'">Session Conducted By: {{ data.leave_session_id.therapistName.name }}</li>
+    <li>Assessment Fee: {{ data.assessmentFee }}</li>
+    <!-- <li>Concession: {{ data.concession }}</li>
+    <li>Session Type: {{ data.sessionStatus }}</li> -->
+    <li>Assessment Master Id: {{ data._id }}</li>
+  </ul>
+</div>

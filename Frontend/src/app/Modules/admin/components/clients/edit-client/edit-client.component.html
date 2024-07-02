@@ -1,0 +1,376 @@
+<ng-container *ngIf="client">
+  <mat-card class="example-card">
+    <div class="row">
+      <div class="col">
+        <mat-card-header>
+          <mat-card-title>Personal Information</mat-card-title>
+        </mat-card-header>
+      </div>
+      <div class="col">
+        <mat-card-header>
+          <link class="d-block mr-0 ml-auto" rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+          <i routerLink="editclientpersonalform"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+        </mat-card-header>
+      </div>
+    </div>
+
+    <mat-card-content>
+      <mat-list>
+        <h2>&nbsp;&nbsp;&nbsp;&nbsp;Client ID  : {{client.client_ID}}</h2>
+        <h2>&nbsp;&nbsp;&nbsp;&nbsp;Name : {{client.firstName | titlecase}}</h2>
+        <h2>&nbsp;&nbsp;&nbsp;&nbsp;Age: {{ageCalculator(client.dateOfBirth)}}&nbsp;Years</h2>
+        <mat-list-item *ngIf="client.remarks"><b>Remarks</b>&nbsp;&nbsp;:&nbsp;&nbsp; {{client.remarks}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Contact Number</b>&nbsp;&nbsp;:&nbsp;&nbsp; {{client.emergencyNumber}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Email</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.email}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Gender</b> &nbsp;&nbsp;: &nbsp;&nbsp;{{client.gender}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Nationality</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.nationality}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Home Language</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.homeLanguage}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Family Type</b>&nbsp;&nbsp; :&nbsp;&nbsp; {{client.familyType }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Family Members </b>&nbsp;&nbsp;:&nbsp;&nbsp; {{client.familyMembers}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Referrer Details</b>&nbsp;&nbsp;:&nbsp;&nbsp; {{client.referrerDetails}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Reason for Referral</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.reason}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Father's Name</b>&nbsp;&nbsp;:&nbsp;&nbsp; {{client.fatherName}} </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Father's Contact Number</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.fatherMobile }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Father's Occupation</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.fatherOccupation}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Mother's Name</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.motherName}} </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Mother's Contact Number </b>&nbsp;&nbsp;:&nbsp;&nbsp; {{client.motherMobile }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Mother's Occupation</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.motherOccupation}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Annual Income</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.annualIncome}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Siblings Details</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.siblingsDetails}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Address 1</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.address1}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Address 2</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.address2}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><b>Pincode </b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.pincode}}</mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+
+
+  <mat-card>
+    <mat-card-header></mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-accordion>
+<!-----------------------------Medical panel content starts here---------------------------------------------->
+          <mat-expansion-panel (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Medical Information
+              </mat-panel-title>
+              <mat-panel-description>
+              Currently Medical details {{panelOpenState ? 'open' : 'closed'}}
+              </mat-panel-description>
+              <i  routerLink="editclientmedicalform"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+            </mat-expansion-panel-header>
+
+            <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>Medical Information</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-list>
+                <!-- <h2>&nbsp;&nbsp;&nbsp;&nbsp;Name : {{client.firstName | titlecase}}</h2>
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;Age: {{ageCalculator(client.dateOfBirth)}}&nbsp;Years</h2> -->
+                  <mat-list-item><b>Planned Pregnancy</b>&nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.pregnancy == 'false'? "Not Planned" : (client.medical.pregnancy == 'true'? "Planned" : "")}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Type of Delivery</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.medical.typeOfDelivery}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Alcohol or Smoking during Pregnanacy</b> &nbsp;&nbsp;: &nbsp;&nbsp;{{client.medical.alcohol == true ?"Alcohol Consumed" : ""}}&nbsp;{{client.medical.smoking == true ? ", Smoking" : ""}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Medications</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.medications}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Pregnancy Complications</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.pregnancyComplications}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item *ngIf="client.medical.pregnancyType=='premature'"><b>Pregnancy Type</b>&nbsp;&nbsp; :&nbsp;&nbsp;{{client.medical.prematureMonths}}&nbsp;&nbsp;&nbsp;{{client.medical.pregnancyType}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item *ngIf="client.medical.pregnancyType=='fullterm'"><b>Pregnancy Type</b>&nbsp;&nbsp; :&nbsp;&nbsp;{{client.medical.pregnancyType}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Neonatal Health</b> &nbsp;&nbsp; &nbsp;&nbsp;</mat-list-item>
+                  <mat-list-item><b>Did the baby cry too much?</b>&nbsp;&nbsp;: &nbsp;&nbsp;{{client.medical.babyCry}} </mat-list-item>
+                  <mat-list-item><b>Feeding problem(if any)</b>&nbsp;&nbsp;: &nbsp;&nbsp;{{client.medical.feedingProblem}}</mat-list-item>
+                  <mat-list-item><b>Sleep problems</b>&nbsp;&nbsp;: &nbsp;&nbsp;{{client.medical.sleepProblem}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Birth Weight</b>&nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.birthWeight}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Any Birth Complications</b>&nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.birthCompilcation}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Important Illness</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.importantIllness}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Medical Condition </b>&nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.medicalCondition}} </mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Consanguineous Marriage History </b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.consanguineousMarriageHistory}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>History of epilepsy,learning problems,speech delays or anything else</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.history}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Vision</b> &nbsp;&nbsp;: &nbsp;&nbsp;
+                    {{client.medical.eyeTest == true ?"Eye testing done" : ""}}&nbsp;
+                    {{client.medical.useGlass == true ? ", Use of glasses" : ""}}&nbsp;
+                    {{client.medical.eyeProblem == true ? ", Presence of headaches , blurring of vision , sore eyes ," : ""}}
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.medical.remarksVision}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Hearing</b> &nbsp;&nbsp;: &nbsp;&nbsp;
+                    {{client.medical.hearingTest == true ?"Hearing test done" : ""}}&nbsp;
+                    {{client.medical.hearingAid == true ? "Hearing aid prescribed" : ""}}&nbsp;
+                    {{client.medical.earProblem == true ? "History of frequent middle ear infections" : ""}}
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.medical.remarksHearing}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Medical Reports</b>&nbsp;&nbsp;:&nbsp;&nbsp;<button mat-raised-button (click)="openDialog(client.medical.file_url)">View Report</button> </mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Current Medication </b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.currentMedication}} </mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Previous Medication </b>&nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.previoustMedication}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Allergies</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.allergies}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Actual Therapies</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.actualTherapies}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Previous Therapies</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.previousTherapies}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Head Raise</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.headRaise}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Roll Over</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.rollOver}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Independent Sitting </b> &nbsp;&nbsp;:&nbsp;&nbsp;{{client.medical.independentSitting}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Crawled on Hands and Knees</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.crawled}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Pulled To Stand </b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.pulledToStand}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Independent Standing</b> &nbsp;&nbsp;:&nbsp;&nbsp;{{client.medical.independentStanding}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Walking</b> &nbsp;&nbsp;:&nbsp;&nbsp;{{client.medical.walking}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Babbling</b> &nbsp;&nbsp;:&nbsp;&nbsp;{{client.medical.babbling}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Said First Words</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.saidFirstWords}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Present Language and Vocabulary</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.presentLanguage}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Finger Feeding</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.fingerFeeding}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Used  a Spoon for Feeding</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.spoon}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Dress and undress self</b> &nbsp;&nbsp;:&nbsp;&nbsp; {{client.medical.dress}}</mat-list-item>
+                  <mat-divider></mat-divider>
+
+                </mat-list>
+              </mat-card-content>
+            </mat-card>
+<!-----------------------------School panel content starts here---------------------------------------------->
+
+          </mat-expansion-panel>
+
+<!-----------------------------School panel content starts here---------------------------------------------->
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                School History
+              </mat-panel-title>
+              <mat-panel-description>
+                Currently School History {{panelOpenState ? 'open' : 'closed'}}
+              </mat-panel-description>
+              <i  routerLink="editclientschoolform"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+            </mat-expansion-panel-header>
+
+
+            <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>School Information</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-list>
+                  <!-- <h2>&nbsp;&nbsp;&nbsp;&nbsp;Name : {{client.firstName | titlecase}}</h2>
+                  <h2>&nbsp;&nbsp;&nbsp;&nbsp;Age: {{ageCalculator(client.dateOfBirth)}}&nbsp;Years</h2> -->
+                  <mat-list-item><b>School Name and Address</b>&nbsp;&nbsp;:&nbsp;&nbsp; {{client.school.schoolNameAndAddress}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Grade</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.school.grade}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Teacher Name Details</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.school.teacherNameDetails}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Previous School</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.school.previousSchool}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>General Behaviour</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.school.generalBehaviour}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Teacher Noted</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.school.teacherNoted}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Get along with Others</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.school.getAlongWithOthers}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Main Support</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.school.mainSupport}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Screen Time</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.school.screenTime}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Play Interest</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.school.playInterest}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                </mat-list>
+              </mat-card-content>
+            </mat-card>
+          </mat-expansion-panel>
+
+<!-----------------------------Routine panel content starts here---------------------------------------------->
+
+          <mat-expansion-panel (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+              Daily Routine
+              </mat-panel-title>
+              <mat-panel-description>
+              Currently  Daily Routine Information {{panelOpenState ? 'open' : 'closed'}}
+              </mat-panel-description>
+              <i  routerLink="editclientroutineform"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+            </mat-expansion-panel-header>
+
+            <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>Routine Information</mat-card-title>
+              </mat-card-header>
+
+              <mat-card-content>
+                <mat-list>
+                  <mat-list-item><b>Feed Age Appropriately</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.feedAge? 'No' : 'Yes'}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <div *ngIf="client.routine.feedAge">
+                    <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{ client.routine.feedAge }}</mat-list-item>
+                    <mat-divider></mat-divider>
+                  </div>
+                  <br>
+                  <mat-list-item><b>Good Appetitie</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.goodAppetitie? 'No' : 'Yes'}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <div *ngIf="client.routine.goodAppetitie">
+                    <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{ client.routine.goodAppetitie }}</mat-list-item>
+                    <mat-divider></mat-divider>
+                  </div>
+                  <br>
+                  <mat-list-item><b>Messy Eater</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.messyEater? 'No' : 'Yes' }}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <div *ngIf="client.routine.messyEater">
+                    <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{ client.routine.messyEater }}</mat-list-item>
+                    <mat-divider></mat-divider>
+                  </div>
+                  <br>
+                  <mat-list-item><b>Food Preference</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.foodPreference? 'No' : 'Yes' }}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <div *ngIf="client.routine.foodPreference">
+                    <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{ client.routine.foodPreference }}</mat-list-item>
+                    <mat-divider></mat-divider>
+                  </div>
+                  <br>
+                  <mat-list-item><b>Taste and Texture</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.tasteAndTexture? 'No' : 'Yes'  }}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <div *ngIf="client.routine.tasteAndTexture">
+                    <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{ client.routine.tasteAndTexture }}</mat-list-item>
+                    <mat-divider></mat-divider>
+                  </div>
+                  <br>
+                  <mat-list-item><b>Can Do Up Buttons</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.canDoUpButtons? 'No' : 'Yes'  }}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <div *ngIf="client.routine.canDoUpButtons">
+                    <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{ client.routine.canDoUpButtons }}</mat-list-item>
+                    <mat-divider></mat-divider>
+                  </div>
+                  <br>
+                  <mat-list-item><b>Age Appropriate</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.ageAppropriate? 'No' : 'Yes' }}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <div *ngIf="client.routine.ageAppropriate">
+                    <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{ client.routine.ageAppropriate }}</mat-list-item>
+                    <mat-divider></mat-divider>
+                  </div>
+                  <br>
+                  <mat-list-item><b>Can Put on Socks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.canPutOnSocks? 'No' : 'Yes'  }}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <div *ngIf="client.routine.canPutOnSocks">
+                    <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{ client.routine.canPutOnSocks }}</mat-list-item>
+                    <mat-divider></mat-divider>
+                  </div>
+                  <br>
+                  <mat-list-item>
+                    <b>Can Put on Shoes</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{ client.routine.canPutOnShoes ? 'No' : 'Yes' }}
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+
+                  <div *ngIf="client.routine.canPutOnShoes">
+                    <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{ client.routine.canPutOnShoes }}</mat-list-item>
+                    <mat-divider></mat-divider>
+                  </div>
+
+                  <br>
+                  <mat-list-item><b>Toilet Trained</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.toiletTrained == 'false'? "No":(client.routine.toiletTrained == 'true'?"Yes":"")}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Toilet usage at Day</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.dayAndNight == 'false'? "No":(client.routine.dayAndNight == 'true'?"Yes":"")}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Toilet usage at Night</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.toiletNight == 'false'? "No":(client.routine.toiletNight == 'true'?"Yes":"")}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Accidents</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.accidents == 'false'? "No":(client.routine.accidents == 'true'?"Yes":"")}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Toilet Paper Use</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.toiletPaperUse == 'false'? "No":(client.routine.toiletPaperUse == 'true'?"Yes":"")}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Managing Clothing</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.managingClothing == 'false'? "No":(client.routine.managingClothing == 'true'?"Yes":"")}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Washing Hands</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.washingHands == 'false'? "No":(client.routine.washingHands == 'true'?"Yes":"")}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Bathing and Brushing</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.bathingAndBrushing == 'false'? "No":(client.routine.bathingAndBrushing == 'true'?"Yes":"")}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.toiletRemarks}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Typical Night's Sleep</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.typicalNightSleep}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Time of Sleep</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.timeOfSleep}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.remarksSleep}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Typical Wakeup</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.typicalWakeup}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Time of Wakeup</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.timeOfWakeup}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.remarksWakeUp}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Homework</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.homework}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.remarksHomework}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Routine Strategies</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.routineStrategies}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Difficult Situation</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.difficultSituation}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>Remarks</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.remarksChildBehaviour}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item><b>How You Know About Us</b>&nbsp;&nbsp; : &nbsp;&nbsp;{{client.routine.howYouKnowAboutUs}}</mat-list-item>
+                  <mat-divider></mat-divider>
+
+
+                </mat-list>
+              </mat-card-content>
+            </mat-card>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+

@@ -1,0 +1,39 @@
+<form [formGroup]="addLeaveForm" novalidate class="center-div">
+  <mat-card>
+    <mat-card-header><mat-card-title>EDIT LMC</mat-card-title></mat-card-header>
+
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <div *ngIf="clients">
+          <mat-form-field class="full-width">
+            <mat-select  #clientId (selectionChange)="getSlotByClient(clientId.value)" placeholder="Client Name" formControlName="clientId">
+              <mat-option *ngFor="let client of  clients" [value]="client._id">
+                {{client.firstName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button mat-dialog-close type="button">CANCEL</button>
+      <button mat-raised-button color="primary" (click)="onSubmit()">ADD</button>
+      <!-- <button *ngIf ="isEdit" mat-raised-button (click)="editFunction()" enable mat-raised-button color="primary" type="button">UPDATE</button> -->
+    </mat-card-actions>
+  </mat-card>
+</form>

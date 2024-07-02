@@ -1,0 +1,449 @@
+<!-- <h1>welcome{{userName}}</h1>
+<h1>Hai {{(authService.currentUser$ | async).username}}</h1> -->
+<!-- Content Row -->
+<div class="main">
+  <div class="row">
+
+   <!-- Earnings (Monthly) Card Example -->
+   <div class="col-xl-3 col-md-6 mb-4">
+       <div class="card border-left-primary shadow h-100 py-2">
+           <div class="card-body">
+               <div class="row no-gutters align-items-center">
+                   <div class="col mr-2">
+                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                          Waiting List Clients</div>
+                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{clientNo}}</div>
+                   </div>
+                   <div class="col-auto">
+                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <!-- Earnings (Monthly) Card Example -->
+   <div class="col-xl-3 col-md-6 mb-4">
+       <div class="card border-left-success shadow h-100 py-2">
+           <div class="card-body">
+               <div class="row no-gutters align-items-center">
+                   <div class="col mr-2">
+                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                           Available Slots</div>
+                       <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                       <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{freeSlots}}</div> -->
+                   </div>
+                   <div class="col-auto">
+                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <!-- Earnings (Monthly) Card Example -->
+   <div class="col-xl-3 col-md-6 mb-4">
+       <div class="card border-left-info shadow h-100 py-2">
+           <div class="card-body">
+               <div class="row no-gutters align-items-center">
+                   <div class="col mr-2">
+                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Sessions
+                       </div>
+                       <div class="row no-gutters align-items-center">
+                           <div class="col-auto">
+                               <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{sessionNumber}}</div>
+                           </div>
+                           <!-- <div class="col">
+                               <div class="progress progress-sm mr-2">
+                                   <div class="progress-bar bg-info" role="progressbar"
+                                       style="width: 50%" aria-valuenow="20" aria-valuemin="0"
+                                       aria-valuemax="100"></div>
+                               </div>
+                           </div> -->
+                       </div>
+                   </div>
+                   <div class="col-auto">
+                       <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <!-- Pending Requests Card Example -->
+   <div class="col-xl-3 col-md-6 mb-4">
+       <div class="card border-left-warning shadow h-100 py-2">
+           <div class="card-body">
+               <div class="row no-gutters align-items-center">
+                   <div class="col mr-2">
+                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                           Assessments </div>
+                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{assessmentNumber}}</div>
+                   </div>
+                   <div class="col-auto">
+                       <i class="fas fa-comments fa-2x text-gray-300"></i>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+ </div>
+</div>
+
+
+ <!-- Content Row -->
+
+
+ <!----------------------------------------new------------------------->
+
+  <form class="center-div">
+    <!-- <mat-card>
+
+    </mat-card> -->
+   <mat-card>
+     <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-card>
+            <div class="row">
+              <div class="col">
+                <div *ngIf="categoryService$|async">
+                <mat-form-field class="full-width">
+                  <mat-select #catId (selectionChange)="getSlotByCat(catId.value)" placeholder="Therapy Category">
+                    <mat-option *ngFor="let category of  categoryService$|async " [value]="category._id">
+                      {{category.abbreviation}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                </div>
+              </div>
+
+              <div class="col">
+                <div *ngIf="users && catStatus == true">
+                  <mat-form-field class="full-width">
+                    <mat-select #id (selectionChange)="getSlotByTherapist(id.value)" placeholder="Select Therapist">
+                      <mat-option *ngFor="let room of  users" [value]="room._id">
+                        {{room.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <full-calendar #fullcalendar [options]="calendarOptions" class="custom-calendar"></full-calendar>
+          </mat-card>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <mat-card>
+            <mat-card-header><mat-card-title>Sessions</mat-card-title></mat-card-header>
+            <div class="table-wrapper">
+              <table class="fl-table">
+                  <thead>
+                  <tr>
+                      <th>Client</th>
+                      <th>Slot</th>
+                      <th>WaitingList</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let task of session let i=index">
+                      <td>{{task.clientName.firstName}}</td>
+                      <td>{{task.slotName.slotName}}</td>
+                      <td>
+                        <mat-slide-toggle [(ngModel)]="task.wl" [ngModelOptions]="{standalone: true}" (change)="onToggleChange($event, task._id, task.clientName._id)"></mat-slide-toggle>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </mat-card>
+        </div>
+        <div class="col">
+          <mat-card>
+            <mat-card-header><mat-card-title>Assessments</mat-card-title></mat-card-header>
+            <div class="table-wrapper">
+              <table class="fl-table">
+                  <thead>
+                  <tr>
+                      <th>Client</th>
+                      <th>Slot</th>
+                      <th>WaitingList</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let task of assessment let i=index">
+                      <td>{{task.clientName.firstName}}</td>
+                      <td>{{task.slotName.slotName}}</td>
+                      <td>
+                        <mat-slide-toggle [(ngModel)]="task.wl" [ngModelOptions]="{standalone: true}" (change)="onToggleChangeAssessment($event, task._id, task.clientName._id)"></mat-slide-toggle>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+     </mat-card-content>
+
+     <!-- <div class="row"> -->
+
+    <!-- </div> -->
+   </mat-card>
+  </form>
+
+
+  <!-- <ng-container *ngIf="finalSlots.length == 0">
+    <mat-card>
+      <mat-card-title>
+        Please Select Category and Therapist
+      </mat-card-title>
+    </mat-card>
+  </ng-container> -->
+
+  <!-- <ng-container *ngIf="finalSlots.length != 0"> -->
+  <!-- <div class="buttons">
+    <button (click)="changeView('dayGridMonth')">Month</button>
+    <button (click)="changeView('timeGridWeek')">Week</button>
+    <button (click)="changeView('timeGridDay')">Day</button>
+  </div> -->
+
+
+    <!-- <div>
+      <mat-divider></mat-divider>
+
+      <mat-card class="example-card">
+
+        <mat-card-header>
+          <mat-card-title>Monday</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <ng-container  *ngIf="finalSlots">
+            <div class="flex-container slotsize">
+              <ng-container *ngFor="let item of finalSlots">
+                <div *ngIf="item.weekDay=='Monday'" [style.background-color]="item.slotStatus ? 'lightgreen' : 'rgb(237, 118, 118)'">
+                  {{item.slotName}}<br>
+                  <a *ngIf="!item.slotStatus">{{ getSessionBySlot(item._id) }}</a>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-divider></mat-divider>
+
+
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Tuesday</mat-card-title>
+        </mat-card-header>
+
+
+        <mat-card-content>
+
+            <ng-container  *ngIf="finalSlots">
+              <div class="flex-container slotsize" >
+                <ng-container  *ngFor="let item of finalSlots">
+                  <div  *ngIf="item.weekDay=='Tuesday'" [style.background-color]="item.slotStatus == true ? 'lightgreen' : 'rgb(237, 118, 118)'">
+                    {{item.slotName}}<br>
+                    <a *ngIf="!item.slotStatus">{{ getSessionBySlot(item._id) }}</a>
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
+
+          </mat-card-content>
+      </mat-card>
+
+      <mat-divider></mat-divider>
+
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Wednesday</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+          <ng-container  *ngIf="finalSlots">
+            <div class="flex-container slotsize" >
+              <ng-container  *ngFor="let item of finalSlots" >
+                <div  *ngIf="item.weekDay=='Wednesday'" [style.background-color]="item.slotStatus == true ? 'lightgreen' : 'rgb(237, 118, 118)'">
+                  {{item.slotName}}<br>
+                  <a *ngIf="!item.slotStatus">{{ getSessionBySlot(item._id) }}</a>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+
+        </mat-card-content>
+      </mat-card>
+
+      <mat-divider></mat-divider>
+
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Thursday</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+          <ng-container  *ngIf="finalSlots">
+            <div class="flex-container slotsize" >
+              <ng-container  *ngFor="let item of finalSlots" >
+                <div  *ngIf="item.weekDay=='Thursday'" [style.background-color]="item.slotStatus == true ? 'lightgreen' : 'rgb(237, 118, 118)'">
+                  {{item.slotName}}<br>
+                  <a *ngIf="!item.slotStatus">{{ getSessionBySlot(item._id) }}</a>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+
+        </mat-card-content>
+      </mat-card>
+
+      <mat-divider></mat-divider>
+
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Friday</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+          <ng-container  *ngIf="finalSlots">
+            <div class="flex-container slotsize" >
+              <ng-container  *ngFor="let item of finalSlots" >
+                <div  *ngIf="item.weekDay=='Friday'"  [style.background-color]="item.slotStatus == true ? 'lightgreen' : 'rgb(237, 118, 118)'">
+                  {{item.slotName}}<br>
+                  <a *ngIf="!item.slotStatus">{{ getSessionBySlot(item._id) }}</a>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+
+        </mat-card-content>
+      </mat-card>
+
+      <mat-divider></mat-divider>
+
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Saturday</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+          <ng-container  *ngIf="finalSlots">
+            <div class="flex-container slotsize" >
+              <ng-container  *ngFor="let item of finalSlots" >
+                <div  *ngIf="item.weekDay=='Saturday'" [style.background-color]="item.slotStatus == true ? 'lightgreen' : 'rgb(237, 118, 118)'">
+                  {{item.slotName}}<br>
+                  <a *ngIf="!item.slotStatus">{{ getSessionBySlot(item._id) }}</a>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+
+        </mat-card-content>
+      </mat-card>
+      <mat-divider></mat-divider>
+
+
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Sunday</mat-card-title>
+        </mat-card-header>
+
+
+        <mat-card-content>
+
+            <ng-container  *ngIf="finalSlots">
+              <div class="flex-container slotsize" >
+                <ng-container  *ngFor="let item of finalSlots">
+                  <div  *ngIf="item.weekDay=='Sunday'" [style.background-color]="item.slotStatus == true ? 'lightgreen' : 'rgb(237, 118, 118)'">
+                    {{item.slotName}}<br>
+                    <a *ngIf="!item.slotStatus">{{ getSessionBySlot(item._id) }}</a>
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
+
+          </mat-card-content>
+      </mat-card>
+
+      <mat-divider></mat-divider>
+    </div> -->
+  <!-- </ng-container> -->
+
+
+  <form class="center-div">
+    <mat-card>
+      <mat-card-content>
+
+      <div class="row">
+        <!-- <div class="col">
+          <div *ngIf=" therapistService$|async">
+          <mat-form-field class="full-width">
+            <mat-select #userId (selectionChange)="getSessionByTherapist(userId.value)" placeholder="Therapist Name">
+              <mat-option *ngFor="let user of therapistService$|async" [value]="user.name">
+                {{user.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </div> -->
+
+        <!-- <div class="col">
+          <div *ngIf="therapistService$ && userStatus == true">
+            <mat-form-field class="full-width">
+              <mat-select #day (selectionChange)="getSessionByday(day.value)" placeholder="Select Day">
+                <mat-option *ngFor="let day of  weekDays" [value]="day.name">
+                  {{day.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div> -->
+      </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+<!--
+  <ng-container *ngIf="finalSession.length == 0">
+    <mat-card>
+      <mat-card-title>
+        Please Select Therapist and Day
+      </mat-card-title>
+    </mat-card>
+  </ng-container> -->
+
+  <!-- <div *ngIf="finalSession.length>0"> -->
+
+  <mat-divider></mat-divider>
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <!-- <mat-card-title>{{day}}</mat-card-title> -->
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- <ng-container *ngIf="finalSession">
+        <div class="flex-container slotsize" >
+            <ng-container *ngFor="let item of finalSession" >
+              <div class="session_div">
+                {{item.slotName.slotName}}<br>
+                {{item.clientName.firstName}}
+              </div>
+            </ng-container>
+        </div>
+      </ng-container> -->
+    </mat-card-content>
+  </mat-card>
+  <mat-divider></mat-divider>
+<!-- </div> -->
+

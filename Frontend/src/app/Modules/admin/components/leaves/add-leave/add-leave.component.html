@@ -1,0 +1,51 @@
+<form [formGroup]="leaveForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>ADD LEAVE</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div *ngIf="users">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Therapist Name" formControlName="therapistName">
+              <mat-option *ngFor="let user of  users" [value]="user._id">
+                {{user.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Leave Remarks" formControlName="leaveRemarks">
+          </mat-form-field>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">ADD</button>
+      <!-- <button *ngIf ="isEdit" mat-raised-button (click)="editFunction()" enable mat-raised-button color="primary" type="button">UPDATE</button> -->
+    </mat-card-actions>
+  </mat-card>
+</form>
+

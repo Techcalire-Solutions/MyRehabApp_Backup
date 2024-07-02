@@ -1,0 +1,539 @@
+<mat-card  *ngIf="seData">
+  <mat-card-header>
+    <mat-card-title>EDUCATIONAL ASSESSMENT REPORT</mat-card-title>
+  </mat-card-header>
+  <mat-card class="container">
+    <div class="row">
+      <div class="col">
+        <h4>Date of assessment : {{seData.date | date: 'dd/MM/yyyy'}}</h4>
+      </div>
+      <div class="col">
+        <h4>Updated Date : {{seData.updatedDate | date: 'dd/MM/yyyy'}}</h4>
+      </div>
+    </div>
+
+    <mat-card-subtitle><h2>BACKGROUND INFORMATION</h2></mat-card-subtitle>
+
+    <ul class="responsive-table">
+      <li class="table-row">
+        <div>Informant: {{seData.informant}}</div>
+      </li>
+      <li class="table-row">
+        <div>Child strength reported by parent : {{seData.strengthChild}}</div>
+      </li>
+      <li class="table-row">
+        <div>Parental concerns : {{seData.parentalConcern}}</div>
+      </li>
+    </ul>
+  </mat-card>
+
+  <mat-card class="container">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          FUNCTIONAL AREAS
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelOpenState ? 'Currently I am open' : 'Click me to open'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <section class="dl-blurbs">
+          <dl>
+            <dt>Learning and Applying Knowledge</dt><br>
+            <dl>
+              <dt class="sublist-list">Watching&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.learningAndApplying.watching}}</dt><br>
+              <dt class="sublist-list">Listening&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.learningAndApplying.listening}}</dt><br>
+              <dt class="sublist-list">Memory&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.learningAndApplying.memory}}</dt><br>
+              <dt class="sublist-list">Attention&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.learningAndApplying.attention}}</dt><br>
+              <dt class="sublist-list">Solving Problems&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.learningAndApplying.solvingProblem}}</dt><br>
+              <dt class="sublist-list">Social Problems&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.learningAndApplying.socialProblem}}</dt><br>
+              <dt class="sublist-list">Motivational Problems&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.learningAndApplying.motivationalProblems}}</dt><br>
+              <dt class="sublist-list">Emotional Problems&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.learningAndApplying.emotionalProblems}}</dt><br>
+            </dl>
+          </dl>
+        </section>
+
+        <section class="dl-blurbs">
+          <dl>
+            <dt>Perceptual Motor Skills</dt><br>
+            <dl>
+              <dt class="sublist-list">Visual Perception Skills&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.perceptualMotorSkills.visual}}</dt><br>
+              <dt class="sublist-list">Auditory Perception Skills&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.perceptualMotorSkills.auditory}}</dt><br>
+              <dt class="sublist-list">Motor Coordination&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.perceptualMotorSkills.motorCordination}}</dt><br>
+              <dt class="sublist-list">Spatial Orientation(direction,position)&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.perceptualMotorSkills.spatialOrientation}}</dt><br>
+              <dt class="sublist-list">Learning Style&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.perceptualMotorSkills.learningStyle}}</dt><br>
+              <dt class="sublist-list">Handedness&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.perceptualMotorSkills.handedness}}</dt><br>
+            </dl>
+          </dl>
+        </section>
+
+        <section class="dl-blurbs">
+          <dl>
+            <dt>General Tasks</dt><br>
+            <dl>
+              <dt class="sublist-list">Undertaking a single task &nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.generalTasks.singleTasks}}</dt><br>
+              <dt class="sublist-list">Undertaking multiple tasks &nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.generalTasks.multipleTasks}}</dt><br>
+            </dl>
+          </dl>
+        </section>
+
+        <section class="dl-blurbs">
+          <dl>
+            <dt>Communication</dt><br>
+            <dl>
+              <dt class="sublist-list">Communicating with – receiving spoken messages&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.communication.spokenMessages}}</dt><br>
+              <dt class="sublist-list">Communicating with – receiving non-verbal messages&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.communication.nonVerbalMessages}}</dt><br>
+              <dt class="sublist-list">Speaking&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.communication.speaking}}</dt><br>
+              <dt class="sublist-list">Producing non-verbal message&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.communication.producingMessage}}</dt><br>
+              <dt class="sublist-list">Conversation&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.communication.conversation}}</dt><br>
+            </dl>
+          </dl>
+        </section>
+
+        <section class="dl-blurbs">
+          <dl>
+            <dt>Mobility</dt><br>
+            <dl>
+              <dt class="sublist-list">Lifting and carrying objects&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.mobility.lifting}}</dt><br>
+              <dt class="sublist-list">Fine hand use( picking up, grasping)&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.mobility.fineHand}}</dt><br>
+              <dt class="sublist-list">Walking/Jumping/ Running/ climbing stairs&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.mobility.walkingStairs}}</dt><br>
+              <dt class="sublist-list">Moving around using equipment (wheelchair, skates, etc.)&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.mobility.movingAround}}</dt><br>
+              <dt class="sublist-list">Using transportation (car, bus, train, plane, etc.)&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.mobility.usingTransportation}}</dt><br>
+              <dt class="sublist-list">Driving (riding bicycle, motor bike, driving car etc.)&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.mobility.driving}}</dt><br>
+            </dl>
+          </dl>
+        </section>
+
+        <section class="dl-blurbs">
+          <dl>
+            <dt>Self-Care</dt><br>
+            <dl>
+              <dt class="sublist-list">Washing oneself (bathing, drying, washing hands, etc.)&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.selfCare.washingOneself}}</dt><br>
+              <dt class="sublist-list">Caring for body parts (brushing teeth, shaving, grooming, etc.)&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.selfCare.bodyParts}}</dt><br>
+              <dt class="sublist-list">Toileting&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.selfCare.toiletting}}</dt><br>
+              <dt class="sublist-list">Dressing&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.selfCare.dressing}}</dt><br>
+              <dt class="sublist-list">Eating&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.selfCare.eating}}</dt><br>
+              <dt class="sublist-list">Drinking&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.selfCare.drinking}}</dt><br>
+            </dl>
+          </dl>
+        </section>
+
+        <section class="dl-blurbs">
+          <dl>
+            <dt>Domestic Life</dt><br>
+            <dl>
+              <dt class="sublist-list">Acquisition of goods &services (e.g.: shopping)&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.domesticSelf.acquisition}}</dt><br>
+              <dt class="sublist-list">Doing Household work (cleaning, washing dishes, laundry, ironing, cooking etc.)&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.domesticSelf.householdWork}}</dt><br>
+              <dt class="sublist-list">Assisting others&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.domesticSelf.assisting}}</dt><br>
+            </dl>
+          </dl>
+        </section>
+
+        <section class="dl-blurbs">
+          <dl>
+            <dt>Interpersonal interactions and Relationships</dt><br>
+            <dl>
+              <dt class="sublist-list">Basic interpersonal interactions&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.interpersonalInteractons.basic}}</dt><br>
+              <dt class="sublist-list">Relating with strangers&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.interpersonalInteractons.withStrangers}}</dt><br>
+              <dt class="sublist-list">Formal relationships&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.interpersonalInteractons.formalRelation}}</dt><br>
+              <dt class="sublist-list">Informal Social relationships&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.interpersonalInteractons.informalRelation}}</dt><br>
+              <dt class="sublist-list">Family/Intimate relationships&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.interpersonalInteractons.familyRelation}}</dt><br>
+            </dl>
+          </dl>
+        </section>
+
+        <section class="dl-blurbs">
+          <dl>
+            <dt>Major Life Areas</dt><br>
+            <dl>
+              <dt class="sublist-list">Informal Education&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.majorLifeAreas.informalEducation}}</dt><br>
+              <dt class="sublist-list">School Education&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.majorLifeAreas.schoolEducation}}</dt><br>
+              <dt class="sublist-list">Higher Education&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.majorLifeAreas.higherEducation}}</dt><br>
+            </dl>
+          </dl>
+        </section>
+
+        <section class="dl-blurbs">
+          <dl>
+            <dt>Community, Social and Civic Life</dt><br>
+            <dl>
+              <dt class="sublist-list">Community Life/ Recreation and leisure/Religion and Spirituality&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.communityLife}}</dt><br>
+            </dl>
+          </dl>
+        </section>
+
+        <section class="dl-blurbs">
+          <dl>
+            <dl>
+              <dt class="sublist-list1">Significant experiences which may have had impact on specific functional abilities (if any)&nbsp; : &nbsp;&nbsp;
+                {{seData.fuctionalAreas.functionalAbilities}}</dt><br>
+            </dl>
+          </dl>
+        </section>
+    </mat-expansion-panel>
+  </mat-card>
+
+  <mat-card class="container">
+    <mat-expansion-panel (opened)="panelOpenStateEducation = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          SPECIFIC EDUCATIONAL AREAS
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelOpenStateEducation ? 'Currently I am open' : 'Click me to open'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <section class="dl-blurbs">
+        <dl>
+          <dl>
+            <dt class="sublist-list1">Methodology/Materials Used&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.materialsUsed}}</dt><br>
+          </dl>
+        </dl>
+      </section>
+
+      <section class="dl-blurbs">
+        <dl>
+          <dt>Object Interaction</dt><br>
+          <dl>
+            <dt class="sublist-list">Mouthing/ Banging/ Relational play/ Symbolic play/ Pretend play&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.objectInteraction}}</dt><br>
+          </dl>
+        </dl>
+      </section>
+
+      <section class="dl-blurbs">
+        <dl>
+          <dt>Object Interaction</dt><br>
+          <dl>
+            <dt class="sublist-list">Colour&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.concepts.color}}</dt><br>
+            <dt class="sublist-list">Shapes&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.concepts.shapes}}</dt><br>
+            <dt class="sublist-list">Size&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.concepts.size}}</dt><br>
+            <dt class="sublist-list">Quantity&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.concepts.quantity}}</dt><br>
+            <dt class="sublist-list">Matching&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.concepts.matching}}</dt><br>
+            <dt class="sublist-list">Similarities&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.concepts.similarities}}</dt><br>
+            <dt class="sublist-list">Differences&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.concepts.differences}}</dt><br>
+            <dt class="sublist-list">Classification&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.concepts.classification}}</dt><br>
+          </dl>
+        </dl>
+      </section>
+
+      <section class="dl-blurbs">
+        <dl>
+          <dt>Object Interaction</dt><br>
+          <dl>
+            <dt class="sublist-list">Seriation&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.seriation}}</dt><br>
+            <dt class="sublist-list">One to One&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.oneToOne}}</dt><br>
+            <dt class="sublist-list">Reversibility&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.reversibility}}</dt><br>
+            <dt class="sublist-list">Special Concepts&nbsp; : &nbsp;&nbsp;
+              {{seData.specificEducationalAreas.specialConcepts}}</dt><br>
+          </dl>
+        </dl>
+      </section>
+
+      <section class="dl-blurbs">
+        <dl>
+          <dt>Early Literacy Skills</dt><br>
+          <dl>
+            <dt class="sublist-list">Pre-Reading</dt>
+            <dl>
+              <dt class="sublist-list-list">Name familiar picture&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preReading.namePicture}}</dt><br>
+              <dt class="sublist-list-list">Answer questions about what they see in books&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preReading.whatTheySee}}</dt><br>
+              <dt class="sublist-list-list">Know the correct way to hold and handle a book&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preReading.handleBook}}</dt><br>
+              <dt class="sublist-list-list">Recognize alphabets&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preReading.alphabets}}</dt><br>
+              <dt class="sublist-list-list">Read some sight words&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preReading.sightWords}}</dt><br>
+              <dt class="sublist-list-list">Recognize and match letters to letter sound&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preReading.letterSound}}</dt><br>
+            </dl>
+          </dl>
+
+          <dl>
+            <dt class="sublist-list">Pre-Writing</dt>
+            <dl>
+              <dt class="sublist-list-list">Imitates horizontal stroke&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preWriting.horizontalStroke}}</dt><br>
+              <dt class="sublist-list-list">Imitate a vertical stroke&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preWriting.verticalStroke}}</dt><br>
+              <dt class="sublist-list-list">Copies a circle with a circular scribble&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preWriting.circularScribble}}</dt><br>
+              <dt class="sublist-list-list">Copies a plus shape&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preWriting.plusShape}}</dt><br>
+              <dt class="sublist-list-list">Copies squire&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preWriting.square}}</dt><br>
+              <dt class="sublist-list-list">Copies Triangle&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preWriting.triangle}}</dt><br>
+              <dt class="sublist-list-list">Tripod Grasp&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preWriting.grasp}}</dt><br>
+              <dt class="sublist-list-list">Copies some capital alphabets&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preWriting.capitalAlphabets}}</dt><br>
+              <dt class="sublist-list-list">Copies some small alphabets&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preWriting.smallAlphabets}}</dt><br>
+            </dl>
+          </dl>
+
+          <dl>
+            <dt class="sublist-list">Pre- mathematics & Numbers</dt>
+            <dl>
+              <dt class="sublist-list-list">Rote counting (1-10)&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preMaths.roteCount}}</dt><br>
+              <dt class="sublist-list-list">Recognition of numerals (1-10)&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preMaths.recognitionNumeral}}</dt><br>
+              <dt class="sublist-list-list">Meaningful counting (1-10)&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preMaths.meaningfulCounting}}</dt><br>
+              <dt class="sublist-list-list">More/ Less&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.earlyLiteracy.preMaths.moreLess}}</dt><br>
+            </dl>
+          </dl>
+        </dl>
+      </section>
+
+      <section class="dl-blurbs">
+        <dl>
+          <dt>Present Literacy Skills & Levels</dt><br>
+          <dl>
+            <dt class="sublist-list">Reading</dt>
+            <dl>
+              <dt class="sublist-list-list">Phonetic awareness&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.phoneticAwareness}}</dt><br>
+              <dt class="sublist-list-list">Finger Tracing&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.fingerTracing}}</dt><br>
+              <dt class="sublist-list-list">Spelling Aloud before blending&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.spellingAloud}}</dt><br>
+              <dt class="sublist-list-list">Omits a word&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.omitsWord}}</dt><br>
+              <dt class="sublist-list-list">Substitute a Word&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.substituteWord}}</dt><br>
+              <dt class="sublist-list-list">Ignores punctuations&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.ignorePunctuation}}</dt><br>
+              <dt class="sublist-list-list">Posture&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.posture}}</dt><br>
+              <dt class="sublist-list-list">Loudness in voice&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.loudVoice}}</dt><br>
+              <dt class="sublist-list-list">Distance between book & eyes&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.distanceBookEye}}</dt><br>
+              <dt class="sublist-list-list">Reading&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.reading}}</dt><br>
+              <dt class="sublist-list-list">Adds a word&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.addWord}}</dt><br>
+              <dt class="sublist-list-list">Mispronounce a word&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.mispronounceWord}}</dt><br>
+              <dt class="sublist-list-list">Ask Examiner to pronounce a word&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.pronounceWord}}</dt><br>
+              <dt class="sublist-list-list">Any other Specify&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.reading.specify}}</dt><br>
+            </dl>
+          </dl>
+
+          <dl>
+            <dt class="sublist-list">Writing</dt>
+            <dl>
+              <dt class="sublist-list-list">Left to right orientation&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.leftToRight}}</dt><br>
+              <dt class="sublist-list-list">Ignores margin&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.ignoreMargin}}</dt><br>
+              <dt class="sublist-list-list">Ignores line&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.ignoreLine}}</dt><br>
+              <dt class="sublist-list-list">Excessive over writing&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.overWritting}}</dt><br>
+              <dt class="sublist-list-list">Posture&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.posture}}</dt><br>
+              <dt class="sublist-list-list">Writing style&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.writingStyle}}</dt><br>
+              <dt class="sublist-list-list">Mixing of capital and small letters&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.mixingCapitalSmall}}</dt><br>
+              <dt class="sublist-list-list">Omits dots on 'I' and line on 't'&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.omits}}</dt><br>
+              <dt class="sublist-list-list">spacing between lines&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.spaciningLine}}</dt><br>
+              <dt class="sublist-list-list">punctuations&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.puctuations}}</dt><br>
+              <dt class="sublist-list-list">Reversals of letters&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.letterReversal}}</dt><br>
+              <dt class="sublist-list-list">Reversals of words&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.wordReversal}}</dt><br>
+              <dt class="sublist-list-list">Any other Specify&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.writing.anyOther}}</dt><br>
+            </dl>
+          </dl>
+
+          <dl>
+            <dt class="sublist-list">Spelling</dt>
+            <dl>
+              <dt class="sublist-list-list">Sight words&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.spelling.sightWords}}</dt><br>
+              <dt class="sublist-list-list">CVC words&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.spelling.cvcWords}}</dt><br>
+              <dt class="sublist-list-list">Blend Words&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.spelling.blendWords}}</dt><br>
+              <dt class="sublist-list-list">Consonant diagraphs&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.spelling.consonant}}</dt><br>
+              <dt class="sublist-list-list">Any other specify&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.spelling.anyOther}}</dt><br>
+            </dl>
+          </dl>
+
+          <dl>
+            <dt class="sublist-list">Reading Comprehension</dt>
+            <dl>
+              <dt class="sublist-list-list">Answers with prompt&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.readingComprehension.promptAnswers}}</dt><br>
+              <dt class="sublist-list-list">Question to be repeated once, twice, 3-5 times&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.readingComprehension.repeatedQuestion}}</dt><br>
+              <dt class="sublist-list-list">Question to be translated to mother tongue&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.readingComprehension.transalatedQuestion}}</dt><br>
+              <dt class="sublist-list-list">Answers by referring back to reading material&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.readingComprehension.answerReadingMaterial}}</dt><br>
+              <dt class="sublist-list-list">Refuses to answer / Repeats the question&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.readingComprehension.refusesOrRepeats}}</dt><br>
+              <dt class="sublist-list-list">Any other specify&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.readingComprehension.anyOther}}</dt><br>
+            </dl>
+          </dl>
+
+          <dl>
+            <dt class="sublist-list">Arithmetic Computation</dt>
+            <dl>
+              <dt class="sublist-list-list">Right left organization&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.rightLeft}}</dt><br>
+              <dt class="sublist-list-list">Identification of operational symbols&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.operationalSymbols}}</dt><br>
+              <dt class="sublist-list-list">Place values&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.placeValues}}</dt><br>
+              <dt class="sublist-list-list">Finger counting&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.fingerCounting}}</dt><br>
+              <dt class="sublist-list-list">Draws lines and counts for addition&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.drawAddtion}}</dt><br>
+              <dt class="sublist-list-list">Draws lines and cuts and subtracts:&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.darwSubtraction}}</dt><br>
+              <dt class="sublist-list-list">Ignores carry over in addition&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.ignoreAddition}}</dt><br>
+              <dt class="sublist-list-list">Ignores deduction after borrowing in subtraction&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.ignoreSubtraction}}</dt><br>
+              <dt class="sublist-list-list">Place value errors in multiplication&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.errorMultplication}}</dt><br>
+              <dt class="sublist-list-list">Place value errors in division&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.errorDivision}}</dt><br>
+              <dt class="sublist-list-list">Errors while transferring from work to fair work&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.errorTransfer}}</dt><br>
+              <dt class="sublist-list-list">Substitution ( of square for rectangle)&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.substitutions}}</dt><br>
+              <dt class="sublist-list-list">Error in placing decimal points&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.errorDecimalPoint}}</dt><br>
+              <dt class="sublist-list-list">Addition&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.addition}}</dt><br>
+              <dt class="sublist-list-list">Subtraction&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.subtraction}}</dt><br>
+              <dt class="sublist-list-list">Multiplication&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.multiplication}}</dt><br>
+              <dt class="sublist-list-list">Division&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.division}}</dt><br>
+              <dt class="sublist-list-list">Any other specify&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.aritmeticComputation.anyOther}}</dt><br>
+            </dl>
+          </dl>
+
+          <dl>
+            <dt class="sublist-list">Arithmetic Reasoning</dt>
+            <dl>
+              <dt class="sublist-list-list">Requires assistance in solving story sum</dt>
+              <dl>
+                <dt class="sublist">Needs to be read out for story sums:&nbsp; : &nbsp;&nbsp;
+                  {{seData.specificEducationalAreas.presentLiteracy.arithmeticReasoning.readStorySum}}</dt><br>
+                <dt class="sublist">Needs to be explained for story sums including the operations to use&nbsp; : &nbsp;&nbsp;
+                  {{seData.specificEducationalAreas.presentLiteracy.arithmeticReasoning.explainStorySum}}</dt><br>
+              </dl>
+              <dt class="sublist-list-list">Addition&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.arithmeticReasoning.addition}}</dt><br>
+              <dt class="sublist-list-list">Subtraction&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.arithmeticReasoning.subtraction}}</dt><br>
+              <dt class="sublist-list-list">Multiplication&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.arithmeticReasoning.mutiplication}}</dt><br>
+              <dt class="sublist-list-list">Division&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.arithmeticReasoning.division}}</dt><br>
+              <dt class="sublist-list-list">Any other specify:&nbsp; : &nbsp;&nbsp;
+                {{seData.specificEducationalAreas.presentLiteracy.arithmeticReasoning.anyOther}}</dt><br>
+            </dl>
+          </dl>
+        </dl>
+      </section>
+    </mat-expansion-panel>
+  </mat-card>
+
+  <mat-card class="container">
+    <ul class="responsive-table">
+      <li class="table-row">
+        <div>Test administered : {{seData.specificEducationalAreas.testAdministered}}</div>
+      </li>
+      <li class="table-row">
+        <div>Impression  : {{seData.specificEducationalAreas.impressions}}</div>
+      </li>
+      <li class="table-row">
+        <div>Observations : {{seData.specificEducationalAreas.observations}}</div>
+      </li>
+      <li class="table-row">
+        <div>Recommendations : {{seData.specificEducationalAreas.recommendations}}</div>
+      </li>
+    </ul>
+  </mat-card>
+</mat-card>

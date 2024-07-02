@@ -1,0 +1,48 @@
+<form [formGroup]="seSessionForm" novalidate (ngSubmit)="editFunction()" class="center-div">
+  <mat-card class="shipping-card">
+
+    <div class="container">
+      <h2>UPDATE SE SESSION FORM</h2>
+
+      <table class="full-width">
+        <tr>
+          <td colspan="2">
+            Goal :
+              <input type="text" formControlName="goal" class="form-control">
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2">
+            Activities :
+            <input type="text" formControlName="activities" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            Response:
+            <input type="text" formControlName="response" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            Notes:
+            <input type="text" formControlName="notes" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Status:
+            <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Update</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+

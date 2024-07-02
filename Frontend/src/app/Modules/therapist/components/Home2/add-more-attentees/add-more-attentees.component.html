@@ -1,0 +1,32 @@
+<form [formGroup]="attendeeForm">
+  <div class="pricingTable">
+
+    <ul class="pricingTable-firstTable">
+      <li class="pricingTable-firstTable_table" *ngIf="data.status == 'clients'">
+        <h1 class="pricingTable-firstTable_table__header">CLIENTS</h1>
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Client Name" formControlName="clientId" multiple>
+            <mat-option *ngFor="let client of clients" [value]="client.clientId._id">
+              {{ client.clientId.firstName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field><br>
+        <button class="pricingTable-firstTable_table__getstart" (click)="addClients()">ADD</button>
+      </li>
+
+      <li class="pricingTable-firstTable_table" *ngIf="data.status == 'therapists'">
+        <h1 class="pricingTable-firstTable_table__header">THERAPISTS</h1>
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Therapist Name" formControlName="therapistId" multiple>
+            <mat-option *ngFor="let user of user" [value]="user.therapistId._id">
+              {{user.therapistId.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field><br>
+        <button class="pricingTable-firstTable_table__getstart" (click)="addTherapists()">ADD</button>
+      </li>
+    </ul>
+  </div>
+</form>
+
+

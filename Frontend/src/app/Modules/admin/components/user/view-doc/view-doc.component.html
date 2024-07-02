@@ -1,0 +1,48 @@
+<div class="img_size">
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  </head>
+  <body>
+    <div class="img_size" *ngIf="exp">
+      <a>Experience Certificate:</a>
+      <ng-container *ngIf="exp.split('.').pop() === 'pdf'">
+        <pdf-viewer [src]="exp"
+          [render-text]="true"
+          [original-size]="false"
+          style="width: 900px;height: 700px">
+        </pdf-viewer>
+      </ng-container>
+      <ng-container *ngIf="exp.split('.').pop() !== 'pdf'">
+        <img class="img_size" [src]="exp">
+      </ng-container>
+    </div>
+
+    <div class="img_size" *ngIf="qual">
+      <a>Qualification:</a>
+      <ng-container *ngIf="qual.split('.').pop() === 'pdf'">
+        <pdf-viewer [src]="qual"
+          [render-text]="true"
+          [original-size]="false"
+          style="width: 900px;height: 700px">
+        </pdf-viewer>
+      </ng-container>
+      <ng-container *ngIf="qual.split('.').pop() !== 'pdf'">
+        <img class="img_size" [src]="qual">
+      </ng-container>
+    </div>
+
+    <div class="img_size" *ngIf="id">
+      <a>Id Proof:</a>
+      <ng-container *ngIf="id.split('.').pop() === 'pdf'">
+        <pdf-viewer [src]="id"
+          [render-text]="true"
+          [original-size]="false"
+          style="width: 900px;height: 700px">
+        </pdf-viewer>
+      </ng-container>
+      <ng-container *ngIf="id.split('.').pop() !== 'pdf'">
+        <img class="img_size" [src]="id">
+      </ng-container>
+    </div>
+  </body>
+</div>

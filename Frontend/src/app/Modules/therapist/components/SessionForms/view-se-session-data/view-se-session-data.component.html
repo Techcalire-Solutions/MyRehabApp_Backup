@@ -1,0 +1,40 @@
+<div class="container">
+  <mat-card>
+
+    <h2>SE SESSION FORM</h2>
+
+    <mat-card-content *ngIf="seData">
+      <div class="row">
+        <div class="col">
+          <h4>Submitted on : {{seData.date | date: 'dd/MM/yyyy'}}</h4>
+        </div>
+        <div class="col">
+          <h4>Last updates on : {{seData.updatedDate | date: 'dd/MM/yyyy'}}</h4>
+        </div>
+      </div>
+      <ul class="responsive-table"  *ngFor='let item of seData.seDatas'>
+        <li class="table-header">
+          <div>Goal : {{item.goal.goal}}</div>
+          <div>Status : {{(item.status === false) ? "Pending" : "Completed"}}</div>
+          <div>
+            <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+            <i  (click)="editSeDataSession(item._id)"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+            &nbsp;&nbsp;
+            <!-- <i  (click)="deleteSeGoal(element._id)" class="fa fa-trash" style="font-size: 20px; color:red"></i> -->
+          </div>
+        </li>
+        <li class="table-row">
+          <div>Activities : {{item.activities}}</div>
+        </li>
+        <li class="table-row">
+          <div>Response : {{item.response}}</div>
+        </li>
+        <li class="table-row">
+          <div>Notes : {{item.notes}}</div>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

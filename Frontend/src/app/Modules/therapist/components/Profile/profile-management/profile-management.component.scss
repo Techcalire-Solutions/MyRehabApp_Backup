@@ -1,0 +1,79 @@
+.profile-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .profile-heading {
+    // font-size: 24px;
+    // margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(239, 11, 11); /* Change the color to your preferred color */
+    margin: 20px 0; /* Adjust the margin as needed */
+    text-align: center;
+  }
+
+  .card-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .top-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .user-name {
+    margin-top: 10px;
+  }
+
+  .icon-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-actions {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .icon-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+  }
+  // .leave-icon {
+  //   font-size: 60px; /* Increase the size of the icon */
+  //   font-weight: bold; /* Make the icon bold */
+  //   color: #007bff; /* Set the icon color (blue in this example) */
+  //   // margin-right: 70px;
+  //   // margin-left: 70px; /* Add some spacing to the right of the icon */
+  // }
+
+  .material-icons.leave-icon {
+    font-size: 45px;
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  span {
+    margin-top: 5px;
+  }
+
+
+
+

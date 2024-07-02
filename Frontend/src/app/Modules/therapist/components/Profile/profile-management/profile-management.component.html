@@ -1,0 +1,31 @@
+<div class="profile-dashboard">
+    <mat-divider></mat-divider>
+    <h1 class="profile-heading">PROFILE DASHBOARD</h1>
+    <div class="card-container">
+      <mat-card class="top-card">
+        <div class="profile-image">
+          <i class="fas fa-user-circle fa-5x"></i>
+        </div>
+        <h2 class="user-name">{{userSourcename}}</h2>
+      </mat-card>
+
+      <mat-card class="top-card">
+        <div class="profile-details" *ngIf="userSource">
+          <p><strong>Email:</strong> {{userSource.email}}</p>
+          <p><strong>Designation:</strong> {{userSource.role}}</p>
+          <p><strong>Contact Number:</strong></p>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="icon-card">
+      <div class="profile-actions">
+        <div class="icon-button">
+          <i class="material-icons leave-icon" (click)="getleaveComp()">event_note</i>
+          <span>Leave</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- // -->

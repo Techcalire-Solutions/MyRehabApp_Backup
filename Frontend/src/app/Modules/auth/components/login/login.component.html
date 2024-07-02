@@ -1,0 +1,101 @@
+<div class="center">
+  <section class='login' id='login'>
+      <div class='head'>
+      <h1 class='company'>MY REHAB APP</h1>
+      </div>
+      <p class='msg'>Welcome </p>
+      <mat-stepper>
+        <mat-step>
+          <ng-template matStepLabel>CLINIC</ng-template>
+          <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
+            <mat-card class="shipping-card">
+              <mat-card-header>
+
+                  <mat-card-title class="msg"> Login</mat-card-title>
+
+              </mat-card-header>
+              <mat-card-content>
+
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Email" formControlName="email">
+                      <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+                       Email is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput type="password" id="password" placeholder="Password" formControlName="password">
+                      <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                        Password is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit">Login</button>
+              </mat-card-actions>
+            </mat-card>
+
+
+            </form>
+
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel>PARENT</ng-template>
+          <form [formGroup]="clientLoginForm" novalidate>
+            <mat-card class="shipping-card">
+              <mat-card-header>
+                  <mat-card-title class="msg"> Login</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="client ID" formControlName="client_ID">
+                      <mat-error *ngIf="clientLoginForm.controls['client_ID'].hasError('required')">
+                        client ID is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput type="password" id="password" placeholder="Password" formControlName="password">
+                      <mat-error *ngIf="clientLoginForm.controls['password'].hasError('required')">
+                        Password is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-raised-button color="primary" type="button" (click)="clientLogin()">Login</button>
+              </mat-card-actions>
+            </mat-card>
+
+
+            </form>
+
+        </mat-step>
+      </mat-stepper>
+
+   </section>
+
+</div>
+
+

@@ -1,0 +1,21 @@
+.full-width{
+  width: 100%;
+}
+
+.search-field {
+  width: 95%;
+  margin-left: 5px;
+}
+
+.search-field input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.search-field input:focus {
+  outline: none;
+  border-color: #2196F3; /* Change the border color when focused */
+}

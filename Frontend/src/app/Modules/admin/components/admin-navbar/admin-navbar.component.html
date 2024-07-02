@@ -1,0 +1,240 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+      <mat-toolbar>
+        <img style="width: 100%; height: 100%;" src="../../../../../assets/myrehabapplogo.jpg" routerLink="home">
+      </mat-toolbar>
+    <mat-nav-list>
+
+      <mat-list-item style="margin-left: 9px;" [routerLinkActive]="['active']" routerLink="home">
+        <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 5px;">dashboard</span>
+        DASHBOARD
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+      <!-- <mat-list-item style="margin-left: 9px;" routerLink="adduser"  [routerLinkActive]="['active']" *ngIf="currentUser.md == true">
+        <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">manage_accounts</span>
+         USER
+      </mat-list-item>
+      <mat-divider *ngIf="currentUser.md == true"></mat-divider> -->
+
+      <mat-list-item style="margin-left: 9px;" routerLink="addcompany"  [routerLinkActive]="['active']" *ngIf="companyName === 'My Rehab App'">
+        <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;"><span class="material-icons">business</span></span>
+         COMPANY
+      </mat-list-item>
+      <mat-divider *ngIf="companyName === 'My Rehab App'"></mat-divider>
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 5px;">groups</span>
+              CLIENTS
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list-item  routerLink="addclients" [routerLinkActive]="['active']">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 5px;">group_add</span>
+            ADD
+          </mat-list-item>
+          <mat-list-item routerLink="viewclients"  [routerLinkActive]="['active']">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 5px;">person_search</span>
+            VIEW
+          </mat-list-item>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <!-- <mat-list-item style="margin-left: 9px;" routerLink="addcategory" [routerLinkActive]="['active']">
+        <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">apps</span>
+        CATEGORY</mat-list-item>
+      <mat-divider></mat-divider> -->
+
+      <mat-list-item style="margin-left: 9px;" routerLink="addslot" [routerLinkActive]="['active']">
+        <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">event_available</span>
+        SLOTS</mat-list-item>
+      <mat-divider></mat-divider>
+
+      <!-- <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">event</span>
+                SLOTS
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <a mat-list-item [routerLinkActive]="['active']" routerLink="addroom">
+            <span class="material-icons" style="color: #2242d0;font-size: 25px; margin-right: 3px;">meeting_room</span>
+            ROOM
+          </a>
+          <a mat-list-item [routerLinkActive]="['active']" routerLink="addslot">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">event_available</span>
+            SLOT
+          </a>
+        </mat-expansion-panel>
+      </mat-accordion> -->
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">volunteer_activism</span>
+              SESSIONS
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <a mat-list-item [routerLinkActive]="['active']" routerLink="addassessment">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">psychology</span>
+            ASSESSMENT
+          </a>
+          <a mat-list-item [routerLinkActive]="['active']" routerLink="addsession">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">settings_accessibility</span>
+            SESSION
+          </a>
+          <a mat-list-item [routerLinkActive]="['active']" routerLink="addgroupsession">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">group_work</span>
+            GROUP
+          </a>
+
+          <!-- <a mat-list-item [routerLinkActive]="['active']" routerLink="sessionhandover">
+            <span class="material-icons" style="font-size: 25px; color: #2242d0; margin-right: 3px;">swap_horiz</span>
+            HANDOVER
+          </a> -->
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">payment</span>
+              FEES
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <a mat-list-item style="margin-left: 9px;" routerLink="viewassessmentpendingfee" [routerLinkActive]="['active']">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">psychology</span>
+            ASSESSMENT
+          </a>
+          <a mat-list-item style="margin-left: 9px;" routerLink="viewpendingfee" [routerLinkActive]="['active']">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">settings_accessibility</span>
+            SESSION
+          </a>
+          <a mat-list-item style="margin-left: 9px;" routerLink="viewgroupsessionfee" [routerLinkActive]="['active']">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">group_work</span>
+            GROUP
+          </a>
+          <!-- <a mat-list-item style="margin-left: 9px;" routerLink="viewlmcfee" [routerLinkActive]="['active']">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">analytics</span>
+            LMC
+          </a> -->
+          <a mat-list-item style="margin-left: 9px;" routerLink="pendingfees" [routerLinkActive]="['active']">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">pending_actions</span>
+            PENDING
+          </a>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-list-item style="margin-left: 9px;" routerLink="managewallet" [routerLinkActive]="['active']">
+        <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">account_balance_wallet</span>
+        WALLET</mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">event_busy</span>
+            LEAVE
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <!-- <a mat-list-item [routerLinkActive]="['active']" routerLink="manageleaves">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">groups</span>
+            CLIENT
+          </a> -->
+          <a mat-list-item [routerLinkActive]="['active']" routerLink="viewTherapistLeaves">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">person</span>
+           THERAPIST
+          </a>
+          <a mat-list-item [routerLinkActive]="['active']" routerLink="compensationsession">
+            <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">attribution</span>
+            COMPENSATION
+          </a>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-list-item style="margin-left: 9px;" routerLink="addexpense" [routerLinkActive]="['active']">
+        <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">price_check</span>
+        EXPENSE</mat-list-item>
+      <mat-divider></mat-divider>
+
+      <!-- <mat-list-item style="margin-left: 9px;" routerLink="salary" [routerLinkActive]="['active']">
+        <span class="material-icons" style="color: #2242d0; font-size: 25px; margin-right: 3px;">monetization_on</span>
+        SALARY</mat-list-item>
+      <mat-divider></mat-divider> -->
+    </mat-nav-list>
+  </mat-sidenav>
+
+
+
+  <mat-sidenav-content>
+    <mat-toolbar style="background-color: #3f51b5; color: white">
+      <button (click)="clearNotifications()"
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <span *ngIf="!(isHandset$ | async)">{{companyName | uppercase}}</span>
+
+      <h6 class="nav_main" style="cursor: pointer;" routerLink="profile"> Hi {{currentUser.username}}</h6>
+      <!-- <button mat-icon-button><span class="material-icons">notifications</span></button> -->
+      <!-- <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu> -->
+
+
+      <div class="notification-container">
+        <button mat-icon-button (click)="toggleNotifications()">
+          <span class="material-icons">notifications</span>
+          <div *ngIf="notifications.length > 0" class="notification-badge">{{ notifications.length }}</div>
+        </button>
+
+        <div *ngIf="showNotifications" class="notification-list">
+          <div *ngFor="let notification of notifications" class="notification-item">
+            <a *ngIf="notification.notificationType.toLowerCase() === 'birthday'" class="notification-item">
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-*********" crossorigin="anonymous">
+              <i class="fas fa-birthday-cake" ></i>
+              {{ notification.userId.name }}'s birthday on this month - {{ notification.birthDate | date: 'dd/MM/yyyy' }}
+            </a>
+
+            <a *ngIf="notification.notificationType.toLowerCase() === 'joiningday'">{{ notification.userId.name }} 's joiningday on this month - {{notification.joiningDate | date: 'dd/MM/yyyy' }}</a>
+            <!-- <a *ngIf="notification.notificationType.toLowerCase() === 'clientbirthday'" style="color: green;">{{ notification.firstName }} 's birthday on this month - {{notification.dateOfBirth | date: 'dd/MM/yyyy' }}</a> -->
+            <a *ngIf="notification.notificationType.toLowerCase() === 'clientbirthday'" class="notification-item">
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-*********" crossorigin="anonymous">
+
+              <i class="fas fa-birthday-cake"></i>
+              {{ notification.firstName }}'s birthday on this month - {{ notification.dateOfBirth | date: 'dd/MM/yyyy' }}
+            </a>
+
+
+
+            <a *ngIf="notification.notificationType.toLowerCase() === 'therapistleaverequested'">{{ notification.therapistId.name }} requested for leave</a>
+            <a *ngIf="notification.notificationType.toLowerCase() === 'therapistonleave'" >{{ notification.therapistId.name }} on leave</a>
+            <a *ngIf="notification.notificationType.toLowerCase() === 'clientleaverequested'" style="color: green;">{{ notification.clientId.firstName }} requested for leave</a>
+            <a *ngIf="notification.notificationType.toLowerCase() === 'clientonleave'" style="color: green;">{{ notification.clientId.firstName }} on leave</a>
+          </div>
+        </div>
+      </div>
+      <button mat-icon-button><mat-icon class="nav_username" routerLink="settings">settings</mat-icon></button>
+
+      <mat-icon class="nav_username"  matTooltip="Logout" (click)="logOut()">power_settings_new</mat-icon>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

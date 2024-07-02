@@ -1,0 +1,742 @@
+<form [formGroup]="otAssessmentForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>OCCUPATIONAL THERAPY ASSESSMENT FORM</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card>
+        <mat-card-header><mat-card-subtitle><h2>CLIENT PROFILE:</h2></mat-card-subtitle></mat-card-header>
+        <div class="row box">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Medical Diagnosis:" formControlName="medicalDiagnosis">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row box">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="General Appearance:" formControlName="generalAppearence">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row box">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="On Observation:" formControlName="onObservation">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card>
+        <ng-container formGroupName="performanceAreas">
+          <mat-card-header>
+            <mat-card-title><mat-card-subtitle><h2>PERFORMANCE AREAS</h2></mat-card-subtitle></mat-card-title>
+          </mat-card-header>
+
+          <mat-card>
+            <ng-container formGroupName="dailyLiving">
+              <mat-card-header>
+                <mat-card-title><mat-card-subtitle>1. Activities of Daily Living:</mat-card-subtitle></mat-card-title>
+              </mat-card-header>
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="a. Grooming:" formControlName="grooming">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="b. Oral Hygiene:" formControlName="oralHygiene">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="c. Bathing:" formControlName="bathing">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="d. Toilet Hygiene:" formControlName="toiletHygiene">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="e. Dressing:" formControlName="dressing">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="f. Functional Mobility:" formControlName="functionalMobility">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </mat-card><br>
+
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="2. Educational Activities:" formControlName="educational">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="3. Play and Leisure:" formControlName="playAndLeisure">
+              </mat-form-field>
+            </div>
+          </div>
+        </ng-container>
+      </mat-card><br>
+
+      <mat-card>
+        <ng-container formGroupName="performanceComponents">
+          <mat-card-header>
+            <mat-card-title><mat-card-subtitle><h2>PERFORMANCE COMPONENTS</h2></mat-card-subtitle></mat-card-title>
+          </mat-card-header>
+
+          <br><ng-container formGroupName="sensorymotor">
+            <mat-card-header>
+              <mat-card-title><mat-card-subtitle><b>SENSORIMOTOR</b></mat-card-subtitle></mat-card-title>
+            </mat-card-header>
+            <ng-container formGroupName="sensoryIntegration">
+              <mat-card-header>
+                <mat-card-title><mat-card-subtitle><b>1. Sensory Integration:</b></mat-card-subtitle></mat-card-title>
+              </mat-card-header>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="a. Sensory Awareness:" formControlName="sensoryAwareness">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="b. Sensory Processing:" formControlName="sensoryProcessing">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <ng-container formGroupName="interpretAbility">
+                <mat-card-header>
+                  <mat-card-title><mat-card-subtitle>c. Ability to Interpret Stimule:</mat-card-subtitle></mat-card-title>
+                </mat-card-header>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Tactile:" formControlName="tactile">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Proprioceptive:" formControlName="propriceptive">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Vestibular:" formControlName="vestibular">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Auditory:" formControlName="auditory">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Visual:" formControlName="visual">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Gustatory:" formControlName="gustatory">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Olfactory:" formControlName="olfactory">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+
+            <ng-container formGroupName="perceptualSkills">
+              <mat-card-header>
+                <mat-card-title><mat-card-subtitle><b>2. Perceptual Skills</b></mat-card-subtitle></mat-card-title>
+              </mat-card-header>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="a. Stereognosis:" formControlName="stereognosis">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="b. Kinesthesia:" formControlName="kinesthesia">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="c. Body Schema:" formControlName="bodyScheme">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="d. R/L Discrimination:" formControlName="rlDiscrimination">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="e. Form Constancy:" formControlName="formConstancy">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="f. Position in Space:" formControlName="positionSpace">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="g. Visual Closure:" formControlName="visualClosure">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="h. Figure Ground Discrimination:" formControlName="groundDiscrimination">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="i. Depth Perception:" formControlName="depthPerception">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="j. Topographical Orientation" formControlName="topographicalOrientation">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+
+          <br><ng-container formGroupName="neuroMuscular">
+            <mat-card-header>
+              <mat-card-title><mat-card-subtitle><b>NEUROMUSCULAR</b></mat-card-subtitle></mat-card-title>
+            </mat-card-header>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="1. ROM:" formControlName="rom">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="2. Muscle Tone:" formControlName="muscleTone">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="3. Tightness:" formControlName="tightness">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="4. Contracture:" formControlName="contracture">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="5. Deformity:" formControlName="deformity">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="6. Muscle Strength:" formControlName="muscleStrength">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="7. Endurance:" formControlName="endurance">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="8. Postural Control in Sitting:" formControlName="posturalSitting">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="9. Postural Control in Standing:" formControlName="posturalStanding">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="10. Gait:" formControlName="gait">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="11. Other Findings:" formControlName="otherFindings">
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <br><ng-container formGroupName="motor">
+            <mat-card-header>
+              <mat-card-title><mat-card-subtitle><b>MOTOR</b></mat-card-subtitle></mat-card-title>
+            </mat-card-header>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="1. Activity Tolerance:" formControlName="activityTolerance">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="2. Gross Motor Coordination:" formControlName="grossMotor">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="3. Midline Crossing:" formControlName="midlineCrossing">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="4. Laterality:" formControlName="laterality">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="5. Bilateral Integration:" formControlName="bilateralIntegration">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="6. Praxis:" formControlName="praxis">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="7. Fine Motor Coordination:" formControlName="fineMotor">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="8. Standing Balance and Equilibrium:" formControlName="standingBalance">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="9. Oral Motor Control:" formControlName="oralMotor">
+                </mat-form-field>
+              </div>
+            </div>
+
+          </ng-container>
+
+          <br><ng-container formGroupName="handFunction">
+            <mat-card-header>
+              <mat-card-title><mat-card-subtitle><b>HAND FUNCTIONS</b></mat-card-subtitle></mat-card-title>
+            </mat-card-header>
+
+            <table>
+              <tr>
+                <th></th>
+                <th>RIGHT</th>
+                <th>LEFT</th>
+              </tr>
+
+              <ng-container formGroupName="reach">
+                <tr>
+                  <td>Reach</td>
+                  <td>
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="right">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="left">
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </ng-container>
+
+              <ng-container formGroupName="grasp">
+                <tr>
+                  <td>Grasp</td>
+                  <td>
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="right">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="left">
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </ng-container>
+
+              <ng-container formGroupName="prehension">
+                <tr>
+                  <td>Prehension</td>
+                  <td>
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="right">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="left">
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </ng-container>
+
+              <ng-container formGroupName="opposition">
+                <tr>
+                  <td>Opposition</td>
+                  <td>
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="right">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="left">
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </ng-container>
+
+              <ng-container formGroupName="release">
+                <tr>
+                  <td>Release</td>
+                  <td>
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="right">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="left">
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </ng-container>
+
+              <ng-container formGroupName="preWriting">
+                <tr>
+                  <td>Pre-Writing Skills</td>
+                  <td>
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="right">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="left">
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </ng-container>
+            </table>
+          </ng-container>
+
+          <br><ng-container formGroupName="cognitiveFunctioning">
+            <mat-card-header>
+              <mat-card-title><mat-card-subtitle><b>COGNITIVE FUNCTIONING</b></mat-card-subtitle></mat-card-title>
+            </mat-card-header>
+            <ng-container formGroupName="cognitiveIntegration">
+              <mat-card-header>
+                <mat-card-title><mat-card-subtitle><b>1. COGNITIVE INTEGRATION:</b></mat-card-subtitle></mat-card-title>
+              </mat-card-header>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="a.Arousal:" formControlName="arousal">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row box">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="b. Initiation of Activity:" formControlName="initiationActivity">
+                  </mat-form-field>
+                </div>
+              </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Termination of Activity:" formControlName="terminationActivity">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Orientation of Time:" formControlName="orientationTime">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Orientation of Place:" formControlName="orientationPlace">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Recognition:" formControlName="recognition">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </ng-container>
+
+              <ng-container formGroupName="cognitiveComponent">
+                <mat-card-header>
+                  <mat-card-title><mat-card-subtitle><b>2. Cognitive Component</b></mat-card-subtitle></mat-card-title>
+                </mat-card-header>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="a. Attention Span:" formControlName="attentionSpan">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="b. Concentration Span:" formControlName="concentrationSpan">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="c. STM:" formControlName="stm">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="d. LTM:" formControlName="ltm">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="e. Recent Memory:" formControlName="recentMemory">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="f. Working Memory:" formControlName="workingMemory">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="g. Sequencing:" formControlName="sequencing">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="h. Categorisation:" formControlName="categorisation">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="i. Concept Formation:" formControlName="conceptFormation">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="j. Problem Solving Skills" formControlName="problemSolving">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row box">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="k. Generalisation of Learning" formControlName="generalisationLearning">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+
+      </mat-card>
+
+      <mat-card>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Recommendations:" formControlName="remarks"></textarea>
+        </mat-form-field>
+      </mat-card>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!otAssessmentForm.valid">ADD</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

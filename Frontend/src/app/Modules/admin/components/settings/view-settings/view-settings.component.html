@@ -1,0 +1,67 @@
+<section class="home_layout">
+  <div id="section_bg" class="background">
+    <mat-grid-list gutterSize="10px" cols="4" rowHeight="1:1">
+      <!-- <mat-grid-tile class="container">
+        <button class="btn btn" mat-fab aria-label="Example icon button with a bookmark icon">
+          <span class="material-icons" style="color: white; font-size: 45px;" routerLink="">home</span>
+        </button>
+        <div class="button_align">Home</div>
+      </mat-grid-tile> -->
+
+      <mat-grid-tile>
+        <button  class="btn btn" mat-fab aria-label="Example icon button with a bookmark icon">
+          <span class="material-icons" style="color: rgb(255, 255, 255); font-size: 45px;" (click)="manageUsers()">manage_accounts</span>
+        </button>
+        <div class="button_align">USERS</div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button  class="btn btn" mat-fab aria-label="Example icon button with a bookmark icon">
+          <span class="material-icons" style="color: rgb(255, 255, 255); font-size: 45px;" (click)="manageCategory()">apps</span>
+        </button>
+        <div class="button_align">CATEGORY</div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button  class="btn btn" mat-fab aria-label="Example icon button with a bookmark icon">
+          <span class="material-icons" style="color: rgb(255, 255, 255); font-size: 45px;" (click)="manageFees()">price_change</span>
+        </button>
+        <div class="button_align">FEES</div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-fab class="btn btn" aria-label="Example icon button with a bookmark icon">
+          <span class="material-icons" style="color: rgb(255, 255, 255); font-size: 45px;" (click)="manageConcession()">local_offer</span>
+        </button>
+        <div class="button_align">CONCESSION</div>
+      </mat-grid-tile>
+      <!-- <a mat-list-item [routerLinkActive]="['active']" routerLink="sessionhandover">
+        <span class="material-icons" style="font-size: 25px; color: #2242d0; margin-right: 3px;">swap_horiz</span>
+        HANDOVER
+      </a> -->
+      <mat-grid-tile>
+        <button mat-fab class="btn btn" aria-label="Example icon button with a bookmark icon">
+          <span class="material-icons" style="color: rgb(255, 255, 255); font-size: 45px;" (click)="manageHandover()">swap_horiz</span>
+        </button>
+        <div class="button_align">HANDOVER</div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-fab class="btn btn" aria-label="Example icon button with a bookmark icon">
+          <span class="material-icons" style="color: rgb(255, 255, 255); font-size: 45px;" (click)="manageClientStatus()">person_pin</span>
+        </button>
+        <div class="button_align">CLIENT STATUS</div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-fab class="btn btn" aria-label="Example icon button with a bookmark icon">
+          <span class="material-icons" style="color: rgb(255, 255, 255); font-size: 45px;" (click)="manageSlotStatus()">event_available</span>
+        </button>
+        <div class="button_align">SLOT STATUS</div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button mat-fab class="btn btn" aria-label="Example icon button with a bookmark icon">
+          <span class="material-icons" style="color: rgb(255, 255, 255); font-size: 45px;" (click)="deleteClients()">person_remove</span>
+        </button>
+        <div class="button_align">DELETE CLIENTS</div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</section>

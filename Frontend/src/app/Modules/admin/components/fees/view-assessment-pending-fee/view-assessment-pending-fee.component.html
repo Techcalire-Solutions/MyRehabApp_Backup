@@ -1,0 +1,127 @@
+<form>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>ASSESSMENT FEES</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+
+      <div style="overflow-x: auto;">
+        <table *ngIf="filtered" mat-table [dataSource]="filtered" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="date">
+              <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Date</h3></th>
+              <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="sessionStatus">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Session Status</h3></th>
+            <td mat-cell *matCellDef="let element"> {{element.sessionStatus}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="clientName">
+              <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Client Name</h3></th>
+              <td mat-cell *matCellDef="let element">
+                <a *ngIf="element.sessionStatus == 'Assessment'">{{element.assessment_id.clientName.firstName | uppercase}}</a>
+                <a *ngIf="element.sessionStatus == 'LeaveAssessment'">{{element.leave_session_id.clientName.firstName | uppercase}}</a>
+                <a *ngIf="element.sessionStatus == 'CompensationAssessment'">{{element.compensation_assessment_id.clientName.firstName | uppercase}}</a>
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="therapistName">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Therapist Name</h3></th>
+            <td mat-cell *matCellDef="let element">{{element.therapistName | uppercase}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="sessionFee">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Session Fee</h3></th>
+            <td mat-cell *matCellDef="let element">{{element.assessmentFee}}</td>
+          </ng-container>
+
+           <!-- Action Column  -->
+          <ng-container matColumnDef="manage">
+              <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Manage</h3></th>
+              <td mat-cell *matCellDef="let row" >
+                 <button mat-raised-button color="primary" (click)="payFee(row._id)" type="button">Select</button>
+                 <!-- <button mat-raised-button color="primary" *ngIf="row.sessionStatus == 'LMC'" (click)="openMedicalCertificate(row._id)" type="button">Select</button> -->
+             </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsAssessements"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsAssessements;"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Payment Completed</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div style="overflow-x: auto;">
+        <table *ngIf="payedAssessments" mat-table [dataSource]="payedAssessments" class="mat-elevation-z8">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+
+          <ng-container matColumnDef="dateAndTime">
+              <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Bill Date</h3></th>
+              <td mat-cell *matCellDef="let element"> {{element.dateAndTime | date: 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="paymentDate">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Payment Date</h3></th>
+            <td mat-cell *matCellDef="let element"> {{element.paymentDate | date: 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="clientName">
+              <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Client Name</h3></th>
+              <td mat-cell *matCellDef="let element">
+                <a *ngIf="element.sessionMasterId.sessionStatus == 'Assessment'">{{element.sessionMasterId.assessment_id.clientName.firstName | uppercase}}</a>
+                <a *ngIf="element.sessionMasterId.sessionStatus == 'LeaveAssessment'">{{element.sessionMasterId.leave_session_id.clientName.firstName | uppercase}}</a>
+                <a *ngIf="element.sessionMasterId.sessionStatus == 'CompensationAssessment'">{{element.sessionMasterId.compensation_assessment_id.clientName.firstName | uppercase}}</a>
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="therapistName">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Therapist Name</h3></th>
+            <td mat-cell *matCellDef="let element">{{element.sessionMasterId.therapistName | uppercase}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="collectedAmount">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Collected Amount</h3></th>
+            <td mat-cell *matCellDef="let element">{{element.collectedAmount}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="recievedBy">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Recieved By</h3></th>
+            <td mat-cell *matCellDef="let element">{{element.recievedBy.name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="paymentMode">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Payment Mode</h3></th>
+            <td mat-cell *matCellDef="let element">{{element.paymentMode}}</td>
+          </ng-container>
+
+           <!-- Action Column  -->
+          <ng-container matColumnDef="manage" >
+              <th mat-header-cell class="aligncentr" *matHeaderCellDef><h3 class="mat-subheading-2 font-weight-bold">Manage</h3></th>
+              <td mat-cell *matCellDef="let row" >
+                 <button mat-raised-button color="primary" (click)="getSMaster(row.sessionMasterId._id)" type="button">Select</button>
+             </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsPayed"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsPayed;"></tr>
+        </table>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</form>

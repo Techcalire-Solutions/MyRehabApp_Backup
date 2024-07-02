@@ -1,0 +1,50 @@
+
+.full-width{
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.button{
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#outer
+{
+    width:100%;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.inner
+{
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.button
+ {
+  background-color: #F1C27D;
+  color: black;
+  // font-size: 16px;
+  transition-duration: 0.4s;
+ }
+
+ .button:hover {
+  background-color: white;
+  color: black;
+}
+
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+

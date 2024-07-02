@@ -1,0 +1,101 @@
+<form [formGroup]="compensationForm" novalidate class="center-div">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>COMPENSATION SESSION</mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="row">
+        <div class="col">
+          <div *ngIf="compensation">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Client Name" formControlName="compensationId" #id (selectionChange)="getDay(id.value)">
+              <mat-option *ngFor="let x of compensation" [value]="x._id">
+                {{x.clientId.firstName}} ({{x.slotId.slotName}})
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Session Type" formControlName="sessionType">
+              <mat-option *ngFor="let sessionType of  sessionTypes" [value]="sessionType.name">
+                {{sessionType.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row-">
+        <div class="col"  *ngIf="leaveSlots.length === 0 || selectedStatus">
+          <mat-form-field class="full-width">
+            <mat-label>Slot Name</mat-label>
+            <mat-select placeholder="Slot Name" #id formControlName="slotId" (selectionChange)="onSlotSelectionChange(id.value)">
+              <mat-form-field class="search-field">
+                <div class="row">
+                <input matInput (input)="filterOptionsSlot($event)" placeholder="Search">
+                </div>
+              </mat-form-field>
+              <mat-option *ngFor="let slot of filteredOptionsSlot" [value]="slot._id">
+                {{ slot.slotName }}
+              </mat-option>
+              <mat-option value="chooseAnother">Choose another</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col" *ngIf="leaveSlots.length != 0 && !selectedStatus">
+          <mat-form-field class="full-width">
+            <mat-label>Leave Slots</mat-label>
+            <mat-select placeholder="Slot Name" formControlName="slotId" #id (selectionChange)="onSlotSelectionChange(id.value)">
+              <mat-option *ngFor="let slot of combinedArray" [value]="slot.slotId._id">
+                {{ slot.slotId.slotName }}
+              </mat-option>
+              <mat-option value="chooseAnother">Choose another</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepickerFilter]="myFilterCalendar" [matDatepicker]="picker" formControlName="date">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input  type="time" matInput  placeholder="Start Time" formControlName="startTime">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input type="time"  matInput placeholder="End Time" formControlName="endTime">
+          </mat-form-field>
+        </div>
+      </div> -->
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button mat-dialog-close (click)="onCancelClick()" type="button">CANCEL</button>
+      <button mat-raised-button color="primary" type="button" (click)="onSubmit()" [disabled]="!compensationForm.valid">ADD</button>
+      <!-- <button *ngIf ="isEdit" mat-raised-button (click)="editFunction()" enable mat-raised-button color="primary" type="button">UPDATE</button> -->
+    </mat-card-actions>
+  </mat-card>
+</form>

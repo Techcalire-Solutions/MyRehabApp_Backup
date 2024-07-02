@@ -1,0 +1,45 @@
+<form [formGroup]="sMasterForm">
+  <mat-card>
+    <div class="row">
+      <div class="col">
+        <mat-card-header><h3>CLIENTS</h3></mat-card-header>
+
+        <mat-card-content *ngIf="session">
+          <ul>
+            <li *ngFor="let client of session.clientName">
+              <label>
+                <input type="checkbox" (change)="updateSelection(client.clientId, $event)">
+                {{ client.clientId.firstName }}
+              </label>
+            </li>
+          </ul>
+        </mat-card-content>
+      </div>
+
+      <div class="col">
+        <mat-card-header><h3>THERAPSITS</h3></mat-card-header>
+
+        <mat-card-content *ngIf="session">
+          <ul>
+            <li *ngFor="let user of session.therapistName">
+              <label>
+                <input type="checkbox" (change)="therapists(user.therapistId, $event)">
+                {{ user.therapistId.name }}
+              </label>
+            </li>
+          </ul>
+        </mat-card-content>
+      </div>
+    </div>
+
+    <mat-card-actions>
+      <!-- <button mat-button mat-dialog-close (click)="onCancelClick()" type="button">No</button> -->
+      <button mat-button mat-dialog-close cdkFocusInitial type="button" (click)="onSubmit()">Ok</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+
+
+
+

@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-content *ngIf="slots">
+    <ul>
+      <li *ngFor="let slot of slots">
+        <div *ngIf="!status">
+          <mat-slide-toggle #amountToInara>Amount to Company</mat-slide-toggle>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" (change)="updateSelection(slot._id, amountToInaraToggle?.checked)">
+            {{ slot.slotName }}
+          </label>
+        </div>
+      </li>
+    </ul>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button mat-dialog-close (click)="dialogRef.close()" type="button">Cancel</button>
+    <button mat-raised-button mat-dialog-close cdkFocusInitial type="button" (click)="onSubmit()">Update</button>
+  </mat-card-actions>
+</mat-card>

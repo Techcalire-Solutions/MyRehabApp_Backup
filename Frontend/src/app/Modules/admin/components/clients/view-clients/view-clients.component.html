@@ -1,0 +1,114 @@
+<form class="center-div">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>CLIENTS</mat-card-title>
+      <button type="button" mat-mini-fab color="primary" aria-label="Example icon button with a home icon"
+        style="margin-left: auto;" (click)="makeExcel()">
+        <span class="material-icons" style="color: rgb(252, 249, 249); font-size: 25px;">download</span>
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+
+
+      <mat-form-field>
+        <mat-label>Search</mat-label>
+          <input matInput [(ngModel)]="filterValue" [ngModelOptions]="{ standalone: true }"
+            (ngModelChange)="onInputChange($event)" placeholder="Ex. ium">
+        </mat-form-field>&nbsp;&nbsp;
+        <button mat-raised-button (click)="search()">
+          Search
+        </button>
+
+      <div style="overflow-x: auto;">
+        <table *ngIf="clients" mat-table [dataSource]="clients" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="serialNumber">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef>
+              <h3 class="mat-subheading-2 font-weight-bold">Sl No</h3>
+            </th>
+            <td [style.background-color]="element.status === 'WL' ? '#FFB09C' : (element.status === 'AS' ? 'lightgreen' : 'null')"
+            mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="date">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef>
+              <h3 class="mat-subheading-2 font-weight-bold">Date</h3>
+            </th>
+            <td [style.background-color]="element.status === 'WL' ? '#FFB09C' : (element.status === 'AS' ? 'lightgreen' : 'null')"
+            mat-cell *matCellDef="let element"> {{element?.date | date: 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="clientID">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef>
+              <h3 class="mat-subheading-2 font-weight-bold">Client ID</h3>
+            </th>
+            <td [style.background-color]="element.status === 'WL' ? '#FFB09C' : (element.status === 'AS' ? 'lightgreen' : 'null')"
+             mat-cell *matCellDef="let element"> {{element?.client_ID}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="firstName">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef>
+              <h3 class="mat-subheading-2 font-weight-bold">Name</h3>
+            </th>
+            <td [style.background-color]="element.status === 'WL' ? '#FFB09C' : (element.status === 'AS' ? 'lightgreen' : 'null')"
+             mat-cell *matCellDef="let element"> {{element?.firstName}} </td>
+          </ng-container>
+<!-- 
+          <ng-container matColumnDef="email">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef>
+              <h3 class="mat-subheading-2 font-weight-bold">Email</h3>
+            </th>
+            <td [style.background-color]="element.status === 'WL' ? '#FFB09C' : (element.status === 'AS' ? 'lightgreen' : 'null')"
+            mat-cell *matCellDef="let element"> {{element?.email}} </td>
+          </ng-container> -->
+
+          <ng-container matColumnDef="emergencyNumber">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef>
+              <h3 class="mat-subheading-2 font-weight-bold">Contact Number</h3>
+            </th>
+            <td [style.background-color]="element.status === 'WL' ? '#FFB09C' : (element.status === 'AS' ? 'lightgreen' : 'null')"
+            mat-cell *matCellDef="let element"> {{element?.emergencyNumber}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef>
+              <h3 class="mat-subheading-2 font-weight-bold">Status</h3>
+            </th>
+            <td [style.background-color]="element.status === 'WL' ? '#FFB09C' : (element.status === 'AS' ? 'lightgreen' : 'null')"
+            mat-cell *matCellDef="let element"> {{element?.status}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="view">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef>
+              <h3 class="mat-subheading-2 font-weight-bold">Activate Login</h3></th>
+            <td [style.background-color]="element.status === 'WL' ? '#FFB09C' : (element.status === 'AS' ? 'lightgreen' : 'null')"
+            mat-cell *matCellDef="let element">
+              <span *ngIf="!element.loginStatus" class="material-icons" style="cursor: pointer;" (click)="generateLogin(element._id)">badge</span>
+              <span *ngIf="element.loginStatus" class="material-icons" style="cursor: pointer;" (click)="viewLogin(element._id)">open_in_new</span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell class="aligncentr" *matHeaderCellDef>
+              <h3 class="mat-subheading-2 font-weight-bold">Manage</h3>
+            </th>
+            <td [style.background-color]="row.status === 'WL' ? '#FFB09C' : (row.status === 'AS' ? 'lightgreen' : 'null')"
+            mat-cell *matCellDef="let row">
+              <button mat-raised-button color="primary" (click)="viewClient(row._id)" type="button">View</button>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <button mat-raised-button color="primary" (click)="editClient(row._id)" type="button">Edit</button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+
+    </mat-card-content>
+    <mat-paginator [length]="totalItems - 1" [pageSize]="pageSize" [pageIndex]="currentPage -1"
+      (page)="onPageChange($event)" [pageSizeOptions]="[10,20,30,40,50,100]">
+    </mat-paginator>
+  </mat-card>
+</form>

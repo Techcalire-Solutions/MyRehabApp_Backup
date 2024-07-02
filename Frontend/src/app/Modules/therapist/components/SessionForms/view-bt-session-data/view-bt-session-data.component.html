@@ -1,0 +1,263 @@
+<mat-horizontal-stepper #stepper linear>
+  <mat-step label="BT Session Form">
+    <mat-card>
+
+      <h2>BT SESSION FORM</h2>
+
+      <mat-card-content *ngIf="btData">
+        <div class="row">
+          <div class="col">
+            <h4>Submitted on : {{btData.date | date: 'dd/MM/yyyy'}}</h4>
+          </div>
+          <div class="col">
+            <h4>Last updates on : {{btData.updatedDate | date: 'dd/MM/yyyy'}}</h4>
+          </div>
+        </div>
+
+        <table id="customers">
+          <tr>
+            <th class="col-1">Goals</th>
+            <th class="col-1">Grade</th>
+            <th class="col-1">Remarks</th>
+          </tr>
+
+          <tr>
+            <td class="col-1">Sitting Behaviour</td>
+            <td class="col-2">
+              {{btData.sitting}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksSitting}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Eye Contact</td>
+            <td class="col-2">
+              {{btData.eyeContact}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksEyeContact}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Attention</td>
+            <td class="col-2">
+              {{btData.attention}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksAttention}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Mood</td>
+            <td class="col-2">
+              {{btData.mood}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksMood}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Interest in Activities</td>
+            <td class="col-2">
+              {{btData.activities}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksActivities}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Comprehension of Instructions</td>
+            <td class="col-2">
+              {{btData.comprehensionInstructions}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksComprehensionInstructions}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Response to Instructions</td>
+            <td class="col-2">
+              {{btData.responseInstructions}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksResponseInstructions}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Waiting for Turn</td>
+            <td class="col-2">
+              {{btData.waiting}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksWaiting}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Compliance</td>
+            <td class="col-2">
+              {{btData.compliance}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksCompliance}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Behaviour</td>
+            <td class="col-2">
+              {{btData.behaviour}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksBehaviour}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Communication</td>
+            <td class="col-2">
+              {{btData.communication}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksCommunication}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Throw Things</td>
+            <td class="col-2">
+              {{btData.throwThings}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksThrowThings}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Tears Things</td>
+            <td class="col-2">
+              {{btData.tearsThings}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksTearsThings}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Aggressive Behaviour to Others</td>
+            <td class="col-2">
+              {{btData.angryProne}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksAngryProne}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Self Injurious Behaviour</td>
+            <td class="col-2">
+              {{btData.selfInjurious}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksSelfInjurious}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Repetitive Behaviour</td>
+            <td class="col-2">
+              {{btData.repetitive}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksRepetitive}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Tantrum Behaviours</td>
+            <td class="col-2">
+              {{btData.tantrums}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksTantrums}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Climbs over Furniture</td>
+            <td class="col-2">
+              {{btData.climbsFurniture}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksClimbsFurniture}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1">Disruptive Behaviour</td>
+            <td class="col-2">
+              {{btData.disruptiveBehaviour}}
+            </td>
+            <td class="col-3">
+              {{btData.remarksDisruptiveBehaviour}}
+            </td>
+          </tr>
+
+
+        </table>
+      </mat-card-content>
+
+    </mat-card>
+
+  </mat-step>
+
+  <mat-step label="View Activities">
+    <div *ngIf="activities">
+      <div class="activity-container">
+        <div class="activity-info">
+          <div class="activity-header">
+            <span class="activity-date">Activity Date: {{ activities.assignedDate | date: 'dd/MM/yyyy' }}</span>
+            <span class="activity-status">Activity Status: {{ activities.activityStatus ? 'Completed' : 'Assigned'
+              }}</span>
+          </div>
+        </div>
+        <div class="activity-details">
+          <table>
+            <thead>
+              <tr>
+                <th>Activity Name</th>
+                <th>Response</th>
+                <th>Done</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let detail of activityDetails">
+                <td>{{ detail.activity }}</td>
+                <td>{{ detail.response }}</td>
+                <td [style.color]="detail.status ? 'green' : 'red'"
+                  [style.font-weight]="detail.status ? 'bold' : 'bold'">
+                  {{ detail.status ? 'Yes' : 'No' }}
+                </td>
+
+
+
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-step>
+
+
+
+</mat-horizontal-stepper>

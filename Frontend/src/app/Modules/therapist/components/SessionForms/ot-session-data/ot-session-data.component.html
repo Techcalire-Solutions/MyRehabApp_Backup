@@ -1,0 +1,1099 @@
+<form [formGroup]="otSessionForm" novalidate (ngSubmit)="onSubmit()"class="center-div">
+  <mat-card class="shipping-card">
+
+    <h2> OT SESSION FORM</h2>
+    <mat-card-content>
+      <mat-card class="card">
+        <ng-container formGroupName="sensoryModulation">
+          <mat-card-header>
+            <mat-card-title>Sensory Modulation</mat-card-title>
+          </mat-card-header>
+          <h3>Threshold</h3>
+          <ng-container formGroupName="threshold">
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Arousal</h3>
+          <ng-container formGroupName="arousal">
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="proprioceptiveDiscrimination">
+          <mat-card-header>
+            <mat-card-title>Proprioceptive Discrimination</mat-card-title>
+          </mat-card-header>
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width remarks" appearance="fill">
+                <input matInput placeholder="Remarks" formControlName="remarks">
+              </mat-form-field>
+            </div>
+            <div class="col"></div>
+            <div class="col">
+              <mat-form-field  class="full-width" appearance="fill">
+                <mat-select placeholder="Key" formControlName="key">
+                  <mat-option *ngFor="let key of  keys" [value]="key.value">
+                    {{ key.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-select placeholder="Prompt" formControlName="prompt">
+                  <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                    {{ prompt.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </ng-container>
+      </mat-card>
+
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="vestibularDiscrimination">
+          <mat-card-header>
+            <mat-card-title>Vestibular Discrimination</mat-card-title>
+          </mat-card-header>
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width remarks" appearance="fill">
+                <input matInput placeholder="Remarks" formControlName="remarks">
+              </mat-form-field>
+            </div>
+            <div class="col"></div>
+            <div class="col">
+              <mat-form-field  class="full-width" appearance="fill">
+                <mat-select placeholder="Key" formControlName="key">
+                  <mat-option *ngFor="let key of  keys" [value]="key.value">
+                    {{ key.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-select placeholder="Prompt" formControlName="prompt">
+                  <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                    {{ prompt.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </ng-container>
+      </mat-card>
+
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="tactileDiscrimination">
+          <mat-card-header>
+            <mat-card-title>Tactile Discrimination</mat-card-title>
+          </mat-card-header>
+          <h3>Tool Manipulation</h3>
+          <ng-container formGroupName="toolManipulation">
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Vision Occluded</h3>
+          <ng-container formGroupName="visionOccluded">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="visual">
+          <mat-card-header>
+            <mat-card-title>Visual</mat-card-title>
+          </mat-card-header>
+          <h3>Acuity</h3>
+          <ng-container formGroupName="acuity">
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Eye Strain</h3>
+          <ng-container formGroupName="eyeStrain">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Quick Localisation</h3>
+          <ng-container formGroupName="quickLocalisation">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>General Eye Movements</h3>
+          <ng-container formGroupName="generalEyeMovements">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Dissociation</h3>
+          <ng-container formGroupName="dissociation">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Perceptual</h3>
+          <ng-container formGroupName="perceptual">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="postural">
+          <mat-card-header>
+            <mat-card-title>Postural</mat-card-title>
+          </mat-card-header>
+          <h3>Muscle Tone</h3>
+          <ng-container formGroupName="muscleTone">
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Reflex</h3>
+          <ng-container formGroupName="reflex">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Endurance</h3>
+          <ng-container formGroupName="endurance">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Postural Control</h3>
+          <ng-container formGroupName="posturalControl">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Gait</h3>
+          <ng-container formGroupName="gait">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="bilateralIntegration">
+          <mat-card-header>
+            <mat-card-title>Bilateral Integration</mat-card-title>
+          </mat-card-header>
+          <h3>Midline Crossing</h3>
+          <ng-container formGroupName="midlineCrossing">
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Symmetrical</h3>
+          <ng-container formGroupName="symmetrical">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Asymmetrical</h3>
+          <ng-container formGroupName="asymmetrical">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Reciprocal</h3>
+          <ng-container formGroupName="reciprocal">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="praxis">
+          <mat-card-header>
+            <mat-card-title>Praxis</mat-card-title>
+          </mat-card-header>
+          <h3>Ideation</h3>
+          <ng-container formGroupName="ideation">
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Motor Planning</h3>
+          <ng-container formGroupName="motorPlanning">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Execution</h3>
+          <ng-container formGroupName="execution">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="grossMotor">
+          <mat-card-header>
+            <mat-card-title>Gross Motor</mat-card-title>
+          </mat-card-header>
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width remarks" appearance="fill">
+                <input matInput placeholder="Remarks" formControlName="remarks">
+              </mat-form-field>
+            </div>
+            <div class="col"></div>
+            <div class="col">
+              <mat-form-field  class="full-width" appearance="fill">
+                <mat-select placeholder="Key" formControlName="key">
+                  <mat-option *ngFor="let key of  keys" [value]="key.value">
+                    {{ key.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-select placeholder="Prompt" formControlName="prompt">
+                  <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                    {{ prompt.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </ng-container>
+      </mat-card>
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="fineMotor">
+          <mat-card-header>
+            <mat-card-title>Fine Motor</mat-card-title>
+          </mat-card-header>
+          <h3>Strength</h3>
+          <ng-container formGroupName="strength">
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Grip</h3>
+          <ng-container formGroupName="grip">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Isolation (Wrist)</h3>
+          <ng-container formGroupName="isolationWrist">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Isolation (Fingers)</h3>
+          <ng-container formGroupName="isolationFingers">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="auditoryAndLanguage">
+          <mat-card-header>
+            <mat-card-title>Auditory And Language</mat-card-title>
+          </mat-card-header>
+          <h3>Articulation</h3>
+          <ng-container formGroupName="articulation">
+            <div class="row box">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+
+          <h3>Following Instructions</h3>
+          <ng-container formGroupName="followingInstructions">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width remarks" appearance="fill">
+                  <input matInput placeholder="Remarks" formControlName="remarks">
+                </mat-form-field>
+              </div>
+              <div class="col"></div>
+              <div class="col">
+                <mat-form-field  class="full-width" appearance="fill">
+                  <mat-select placeholder="Key" formControlName="key">
+                    <mat-option *ngFor="let key of  keys" [value]="key.value">
+                      {{ key.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-select placeholder="Prompt" formControlName="prompt">
+                    <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                      {{ prompt.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </mat-card>
+
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="adl">
+          <mat-card-header>
+            <mat-card-title>ADL</mat-card-title>
+          </mat-card-header>
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width remarks" appearance="fill">
+                <input matInput placeholder="Remarks" formControlName="remarks">
+              </mat-form-field>
+            </div>
+            <div class="col"></div>
+            <div class="col">
+              <mat-form-field  class="full-width" appearance="fill">
+                <mat-select placeholder="Key" formControlName="key">
+                  <mat-option *ngFor="let key of  keys" [value]="key.value">
+                    {{ key.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-select placeholder="Prompt" formControlName="prompt">
+                  <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                    {{ prompt.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </ng-container>
+      </mat-card>
+
+
+
+      <mat-card class="card">
+        <ng-container formGroupName="emotional">
+          <mat-card-header>
+            <mat-card-title>Emotional</mat-card-title>
+          </mat-card-header>
+          <div class="row box">
+            <div class="col">
+              <mat-form-field class="full-width remarks" appearance="fill">
+                <input matInput placeholder="Remarks" formControlName="remarks">
+              </mat-form-field>
+            </div>
+            <div class="col"></div>
+            <div class="col">
+              <mat-form-field  class="full-width" appearance="fill">
+                <mat-select placeholder="Key" formControlName="key">
+                  <mat-option *ngFor="let key of  keys" [value]="key.value">
+                    {{ key.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-select placeholder="Prompt" formControlName="prompt">
+                  <mat-option *ngFor="let prompt of  prompts" [value]="prompt.value">
+                    {{ prompt.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </ng-container>
+      </mat-card>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

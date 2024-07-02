@@ -1,0 +1,66 @@
+
+.full-width{
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.button{
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.remarks{
+  width: 200%;
+}
+
+.card{
+  margin-top: 5px;
+}
+
+@media(max-width:576px)
+{
+    .box{
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .remarks{
+      width: 100%;
+    }
+}
+
+
+
+@media(max-width:958px)
+{
+    .boxsmall{
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .remarks{
+      width: 100%;
+    }
+}

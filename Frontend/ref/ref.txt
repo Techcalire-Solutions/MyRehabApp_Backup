@@ -1,0 +1,10 @@
+<p>admin-dashboard works!</p>
+<p>Welcome {{userName}}</p>
+ <h1 *ngIf="authService.currentUser$ | async">welcome {{(authService.currentUser$ | async)?.username}}</h1>
+
+<!----async = subscribe-->
+<p>Welcome {{(authService.currentUser$ | async )?.username}}</p>
+<button mat-raised-button (click)="logOut()">logout</button>
+
+
+{{name}}

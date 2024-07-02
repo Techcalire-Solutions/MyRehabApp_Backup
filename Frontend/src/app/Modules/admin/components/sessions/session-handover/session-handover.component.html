@@ -1,0 +1,44 @@
+<mat-form-field>
+  <mat-label>Search</mat-label>
+  <input (keyup)="applyFilter($event)" matInput placeholder="Ex. ium" #input>
+</mat-form-field>
+
+<div style="overflow-x: auto;">
+  <table mat-table *ngIf="filtered" [dataSource]= "filtered" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="slotName">
+       <th mat-header-cell *matHeaderCellDef mat-sort-header>Slot Name </th>
+       <td mat-cell [style.background-color]="element.status == true ? 'gray' : null" *matCellDef="let element"> {{element.slotName.slotName}} </td>
+     </ng-container>
+
+     <ng-container matColumnDef="clientName">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>Client Name </th>
+      <td mat-cell [style.background-color]="element.status == true ? 'gray' : null" *matCellDef="let element"> {{element.clientName.firstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="therapistName">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>Therapist Name </th>
+      <td mat-cell [style.background-color]="element.status == true ? 'gray' : null" *matCellDef="let element"> {{element.therapistName.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>Status</th>
+      <td mat-cell [style.background-color]="element.status == true ? 'gray' : null"  *matCellDef="let element"> {{element.status == true? "Completed":"Ongoing"}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="manage">
+      <th mat-header-cell *matHeaderCellDef>Manage</th>
+      <td mat-cell [style.background-color]="element.status == true ? 'gray' : null" *matCellDef="let element">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <i  (click)="handoverSession(element)"  class="fa fa-edit" style="font-size: 20px; color:green"></i>
+        &nbsp;&nbsp;
+        <!-- <i  (click)="deleteSession(element._id)" class="fa fa-trash" style="font-size: 20px; color:red"></i> -->
+      </td>
+    </ng-container>
+
+
+
+     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
