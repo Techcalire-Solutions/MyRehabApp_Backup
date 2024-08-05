@@ -27,7 +27,7 @@ export class ViewSettingsComponent implements OnInit {
   manageUsers(){
     if(this.currentUser.md == true){
       const dialogRef = this.dialog.open(AddUserComponent, {
-        width: '800px',
+        width: '1000px',
         height:"600px" ,
         data: {},
       });
@@ -80,7 +80,7 @@ export class ViewSettingsComponent implements OnInit {
   manageHandover(){
     if(this.currentUser.md == true){
       const dialogRef = this.dialog.open(SessionHandoverComponent, {
-        width: '600px',
+        width: '800px',
         data: {}
       });
     }

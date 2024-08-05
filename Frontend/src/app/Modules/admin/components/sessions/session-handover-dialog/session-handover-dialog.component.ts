@@ -21,7 +21,7 @@ export class SessionHandoverDialogComponent implements OnInit, OnDestroy {
     private router : Router) { }
 
     ngOnDestroy() {
-      this.router.navigateByUrl('admin/sessionhandover')
+      // this.router.navigateByUrl('admin/sessionhandover')
 
       this.therapistSubscription.unsubscribe();
       if(this.submit){
