@@ -11,6 +11,8 @@ import { ViewDocComponent } from '../view-doc/view-doc.component';
 import { ViewMoreComponent } from '../view-more/view-more.component';
 import { Router } from '@angular/router';
 import { Company } from '../../../models/company';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-add-user',
@@ -40,6 +42,16 @@ export class AddUserComponent implements OnInit, OnDestroy {
     joiningDate : ['', Validators.required]
   });
 
+  // hide = signal(true);
+  // clickEvent(event: MouseEvent) {
+  //   this.hide.set(!this.hide());
+  //   event.stopPropagation();
+  // }
+  showPassword: boolean = false;
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
   qualifications(): FormArray {
     return this.userForm.get("qualifications") as FormArray;
   }

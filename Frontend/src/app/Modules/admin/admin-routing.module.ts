@@ -80,7 +80,7 @@ const routes: Routes = [
     {path:'addassessment',component:AssessmentComponent},
     {path:'compensationsession',component:CompensationComponent},
     {path:'addleave',component:AddLeaveComponent},
-    {path:'sessionhandover',component:SessionHandoverComponent},
+    // {path:'sessionhandover',component:SessionHandoverComponent},
     {path: 'settings/managefees', component: ManageFeesComponent},
     {path: 'settings/manageconcession', component: ManageConcessionComponent},
     {path: 'viewpendingfee', component: ViewFeePendingSessionComponent},
